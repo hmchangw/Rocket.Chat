@@ -1,4 +1,4 @@
-import { Collection, ObjectId } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 import { BaseRaw } from './BaseRaw';
 import {
@@ -18,7 +18,6 @@ export interface IWorkHoursCronJobsWrapper {
 }
 
 export class LivechatBusinessHoursRaw extends BaseRaw<ILivechatBusinessHour> {
-
 	findOneDefaultBusinessHour(options?: any): Promise<ILivechatBusinessHour | undefined> {
 		return this.findOne({ type: LivechatBusinessHourTypes.DEFAULT }, options);
 	}

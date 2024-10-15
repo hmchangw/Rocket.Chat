@@ -1,11 +1,10 @@
-import { Collection, ObjectId } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 import { BaseRaw } from './BaseRaw';
 import { IServerEvent, IServerEventType } from '../../../../definition/IServerEvent';
 import { IUser } from '../../../../definition/IUser';
 
 export class ServerEventsRaw extends BaseRaw<IServerEvent> {
-
 	async insertOne(data: Omit<IServerEvent, '_id'>): Promise<any> {
 		if (data.u) {
 			data.u = { _id: data.u._id, username: data.u.username } as IUser;

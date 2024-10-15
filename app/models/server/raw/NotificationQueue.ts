@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import {
-	Collection,
-	ObjectId,
-} from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 import { BaseRaw } from './BaseRaw';
 import { INotification } from '../../../../definition/INotification';
 
 export class NotificationQueueRaw extends BaseRaw<INotification> {
-
 	unsetSendingById(_id: string) {
 		return this.col.updateOne({ _id }, {
 			$unset: {
