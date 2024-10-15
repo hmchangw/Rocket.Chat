@@ -2,7 +2,7 @@ import URL from 'url';
 import querystring from 'querystring';
 
 import { Meteor } from 'meteor/meteor';
-import { HTTPInternals } from 'meteor/http';
+import { HTTP } from 'meteor/http';
 import { camelCase } from 'change-case';
 import _ from 'underscore';
 import iconv from 'iconv-lite';
@@ -15,7 +15,6 @@ import { callbacks } from '../../callbacks';
 import { settings } from '../../settings';
 import { isURL } from '../../utils/lib/isURL';
 
-const request = HTTPInternals.NpmModules.request.module;
 const OEmbed = {};
 
 //  Detect encoding
@@ -110,7 +109,7 @@ const getUrlContent = Meteor.wrapAsync(function(urlObj, redirectCount = 5, callb
 	let error = null;
 	const chunks = [];
 	let chunksTotalLength = 0;
-	const stream = request(opts);
+	const stream = HTTP.call(opts);
 	stream.on('response', function(response) {
 		statusCode = response.statusCode;
 		headers = response.headers;
