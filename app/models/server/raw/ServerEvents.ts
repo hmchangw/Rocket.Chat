@@ -5,7 +5,6 @@ import { IServerEvent, IServerEventType } from '../../../../definition/IServerEv
 import { IUser } from '../../../../definition/IUser';
 
 export class ServerEventsRaw extends BaseRaw<IServerEvent> {
-	public readonly col!: Collection<IServerEvent>;
 
 	async insertOne(data: Omit<IServerEvent, '_id'>): Promise<any> {
 		if (data.u) {

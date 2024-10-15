@@ -18,7 +18,6 @@ export interface IWorkHoursCronJobsWrapper {
 }
 
 export class LivechatBusinessHoursRaw extends BaseRaw<ILivechatBusinessHour> {
-	public readonly col!: Collection<ILivechatBusinessHour>;
 
 	findOneDefaultBusinessHour(options?: any): Promise<ILivechatBusinessHour | undefined> {
 		return this.findOne({ type: LivechatBusinessHourTypes.DEFAULT }, options);

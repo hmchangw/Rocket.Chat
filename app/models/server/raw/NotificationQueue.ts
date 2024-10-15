@@ -8,7 +8,6 @@ import { BaseRaw } from './BaseRaw';
 import { INotification } from '../../../../definition/INotification';
 
 export class NotificationQueueRaw extends BaseRaw<INotification> {
-	public readonly col!: Collection<INotification>;
 
 	unsetSendingById(_id: string) {
 		return this.col.updateOne({ _id }, {
