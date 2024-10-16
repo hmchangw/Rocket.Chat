@@ -19,7 +19,7 @@ export const saveUser = (
 		return;
 	}
 
-	const found = (Meteor.users as any)._collection._docs._map[user._id];
+	const found = (Meteor.users as any)._collection._docs._map.get(user._id);
 
 	if (found && force) {
 		Meteor.users.update(
