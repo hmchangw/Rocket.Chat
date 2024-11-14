@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { FC, useCallback, useEffect } from 'react';
 
+import { createReactiveSubscriptionFactory } from './createReactiveSubscriptionFactory';
 import {
 	hasPermission,
 	hasAtLeastOnePermission,
@@ -10,7 +11,6 @@ import {
 import { Roles } from '../../app/models/client/models/Roles';
 import { AuthorizationContext, RoleStore } from '../contexts/AuthorizationContext';
 import { useReactiveValue } from '../hooks/useReactiveValue';
-import { createReactiveSubscriptionFactory } from './createReactiveSubscriptionFactory';
 
 const contextValue = {
 	queryPermission: createReactiveSubscriptionFactory((permission, scope) =>

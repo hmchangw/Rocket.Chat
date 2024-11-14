@@ -2,6 +2,11 @@ import { Box, Table } from '@rocket.chat/fuselage';
 import { useDebouncedValue, useMediaQuery, useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import AgentEditWithData from './AgentEditWithData';
+import AgentInfo from './AgentInfo';
+import AgentInfoActions from './AgentInfoActions';
+import AgentsPage from './AgentsPage';
+import RemoveAgentButton from './RemoveAgentButton';
 import GenericTable from '../../../components/GenericTable';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import VerticalBar from '../../../components/VerticalBar';
@@ -10,11 +15,6 @@ import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useRouteParameter, useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import AgentEditWithData from './AgentEditWithData';
-import AgentInfo from './AgentInfo';
-import AgentInfoActions from './AgentInfoActions';
-import AgentsPage from './AgentsPage';
-import RemoveAgentButton from './RemoveAgentButton';
 
 const sortDir = (sortDir) => (sortDir === 'asc' ? 1 : -1);
 

@@ -1,9 +1,9 @@
 import { Modal } from '@rocket.chat/fuselage';
 import React, { useState } from 'react';
 
-import { useTranslation } from '../../../contexts/TranslationContext';
 import CopyStep from './CopyStep';
 import PasteStep from './PasteStep';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 const Steps = {
 	COPY: 'copy',

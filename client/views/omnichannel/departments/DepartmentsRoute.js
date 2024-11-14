@@ -2,15 +2,15 @@ import { Table } from '@rocket.chat/fuselage';
 import { useDebouncedValue, useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import DepartmentsPage from './DepartmentsPage';
+import EditDepartmentWithData from './EditDepartmentWithData';
+import RemoveDepartmentButton from './RemoveDepartmentButton';
 import GenericTable from '../../../components/GenericTable';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useRouteParameter, useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import DepartmentsPage from './DepartmentsPage';
-import EditDepartmentWithData from './EditDepartmentWithData';
-import RemoveDepartmentButton from './RemoveDepartmentButton';
 
 const sortDir = (sortDir) => (sortDir === 'asc' ? 1 : -1);
 

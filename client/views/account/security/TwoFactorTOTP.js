@@ -3,6 +3,8 @@ import { useSafely } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useCallback, useEffect } from 'react';
 import qrcode from 'yaqrcode';
 
+import BackupCodesModal from './BackupCodesModal';
+import VerifyCodeModal from './VerifyCodeModal';
 import TextCopy from '../../../components/TextCopy';
 import { useSetModal } from '../../../contexts/ModalContext';
 import { useMethod } from '../../../contexts/ServerContext';
@@ -10,8 +12,6 @@ import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext'
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useUser } from '../../../contexts/UserContext';
 import { useForm } from '../../../hooks/useForm';
-import BackupCodesModal from './BackupCodesModal';
-import VerifyCodeModal from './VerifyCodeModal';
 
 const TwoFactorTOTP = (props) => {
 	const t = useTranslation();

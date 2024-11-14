@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 
-import { ConnectionStatusContext } from '../../contexts/ConnectionStatusContext';
 import ConnectionStatusBar from './ConnectionStatusBar';
+import { ConnectionStatusContext } from '../../contexts/ConnectionStatusContext';
 
 const stateDecorator = ({ status = 'connected' } = {}) => (storyFn) => (
 	<ConnectionStatusContext.Provider

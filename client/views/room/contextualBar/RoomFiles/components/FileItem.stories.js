@@ -1,7 +1,7 @@
 import React from 'react';
 
-import VerticalBar from '../../../../../components/VerticalBar';
 import FileItem from './FileItem';
+import VerticalBar from '../../../../../components/VerticalBar';
 
 export default {
 	title: 'room/ContextualBar/RoomFiles/FileItem',

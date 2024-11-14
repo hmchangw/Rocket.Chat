@@ -1,10 +1,10 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useState } from 'react';
 
+import { useCannedResponses } from './useCannedResponses';
 import { useMethod } from '../../../../client/contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../../client/contexts/ToastMessagesContext';
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
-import { useCannedResponses } from './useCannedResponses';
 
 export const withData = (Component) => {
 	const WrappedComponent = ({ departmentId, onClose }) => {

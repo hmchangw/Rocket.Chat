@@ -1,8 +1,8 @@
 import React from 'react';
 
+import ChannelsTable from './ChannelsTable';
 import NotAuthorizedPage from '../../components/NotAuthorizedPage';
 import { usePermission } from '../../contexts/AuthorizationContext';
-import ChannelsTable from './ChannelsTable';
 
 function ChannelsTab(props) {
 	const canViewPublicRooms = usePermission('view-c-room');

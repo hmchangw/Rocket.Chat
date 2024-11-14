@@ -1,8 +1,8 @@
 import React from 'react';
 
+import TeamsTable from './TeamsTable';
 import NotAuthorizedPage from '../../components/NotAuthorizedPage';
 import { usePermission } from '../../contexts/AuthorizationContext';
-import TeamsTable from './TeamsTable';
 
 function TeamsTab(props) {
 	const canViewPublicRooms = usePermission('view-c-room');

@@ -1,10 +1,10 @@
 import { Box, Divider } from '@rocket.chat/fuselage';
 import React, { FC, useMemo, useEffect, MutableRefObject } from 'react';
 
+import AppSettingsAssembler from './AppSettingsAssembler';
 import { ISetting } from '../../../../definition/ISetting';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useForm } from '../../../hooks/useForm';
-import AppSettingsAssembler from './AppSettingsAssembler';
 
 type SettingsDisplayProps = {
 	settings: {

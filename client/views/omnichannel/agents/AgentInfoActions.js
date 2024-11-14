@@ -1,13 +1,13 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React from 'react';
 
+import AgentInfo from './AgentInfo';
 import GenericModal from '../../../components/GenericModal';
 import { useSetModal } from '../../../contexts/ModalContext';
 import { useRouteParameter, useRoute } from '../../../contexts/RouterContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointAction } from '../../../hooks/useEndpointAction';
-import AgentInfo from './AgentInfo';
 
 function AgentInfoActions({ reload }) {
 	const t = useTranslation();

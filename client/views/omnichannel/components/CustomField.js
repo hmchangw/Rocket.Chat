@@ -1,13 +1,13 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import Field from './Field';
+import Info from './Info';
+import Label from './Label';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
 import { FormSkeleton } from '../directory/Skeleton';
-import Field from './Field';
-import Info from './Info';
-import Label from './Label';
 
 const CustomField = ({ id, value }) => {
 	const t = useTranslation();

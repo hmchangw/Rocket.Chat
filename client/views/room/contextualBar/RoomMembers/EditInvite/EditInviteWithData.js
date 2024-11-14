@@ -1,8 +1,8 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useState } from 'react';
 
-import { useTabBarClose } from '../../../providers/ToolboxProvider';
 import EditInvite from './EditInvite';
+import { useTabBarClose } from '../../../providers/ToolboxProvider';
 
 const EditInviteWithData = ({
 	onClickBack,

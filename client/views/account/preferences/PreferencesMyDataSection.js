@@ -9,11 +9,11 @@ import {
 } from '@rocket.chat/fuselage';
 import React, { useCallback } from 'react';
 
+import MyDataModal from './MyDataModal';
 import { useSetModal } from '../../../contexts/ModalContext';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import MyDataModal from './MyDataModal';
 
 const PreferencesMyDataSection = ({ onChange, ...props }) => {
 	const t = useTranslation();

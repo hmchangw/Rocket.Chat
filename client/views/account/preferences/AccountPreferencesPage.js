@@ -1,11 +1,6 @@
 import { ButtonGroup, Button, Box, Accordion } from '@rocket.chat/fuselage';
 import React, { useState, useCallback, useRef } from 'react';
 
-import Page from '../../../components/Page';
-import { useMethod } from '../../../contexts/ServerContext';
-import { useSetting } from '../../../contexts/SettingsContext';
-import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import PreferencesGlobalSection from './PreferencesGlobalSection';
 import PreferencesHighlightsSection from './PreferencesHighlightsSection';
 import PreferencesLocalizationSection from './PreferencesLocalizationSection';
@@ -14,6 +9,11 @@ import PreferencesMyDataSection from './PreferencesMyDataSection';
 import PreferencesNotificationsSection from './PreferencesNotificationsSection';
 import PreferencesSoundSection from './PreferencesSoundSection';
 import PreferencesUserPresenceSection from './PreferencesUserPresenceSection';
+import Page from '../../../components/Page';
+import { useMethod } from '../../../contexts/ServerContext';
+import { useSetting } from '../../../contexts/SettingsContext';
+import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 const AccountPreferencesPage = () => {
 	const t = useTranslation();

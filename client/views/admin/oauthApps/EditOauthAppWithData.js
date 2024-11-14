@@ -1,10 +1,10 @@
 import { Box, Button, ButtonGroup, Skeleton, Throbber, InputBox } from '@rocket.chat/fuselage';
 import React, { useCallback, useMemo } from 'react';
 
+import EditOauthApp from './EditOauthApp';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import EditOauthApp from './EditOauthApp';
 
 function EditOauthAppWithData({ _id, ...props }) {
 	const t = useTranslation();

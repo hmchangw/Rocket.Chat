@@ -1,13 +1,13 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React from 'react';
 
+import UserRow from './UserRow';
 import GenericModal from '../../../components/GenericModal';
 import GenericTable from '../../../components/GenericTable';
 import { useSetModal } from '../../../contexts/ModalContext';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import UserRow from './UserRow';
 
 function UsersInRoleTable({ data, reload, roleName, total, params, setParams, rid }) {
 	const t = useTranslation();

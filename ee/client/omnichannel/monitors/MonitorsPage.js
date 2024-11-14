@@ -2,6 +2,7 @@ import { Button, Box, Callout, Field } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useMemo } from 'react';
 
+import MonitorsTable from './MonitorsTable';
 import Page from '../../../../client/components/Page';
 import UserAutoComplete from '../../../../client/components/UserAutoComplete';
 import { useMethod } from '../../../../client/contexts/ServerContext';
@@ -9,7 +10,6 @@ import { useToastMessageDispatch } from '../../../../client/contexts/ToastMessag
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../client/hooks/useAsyncState';
 import { useEndpointData } from '../../../../client/hooks/useEndpointData';
-import MonitorsTable from './MonitorsTable';
 
 const sortDir = (sortDir) => (sortDir === 'asc' ? 1 : -1);
 

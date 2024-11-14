@@ -1,8 +1,8 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import { useForm } from '../../../../client/hooks/useForm';
 import CannedResponseForm from './CannedResponseForm';
+import { useForm } from '../../../../client/hooks/useForm';
 
 export default {
 	title: 'omnichannel/CannedResponse/CannedResponseForm',

@@ -1,10 +1,10 @@
 import React, { createElement, FC, Fragment, Suspense } from 'react';
 import { useSubscription } from 'use-subscription';
 
-import { appLayout } from '../../lib/appLayout';
-import { blazePortals } from '../../lib/portals/blazePortals';
 import BlazeTemplate from './BlazeTemplate';
 import PageLoading from './PageLoading';
+import { appLayout } from '../../lib/appLayout';
+import { blazePortals } from '../../lib/portals/blazePortals';
 
 const AppLayout: FC = () => {
 	const descriptor = useSubscription(appLayout);

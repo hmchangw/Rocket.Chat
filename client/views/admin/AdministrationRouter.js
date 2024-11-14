@@ -1,9 +1,9 @@
 import React, { Suspense, useEffect } from 'react';
 
+import AdministrationLayout from './AdministrationLayout';
 import PageSkeleton from '../../components/PageSkeleton';
 import { useCurrentRoute, useRoute } from '../../contexts/RouterContext';
 import SettingsProvider from '../../providers/SettingsProvider';
-import AdministrationLayout from './AdministrationLayout';
 
 function AdministrationRouter({ renderRoute }) {
 	const [routeName] = useCurrentRoute();

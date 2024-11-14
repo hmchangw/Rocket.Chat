@@ -1,9 +1,9 @@
 import React, { FC, memo } from 'react';
 
-import { useSetting } from '../../contexts/SettingsContext';
 import MapViewFallback from './MapViewFallback';
 import MapViewImage from './MapViewImage';
 import { useAsyncImage } from './useAsyncImage';
+import { useSetting } from '../../contexts/SettingsContext';
 
 type MapViewProps = {
 	latitude: string;

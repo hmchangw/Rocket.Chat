@@ -77,7 +77,7 @@ Meteor.startup(function() {
 								verified: process.env.ADMIN_EMAIL_VERIFIED === 'true',
 							}];
 
-							console.log(olors.green(`Email: ${ process.env.ADMIN_EMAIL }`));
+							console.log(colors.green(`Email: ${ process.env.ADMIN_EMAIL }`));
 						} else {
 							console.log(colors.red('Email provided already exists; Ignoring environment variables ADMIN_EMAIL'));
 						}

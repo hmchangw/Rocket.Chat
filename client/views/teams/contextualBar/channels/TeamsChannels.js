@@ -5,6 +5,9 @@ import {
 } from '@rocket.chat/fuselage-hooks';
 import React, { useCallback, useMemo, useState } from 'react';
 
+import AddExistingModal from './AddExistingModal';
+import BaseTeamsChannels from './BaseTeamsChannels';
+import { useTeamsChannelList } from './hooks/useTeamsChannelList';
 import { roomTypes } from '../../../../../app/utils/client';
 import { usePermission } from '../../../../contexts/AuthorizationContext';
 import { useSetModal } from '../../../../contexts/ModalContext';
@@ -13,9 +16,6 @@ import { AsyncStatePhase } from '../../../../lib/asyncState';
 import CreateChannelWithData from '../../../../sidebar/header/CreateChannelWithData';
 import RoomInfo from '../../../room/contextualBar/Info';
 import { useTabBarClose } from '../../../room/providers/ToolboxProvider';
-import AddExistingModal from './AddExistingModal';
-import BaseTeamsChannels from './BaseTeamsChannels';
-import { useTeamsChannelList } from './hooks/useTeamsChannelList';
 
 const useReactModal = (Component, props) => {
 	const setModal = useSetModal();

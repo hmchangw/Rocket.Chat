@@ -3,6 +3,8 @@ import { useResizeObserver, useMutableCallback, useAutoFocus } from '@rocket.cha
 import React, { useMemo } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
+import Row from './Row';
+import { withData } from './withData';
 import ThreadComponent from '../../../../../app/threads/client/components/ThreadComponent';
 import ScrollableContentWrapper from '../../../../components/ScrollableContentWrapper';
 import VerticalBar from '../../../../components/VerticalBar';
@@ -14,8 +16,6 @@ import {
 import { useSetting } from '../../../../contexts/SettingsContext';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { useTabContext } from '../../providers/ToolboxProvider';
-import Row from './Row';
-import { withData } from './withData';
 
 function ThreadList({
 	total = 10,

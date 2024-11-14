@@ -1,7 +1,7 @@
 import React from 'react';
 
-import VerticalBar from '../../../../../components/VerticalBar';
 import EditInvite from './EditInvite';
+import VerticalBar from '../../../../../components/VerticalBar';
 
 export default {
 	title: 'room/contextualBar/RoomMembers/EditInvite',

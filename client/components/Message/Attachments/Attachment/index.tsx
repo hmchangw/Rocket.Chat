@@ -1,4 +1,3 @@
-import Image from '../components/Image';
 import Attachment from './Attachment';
 import Author from './Author';
 import AuthorAvatar from './AuthorAvatar';
@@ -15,6 +14,7 @@ import Text from './Text';
 import Thumb from './Thumb';
 import Title from './Title';
 import TitleLink from './TitleLink';
+import Image from '../components/Image';
 
 export default Object.assign(Attachment, {
 	Image,

@@ -2,6 +2,9 @@ import { Button, Icon } from '@rocket.chat/fuselage';
 import { useDebouncedValue } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useState, useCallback } from 'react';
 
+import AddCustomEmoji from './AddCustomEmoji';
+import CustomEmoji from './CustomEmoji';
+import EditCustomEmojiWithData from './EditCustomEmojiWithData';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import Page from '../../../components/Page';
 import VerticalBar from '../../../components/VerticalBar';
@@ -9,9 +12,6 @@ import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useRoute, useRouteParameter } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import AddCustomEmoji from './AddCustomEmoji';
-import CustomEmoji from './CustomEmoji';
-import EditCustomEmojiWithData from './EditCustomEmojiWithData';
 
 function CustomEmojiRoute() {
 	const route = useRoute('emoji-custom');

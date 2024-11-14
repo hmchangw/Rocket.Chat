@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { Mailer } from './Mailer';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import { Mailer } from './Mailer';
 
 const useSendMail = () => {
 	const meteorSendMail = useMethod('Mailer.sendMail');

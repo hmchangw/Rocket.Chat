@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useUserSubscription } from '../../../contexts/UserContext';
 import ParentRoom from './ParentRoom';
 import ParentRoomWithEndpointData from './ParentRoomWithEndpointData';
+import { useUserSubscription } from '../../../contexts/UserContext';
 
 const ParentRoomWithData = ({ room }) => {
 	const subscription = useUserSubscription(room.prid);

@@ -1,10 +1,10 @@
 import { Box, Table } from '@rocket.chat/fuselage';
 import React, { memo } from 'react';
 
-import UserAvatar from '../../../components/avatar/UserAvatar';
 import Count from './Count';
 import Order from './Order';
 import RemoveAgentButton from './RemoveAgentButton';
+import UserAvatar from '../../../components/avatar/UserAvatar';
 
 const AgentRow = ({ agentId, username, name, avatarETag, mediaQuery, agentList, setAgentList }) => (
 	<Table.Row key={agentId} tabIndex={0} role='link' action qa-user-id={agentId}>

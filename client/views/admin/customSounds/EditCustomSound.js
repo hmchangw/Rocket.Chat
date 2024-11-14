@@ -1,9 +1,9 @@
 import { Box, Button, ButtonGroup, Skeleton, Throbber, InputBox } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
+import EditSound from './EditSound';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import EditSound from './EditSound';
 
 function EditCustomSound({ _id, onChange, ...props }) {
 	const query = useMemo(() => ({ query: JSON.stringify({ _id }) }), [_id]);

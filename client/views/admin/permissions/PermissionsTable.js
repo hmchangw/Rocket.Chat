@@ -2,6 +2,10 @@ import { Margins, Icon, Tabs, Button } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useCallback } from 'react';
 
+import FilterComponent from './FilterComponent';
+import PermissionRow from './PermissionRow';
+import PermissionsContextBar from './PermissionsContextBar';
+import RoleHeader from './RoleHeader';
 import { ChatPermissions } from '../../../../app/authorization/client/lib/ChatPermissions';
 import { CONSTANTS } from '../../../../app/authorization/lib';
 import { Roles } from '../../../../app/models/client';
@@ -12,10 +16,6 @@ import { useRoute } from '../../../contexts/RouterContext';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useReactiveValue } from '../../../hooks/useReactiveValue';
-import FilterComponent from './FilterComponent';
-import PermissionRow from './PermissionRow';
-import PermissionsContextBar from './PermissionsContextBar';
-import RoleHeader from './RoleHeader';
 
 const usePermissionsAndRoles = (type = 'permissions', filter = '', limit = 25, skip = 0) => {
 	const getPermissions = useCallback(() => {

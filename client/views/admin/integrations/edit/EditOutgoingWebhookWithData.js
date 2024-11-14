@@ -1,10 +1,10 @@
 import { Box, Skeleton } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
+import EditOutgoingWebhook from './EditOutgoingWebhook';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../../hooks/useEndpointData';
-import EditOutgoingWebhook from './EditOutgoingWebhook';
 
 function EditOutgoingWebhookWithData({ integrationId, ...props }) {
 	const t = useTranslation();

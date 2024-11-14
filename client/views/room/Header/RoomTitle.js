@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from '../../../components/Header';
 import HeaderIconWithRoom from './HeaderIconWithRoom';
+import Header from '../../../components/Header';
 
 const RoomTitle = ({ room }) => (
 	<>

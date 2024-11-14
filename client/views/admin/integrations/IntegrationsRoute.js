@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 
-import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
-import { useAtLeastOnePermission } from '../../../contexts/AuthorizationContext';
-import { useRouteParameter } from '../../../contexts/RouterContext';
 import IntegrationsPage from './IntegrationsPage';
 import EditIntegrationsPage from './edit/EditIntegrationsPage';
 import OutgoingWebhookHistoryPage from './edit/OutgoingWebhookHistoryPage';
 import NewIntegrationsPage from './new/NewIntegrationsPage';
+import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
+import { useAtLeastOnePermission } from '../../../contexts/AuthorizationContext';
+import { useRouteParameter } from '../../../contexts/RouterContext';
 
 function IntegrationsRoute() {
 	const canViewIntegrationsPage = useAtLeastOnePermission(

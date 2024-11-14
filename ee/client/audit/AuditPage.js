@@ -1,9 +1,9 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useRef, useState } from 'react';
 
+import { AuditPageBase } from './AuditPageBase';
 import { useTranslation } from '../../../client/contexts/TranslationContext';
 import { useForm } from '../../../client/hooks/useForm';
-import { AuditPageBase } from './AuditPageBase';
 
 const initialValues = {
 	msg: '',

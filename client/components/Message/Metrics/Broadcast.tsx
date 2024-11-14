@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 
-import { useTranslation } from '../../../contexts/TranslationContext';
-import { useBlockRendered } from '../hooks/useBlockRendered';
 import Content from './Content';
 import Reply from './Reply';
+import { useTranslation } from '../../../contexts/TranslationContext';
+import { useBlockRendered } from '../hooks/useBlockRendered';
 
 type BroadcastOptions = {
 	username: string;

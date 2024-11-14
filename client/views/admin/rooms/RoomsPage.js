@@ -1,11 +1,11 @@
 import React from 'react';
 
+import EditRoomContextBar from './EditRoomContextBar';
+import RoomsTable from './RoomsTable';
 import Page from '../../../components/Page';
 import VerticalBar from '../../../components/VerticalBar';
 import { useRouteParameter, useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import EditRoomContextBar from './EditRoomContextBar';
-import RoomsTable from './RoomsTable';
 
 export function RoomsPage() {
 	const t = useTranslation();

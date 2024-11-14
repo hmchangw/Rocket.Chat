@@ -2,10 +2,10 @@ import { Box, ButtonGroup, Button } from '@rocket.chat/fuselage';
 import React from 'react';
 // import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 
+import UsagePieGraph from './UsagePieGraph';
 import Card from '../../../components/Card';
 import { useTranslation } from '../../../contexts/TranslationContext';
 // import { useSetModal } from '../../contexts/ModalContext';
-import UsagePieGraph from './UsagePieGraph';
 // import PlanTag from '../../components/basic/PlanTag';
 // import { useSetting } from '../../contexts/SettingsContext';
 // import { useHasLicense } from '../../../ee/client/hooks/useHasLicense';

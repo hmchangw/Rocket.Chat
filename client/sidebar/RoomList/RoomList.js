@@ -3,6 +3,8 @@ import { useResizeObserver } from '@rocket.chat/fuselage-hooks';
 import React, { useRef, useEffect, useMemo } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
+import Row from './Row';
+import ScrollerWithCustomProps from './ScrollerWithCustomProps';
 import { useSession } from '../../contexts/SessionContext';
 import { useTranslation } from '../../contexts/TranslationContext';
 import { useUserPreference, useUserId } from '../../contexts/UserContext';
@@ -12,8 +14,6 @@ import { useRoomList } from '../hooks/useRoomList';
 import { useShortcutOpenMenu } from '../hooks/useShortcutOpenMenu';
 import { useSidebarPaletteColor } from '../hooks/useSidebarPaletteColor';
 import { useTemplateByViewMode } from '../hooks/useTemplateByViewMode';
-import Row from './Row';
-import ScrollerWithCustomProps from './ScrollerWithCustomProps';
 
 const RoomList = () => {
 	useSidebarPaletteColor();

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
-import PageSkeleton from '../../../components/PageSkeleton';
-import { usePermission } from '../../../contexts/AuthorizationContext';
-import { useRouteParameter, useRoute, useCurrentRoute } from '../../../contexts/RouterContext';
-import { useMethod } from '../../../contexts/ServerContext';
 import AppDetailsPage from './AppDetailsPage';
 import AppInstallPage from './AppInstallPage';
 import AppLogsPage from './AppLogsPage';
 import AppsPage from './AppsPage';
 import AppsProvider from './AppsProvider';
 import MarketplacePage from './MarketplacePage';
+import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
+import PageSkeleton from '../../../components/PageSkeleton';
+import { usePermission } from '../../../contexts/AuthorizationContext';
+import { useRouteParameter, useRoute, useCurrentRoute } from '../../../contexts/RouterContext';
+import { useMethod } from '../../../contexts/ServerContext';
 
 function AppsRoute() {
 	const [isLoading, setLoading] = useState(true);

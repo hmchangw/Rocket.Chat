@@ -51,15 +51,15 @@ if (Meteor.isServer) {
 				// Create the temp directory
 				mkdirp(path, { mode }, (err) => {
 					if (err) {
-						console.error(`ufs: cannot create temp directory at "${path}" (${err.message})`);
+						console.error(`ufs: cannot create temp directory at "${ path }" (${ err.message })`);
 					} else {
-						console.log(`ufs: temp directory created at "${path}"`);
+						console.log(`ufs: temp directory created at "${ path }"`);
 					}
 				});
 			} else {
 				// Set directory permissions
 				fs.chmod(path, mode, (err) => {
-					err && console.error(`ufs: cannot set temp directory permissions ${mode} (${err.message})`);
+					err && console.error(`ufs: cannot set temp directory permissions ${ mode } (${ err.message })`);
 				});
 			}
 		});
@@ -70,13 +70,13 @@ if (Meteor.isServer) {
 	const d = domain.create();
 
 	d.on('error', (err) => {
-		console.error(`ufs: ${err.message}`);
+		console.error(`ufs: ${ err.message }`);
 	});
 
 	// Listen HTTP requests to serve files
 	WebApp.connectHandlers.use((req, res, next) => {
 		// Quick check to see if request should be caught
-		if (!req.url.includes(`/${UploadFS.config.storesPath}/`)) {
+		if (!req.url.includes(`/${ UploadFS.config.storesPath }/`)) {
 			next();
 			return;
 		}
@@ -154,7 +154,7 @@ if (Meteor.isServer) {
 			}
 
 			// Check if duplicate
-			const unique = function (hash) {
+			const unique = function(hash) {
 				const originalId = store.getCollection().findOne({ hash, _id: { $ne: fileId } });
 				return originalId ? originalId._id : false;
 			};
@@ -188,11 +188,11 @@ if (Meteor.isServer) {
 				}),
 			);
 			ws.on('error', (err) => {
-				console.error(`ufs: cannot write chunk of file "${fileId}" (${err.message})`);
+				console.error(`ufs: cannot write chunk of file "${ fileId }" (${ err.message })`);
 				fs.stat(tmpFile, (err) => {
-					!err &&
-						fs.unlink(tmpFile, (err2) => {
-							err2 && console.error(`ufs: cannot delete temp file "${tmpFile}" (${err2.message})`);
+					!err
+						&& fs.unlink(tmpFile, (err2) => {
+							err2 && console.error(`ufs: cannot delete temp file "${ tmpFile }" (${ err2.message })`);
 						});
 				});
 				res.writeHead(500);
@@ -225,7 +225,7 @@ if (Meteor.isServer) {
 			}
 
 			if (store.onRead !== null && store.onRead !== undefined && typeof store.onRead !== 'function') {
-				console.error(`ufs: Store.onRead is not a function in store "${storeName}"`);
+				console.error(`ufs: Store.onRead is not a function in store "${ storeName }"`);
 				res.writeHead(500);
 				res.end();
 				return;
@@ -288,9 +288,9 @@ if (Meteor.isServer) {
 							const modifiedSince = new Date(req.headers['if-modified-since']);
 
 							if (
-								(file.modifiedAt instanceof Date && file.modifiedAt > modifiedSince) ||
+								(file.modifiedAt instanceof Date && file.modifiedAt > modifiedSince)
 								// eslint-disable-next-line no-mixed-operators
-								(file.uploadedAt instanceof Date && file.uploadedAt > modifiedSince)
+								|| (file.uploadedAt instanceof Date && file.uploadedAt > modifiedSince)
 							) {
 								res.writeHead(304); // Not Modified
 								res.end();
@@ -338,7 +338,7 @@ if (Meteor.isServer) {
 								}
 
 								// Update headers
-								headers['Content-Range'] = `bytes ${start}-${end}/${total}`;
+								headers['Content-Range'] = `bytes ${ start }-${ end }/${ total }`;
 								headers['Content-Length'] = end - start + 1;
 								options.start = start;
 								options.end = end;

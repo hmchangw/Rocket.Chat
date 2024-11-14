@@ -1,11 +1,11 @@
 import React, { memo, useMemo } from 'react';
 
-import TemplateHeader from '../../../components/Header';
-import { useLayout } from '../../../contexts/LayoutContext';
 import Burger from './Burger';
 import DirectRoomHeader from './DirectRoomHeader';
 import OmnichannelRoomHeader from './Omnichannel/OmnichannelRoomHeader';
 import RoomHeader from './RoomHeader';
+import TemplateHeader from '../../../components/Header';
+import { useLayout } from '../../../contexts/LayoutContext';
 
 const Header = ({ room }) => {
 	const { isMobile, isEmbedded, showTopNavbarEmbeddedLayout } = useLayout();

@@ -2,13 +2,13 @@ import { Accordion, Box, Button, FieldGroup } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo } from 'react';
 
+import SectionSkeleton from './SectionSkeleton';
+import Setting from './Setting';
 import {
 	useEditableSettings,
 	useEditableSettingsDispatch,
 } from '../../../contexts/EditableSettingsContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import SectionSkeleton from './SectionSkeleton';
-import Setting from './Setting';
 
 function Section({ children, groupId, hasReset = true, help, sectionName, solo }) {
 	const editableSettings = useEditableSettings(

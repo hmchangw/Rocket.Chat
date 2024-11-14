@@ -1,9 +1,9 @@
 import { Callout } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import { useTranslation } from '../../../contexts/TranslationContext';
 import EditRolePage from './EditRolePage';
 import { useRole } from './useRole';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 const EditRolePageContainer = ({ _id }) => {
 	const t = useTranslation();

@@ -1,8 +1,8 @@
 import { Box, Button, ButtonGroup, Icon, Modal } from '@rocket.chat/fuselage';
 import React, { FC, ComponentProps, ReactElement, ReactNode } from 'react';
 
-import { useTranslation } from '../contexts/TranslationContext';
 import { withDoNotAskAgain, RequiredModalProps } from './withDoNotAskAgain';
+import { useTranslation } from '../contexts/TranslationContext';
 
 type VariantType = 'danger' | 'warning' | 'info' | 'success';
 

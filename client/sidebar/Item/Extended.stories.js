@@ -1,9 +1,9 @@
 import { Box, ActionButton, Badge } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import Extended from './Extended';
 import * as Status from '../../components/UserStatus';
 import UserAvatar from '../../components/avatar/UserAvatar';
-import Extended from './Extended';
 
 export default {
 	title: 'Sidebar/Extended',

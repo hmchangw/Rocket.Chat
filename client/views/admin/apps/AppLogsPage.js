@@ -2,13 +2,13 @@ import { Box, Button, ButtonGroup, Icon, Accordion, Pagination } from '@rocket.c
 import { useSafely } from '@rocket.chat/fuselage-hooks';
 import React, { useCallback, useState, useEffect } from 'react';
 
+import LogItem from './LogItem';
+import LogsLoading from './LogsLoading';
 import Page from '../../../components/Page';
 import { useCurrentRoute, useRoute } from '../../../contexts/RouterContext';
 import { useEndpoint } from '../../../contexts/ServerContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useFormatDateAndTime } from '../../../hooks/useFormatDateAndTime';
-import LogItem from './LogItem';
-import LogsLoading from './LogsLoading';
 
 const useAppWithLogs = ({ id, current, itemsPerPage }) => {
 	const [data, setData] = useSafely(useState({}));

@@ -1,6 +1,7 @@
 import { Callout } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import WebhooksPage from './WebhooksPage';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import Page from '../../../components/Page';
 import PageSkeleton from '../../../components/PageSkeleton';
@@ -8,7 +9,6 @@ import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import WebhooksPage from './WebhooksPage';
 
 const reduceSettings = (settings) =>
 	settings.reduce((acc, { _id, value }) => {

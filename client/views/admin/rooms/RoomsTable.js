@@ -2,6 +2,7 @@ import { Box, Table, Icon } from '@rocket.chat/fuselage';
 import { useMediaQuery, useDebouncedValue } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import FilterByTypeAndText from './FilterByTypeAndText';
 import { roomTypes } from '../../../../app/utils/client';
 import GenericTable from '../../../components/GenericTable';
 import RoomAvatar from '../../../components/avatar/RoomAvatar';
@@ -9,7 +10,6 @@ import { useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
 import { AsyncStatePhase } from '../../../lib/asyncState';
-import FilterByTypeAndText from './FilterByTypeAndText';
 
 const style = { whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' };
 

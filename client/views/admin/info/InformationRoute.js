@@ -1,13 +1,13 @@
 import { Callout, ButtonGroup, Button, Icon } from '@rocket.chat/fuselage';
 import React, { useState, useEffect, memo } from 'react';
 
+import NewInformationPage from './NewInformationPage';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import Page from '../../../components/Page';
 import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useMethod, useServerInformation, useEndpoint } from '../../../contexts/ServerContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { downloadJsonAs } from '../../../lib/download';
-import NewInformationPage from './NewInformationPage';
 
 const InformationRoute = memo(function InformationRoute() {
 	const t = useTranslation();

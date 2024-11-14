@@ -1,8 +1,8 @@
 import React from 'react';
 
+import ChatTable from './ChatTable';
 import NotAuthorizedPage from '../../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../../contexts/AuthorizationContext';
-import ChatTable from './ChatTable';
 
 function ChatTab(props) {
 	const hasAccess = usePermission('view-l-room');

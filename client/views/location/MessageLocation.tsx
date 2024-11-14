@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { IMessage } from '../../../definition/IMessage';
 import MapView from './MapView';
+import { IMessage } from '../../../definition/IMessage';
 
 type MessageLocationProps = {
 	location?: IMessage['location'];

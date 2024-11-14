@@ -7,7 +7,7 @@ import async from 'async';
 class VersionCompiler {
 	processFilesForTarget(files) {
 		const future = new Future();
-		const processFile = function (file, cb) {
+		const processFile = function(file, cb) {
 			if (!file.getDisplayPath().match(/rocketchat\.info$/)) {
 				return cb();
 			}
@@ -26,7 +26,7 @@ class VersionCompiler {
 
 			output.marketplaceApiVersion = require('@rocket.chat/apps-engine/package.json').version.replace(/^[^0-9]/g, '');
 
-			exec("git log --pretty=format:'%H%n%ad%n%an%n%s' -n 1", function (err, result) {
+			exec("git log --pretty=format:'%H%n%ad%n%an%n%s' -n 1", function(err, result) {
 				if (err == null) {
 					result = result.split('\n');
 					output.commit = {
@@ -37,19 +37,19 @@ class VersionCompiler {
 					};
 				}
 
-				exec('git describe --abbrev=0 --tags', function (err, result) {
+				exec('git describe --abbrev=0 --tags', function(err, result) {
 					if (err == null && output.commit != null) {
 						output.commit.tag = result.replace('\n', '');
 					}
-					exec('git rev-parse --abbrev-ref HEAD', function (err, result) {
+					exec('git rev-parse --abbrev-ref HEAD', function(err, result) {
 						if (err == null && output.commit != null) {
 							output.commit.branch = result.replace('\n', '');
 						}
 
-						output = `exports.Info = ${JSON.stringify(output, null, 4)};`;
+						output = `exports.Info = ${ JSON.stringify(output, null, 4) };`;
 						file.addJavaScript({
 							data: output,
-							path: `${file.getPathInPackage()}.js`,
+							path: `${ file.getPathInPackage() }.js`,
 						});
 						cb();
 					});
@@ -66,7 +66,7 @@ Plugin.registerCompiler(
 	{
 		extensions: ['info'],
 	},
-	function () {
+	function() {
 		return new VersionCompiler();
 	},
 );

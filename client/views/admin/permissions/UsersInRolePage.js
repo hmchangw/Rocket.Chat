@@ -2,6 +2,7 @@ import { Box, Field, Margins, ButtonGroup, Button, Callout, Flex } from '@rocket
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useRef } from 'react';
 
+import UsersInRoleTableContainer from './UsersInRoleTableContainer';
 import Page from '../../../components/Page';
 import RoomAutoComplete from '../../../components/RoomAutoComplete';
 import UserAutoComplete from '../../../components/UserAutoComplete';
@@ -9,7 +10,6 @@ import { useRoute } from '../../../contexts/RouterContext';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import UsersInRoleTableContainer from './UsersInRoleTableContainer';
 
 const UsersInRolePage = ({ data }) => {
 	const t = useTranslation();

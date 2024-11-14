@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
+import FederationDashboardPage from './FederationDashboardPage';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { useRole } from '../../../contexts/AuthorizationContext';
-import FederationDashboardPage from './FederationDashboardPage';
 
 const FederationDashboardRoute: FC = () => {
 	const authorized = useRole('admin');

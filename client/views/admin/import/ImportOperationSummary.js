@@ -1,6 +1,7 @@
 import { Table } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
+import ImportOperationSummarySkeleton from './ImportOperationSummarySkeleton';
 import {
 	ImportWaitingStates,
 	ImportFileReadyStates,
@@ -11,7 +12,6 @@ import {
 import { useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useFormatDateAndTime } from '../../../hooks/useFormatDateAndTime';
-import ImportOperationSummarySkeleton from './ImportOperationSummarySkeleton';
 
 function ImportOperationSummary({
 	type,

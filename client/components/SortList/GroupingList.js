@@ -1,10 +1,10 @@
 import { Box, Margins, CheckBox } from '@rocket.chat/fuselage';
 import React, { useCallback } from 'react';
 
+import SortListItem from './SortListItem';
 import { useMethod } from '../../contexts/ServerContext';
 import { useTranslation } from '../../contexts/TranslationContext';
 import { useUserPreference } from '../../contexts/UserContext';
-import SortListItem from './SortListItem';
 
 const style = {
 	textTransform: 'uppercase',

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
-import { usePermission } from '../../../contexts/AuthorizationContext';
 import ImportHistoryPage from './ImportHistoryPage';
 import ImportProgressPage from './ImportProgressPage';
 import NewImportPage from './NewImportPage';
 import PrepareImportPage from './PrepareImportPage';
+import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
+import { usePermission } from '../../../contexts/AuthorizationContext';
 
 function ImportHistoryRoute({ page }) {
 	const canRunImport = usePermission('run-import');

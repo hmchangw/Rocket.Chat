@@ -2,10 +2,10 @@ import { css } from '@rocket.chat/css-in-js';
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import { useTranslation } from '../../contexts/TranslationContext';
-import { useEmbeddedLayout } from '../../hooks/useEmbeddedLayout';
 import BurgerBadge from './BurgerBadge';
 import BurgerIcon from './BurgerIcon';
+import { useTranslation } from '../../contexts/TranslationContext';
+import { useEmbeddedLayout } from '../../hooks/useEmbeddedLayout';
 
 function BurgerMenuButton({ open, badge, ...props }) {
 	const isLayoutEmbedded = useEmbeddedLayout();

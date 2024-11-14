@@ -1,11 +1,11 @@
 import { Tabs, Button, ButtonGroup, Icon } from '@rocket.chat/fuselage';
 import React, { useCallback } from 'react';
 
+import NewIncomingWebhook from './NewIncomingWebhook';
+import NewOutgoingWebhook from './NewOutgoingWebhook';
 import Page from '../../../../components/Page';
 import { useRouteParameter, useRoute } from '../../../../contexts/RouterContext';
 import { useTranslation } from '../../../../contexts/TranslationContext';
-import NewIncomingWebhook from './NewIncomingWebhook';
-import NewOutgoingWebhook from './NewOutgoingWebhook';
 
 export default function NewIntegrationsPage({ ...props }) {
 	const t = useTranslation();

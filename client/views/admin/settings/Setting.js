@@ -1,6 +1,8 @@
 import { useDebouncedCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
 
+import MemoizedSetting from './MemoizedSetting';
+import SettingSkeleton from './SettingSkeleton';
 import MarkdownText from '../../../components/MarkdownText';
 import {
 	useEditableSetting,
@@ -8,8 +10,6 @@ import {
 } from '../../../contexts/EditableSettingsContext';
 import { useSettingStructure } from '../../../contexts/SettingsContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import MemoizedSetting from './MemoizedSetting';
-import SettingSkeleton from './SettingSkeleton';
 
 function Setting({ className, settingId, sectionChanged }) {
 	const setting = useEditableSetting(settingId);

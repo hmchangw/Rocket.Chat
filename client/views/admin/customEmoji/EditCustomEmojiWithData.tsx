@@ -1,10 +1,10 @@
 import { Box, Button, ButtonGroup, Skeleton, Throbber, InputBox } from '@rocket.chat/fuselage';
 import React, { useMemo, FC } from 'react';
 
+import EditCustomEmoji from './EditCustomEmoji';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import EditCustomEmoji from './EditCustomEmoji';
 
 type EditCustomEmojiWithDataProps = {
 	_id: string;

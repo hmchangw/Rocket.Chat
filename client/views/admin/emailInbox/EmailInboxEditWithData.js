@@ -1,11 +1,11 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import EmailInboxForm from './EmailInboxForm';
+import { FormSkeleton } from './Skeleton';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import EmailInboxForm from './EmailInboxForm';
-import { FormSkeleton } from './Skeleton';
 
 function EmailInboxEditWithData({ id }) {
 	const t = useTranslation();

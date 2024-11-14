@@ -11,14 +11,14 @@ import {
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React from 'react';
 
-import Page from '../../../client/components/Page';
-import { useTranslation } from '../../../client/contexts/TranslationContext';
 import DateRangePicker from './DateRangePicker';
 import Result from './Result';
 import ChannelTab from './Tabs/ChannelTab';
 import DirectTab from './Tabs/DirectTab';
 import UsersTab from './Tabs/UsersTab';
 import VisitorsTab from './Tabs/VisitorsTab';
+import Page from '../../../client/components/Page';
+import { useTranslation } from '../../../client/contexts/TranslationContext';
 
 // TODO: create more stories for the tabs
 export const AuditPageBase = ({

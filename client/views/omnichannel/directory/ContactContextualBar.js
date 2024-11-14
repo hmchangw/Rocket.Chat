@@ -1,11 +1,11 @@
 import React from 'react';
 
-import VerticalBar from '../../../components/VerticalBar';
-import { useRoute, useRouteParameter } from '../../../contexts/RouterContext';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import ContactEditWithData from './contacts/contextualBar/ContactEditWithData';
 import ContactInfo from './contacts/contextualBar/ContactInfo';
 import ContactNewEdit from './contacts/contextualBar/ContactNewEdit';
+import VerticalBar from '../../../components/VerticalBar';
+import { useRoute, useRouteParameter } from '../../../contexts/RouterContext';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 const ContactContextualBar = ({ contactReload }) => {
 	const directoryRoute = useRoute('omnichannel-directory');

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { useUserId } from '../../contexts/UserContext';
 import { useRoom } from './contexts/RoomContext';
 import RoomMembers from './contextualBar/RoomMembers';
 import UserInfo from './contextualBar/UserInfo';
 import { useTab, useTabBarClose, useTabContext } from './providers/ToolboxProvider';
+import { useUserId } from '../../contexts/UserContext';
 
 const getUid = (room, ownUserId) => {
 	if (room.uids?.length === 1) {

@@ -2,6 +2,8 @@ import { Box, Table, Avatar, Icon } from '@rocket.chat/fuselage';
 import { useMediaQuery, useAutoFocus } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useState, useCallback } from 'react';
 
+import RoomTags from './RoomTags';
+import { useQuery } from './hooks';
 import { roomTypes } from '../../../app/utils/client';
 import FilterByText from '../../components/FilterByText';
 import GenericTable from '../../components/GenericTable';
@@ -10,8 +12,6 @@ import { useRoute } from '../../contexts/RouterContext';
 import { useTranslation } from '../../contexts/TranslationContext';
 import { useEndpointData } from '../../hooks/useEndpointData';
 import { useFormatDate } from '../../hooks/useFormatDate';
-import RoomTags from './RoomTags';
-import { useQuery } from './hooks';
 
 const style = {
 	whiteSpace: 'nowrap',

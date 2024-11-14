@@ -1,12 +1,12 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { memo, useCallback, useMemo } from 'react';
 
+import CreateChannel from './CreateChannel';
 import { usePermission } from '../../contexts/AuthorizationContext';
 import { useSetting } from '../../contexts/SettingsContext';
 import { useEndpointActionExperimental } from '../../hooks/useEndpointAction';
 import { useForm } from '../../hooks/useForm';
 import { goToRoomById } from '../../lib/goToRoomById';
-import CreateChannel from './CreateChannel';
 
 const CreateChannelWithData = ({ onClose, teamId = '', reload }) => {
 	const createChannel = useEndpointActionExperimental('POST', 'channels.create');

@@ -1,12 +1,12 @@
 import React, { memo, useCallback, useEffect } from 'react';
 import { useSubscription } from 'use-subscription';
 
+import { itemsSubscription } from './sidebarItems';
 import { menu, SideNav, Layout } from '../../../app/ui-utils/client';
 import Sidebar from '../../components/Sidebar';
 import { useRoutePath, useCurrentRoute } from '../../contexts/RouterContext';
 import { useTranslation } from '../../contexts/TranslationContext';
 import SettingsProvider from '../../providers/SettingsProvider';
-import { itemsSubscription } from './sidebarItems';
 
 const AccountSidebar = () => {
 	const t = useTranslation();

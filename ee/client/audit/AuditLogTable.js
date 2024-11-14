@@ -1,10 +1,10 @@
 import React from 'react';
 
+import UserRow from './UserRow';
 import GenericTable from '../../../client/components/GenericTable';
 import { useTranslation } from '../../../client/contexts/TranslationContext';
 import { useFormatDate } from '../../../client/hooks/useFormatDate';
 import { useFormatDateAndTime } from '../../../client/hooks/useFormatDateAndTime';
-import UserRow from './UserRow';
 
 function AuditLogTable({ data }) {
 	const t = useTranslation();

@@ -2,10 +2,6 @@ import { Box, Button, Icon, Throbber } from '@rocket.chat/fuselage';
 import { useSafely } from '@rocket.chat/fuselage-hooks';
 import React, { useCallback, useState, memo } from 'react';
 
-import { Apps } from '../../../../app/apps/client/orchestrator';
-import { useSetModal } from '../../../contexts/ModalContext';
-import { useMethod } from '../../../contexts/ServerContext';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import AppPermissionsReviewModal from './AppPermissionsReviewModal';
 import CloudLoginModal from './CloudLoginModal';
 import IframeModal from './IframeModal';
@@ -16,6 +12,10 @@ import {
 	warnStatusChange,
 	handleInstallError,
 } from './helpers';
+import { Apps } from '../../../../app/apps/client/orchestrator';
+import { useSetModal } from '../../../contexts/ModalContext';
+import { useMethod } from '../../../contexts/ServerContext';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 const installApp = async ({ id, name, version, permissionsGranted }) => {
 	try {

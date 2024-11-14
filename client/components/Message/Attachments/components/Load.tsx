@@ -3,8 +3,8 @@ import { Box, Icon } from '@rocket.chat/fuselage';
 import colors from '@rocket.chat/fuselage-tokens/colors';
 import React, { ComponentProps, FC } from 'react';
 
-import { useTranslation } from '../../../../contexts/TranslationContext';
 import ImageBox from './ImageBox';
+import { useTranslation } from '../../../../contexts/TranslationContext';
 
 type LoadProps = ComponentProps<typeof Box> & { load: () => void };
 

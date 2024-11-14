@@ -1,9 +1,9 @@
 import { Box, Skeleton } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
+import EditRoom from './EditRoom';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import EditRoom from './EditRoom';
 
 function EditRoomWithData({ rid }) {
 	const { value: data = {}, phase: state, error, reload } = useEndpointData(

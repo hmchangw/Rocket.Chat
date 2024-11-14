@@ -1,9 +1,9 @@
 import { Box, Table } from '@rocket.chat/fuselage';
 import React, { memo, useMemo } from 'react';
 
+import FilterDisplay from './FilterDisplay';
 import UserAvatar from '../../../client/components/avatar/UserAvatar';
 import { useTranslation } from '../../../client/contexts/TranslationContext';
-import FilterDisplay from './FilterDisplay';
 
 const UserRow = ({ u, results, ts, _id, formatDateAndTime, formatDate, fields, mediaQuery }) => {
 	const t = useTranslation();

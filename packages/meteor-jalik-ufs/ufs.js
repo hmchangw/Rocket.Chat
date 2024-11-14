@@ -144,7 +144,7 @@ export const UploadFS = {
 	 * @return {string}
 	 */
 	getTempFilePath(fileId) {
-		return `${this.config.tmpDir}/${fileId}`;
+		return `${ this.config.tmpDir }/${ fileId }`;
 	},
 
 	/**

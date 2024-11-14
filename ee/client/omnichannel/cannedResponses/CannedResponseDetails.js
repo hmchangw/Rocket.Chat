@@ -3,13 +3,13 @@ import { Box, Margins, ButtonGroup, Button, Icon } from '@rocket.chat/fuselage';
 import React, { memo, useCallback } from 'react';
 import toastr from 'toastr';
 
+import { withResponseData } from './withResponseData';
 import { handleError } from '../../../../app/utils/client';
 import GenericModal from '../../../../client/components/GenericModal';
 import VerticalBar from '../../../../client/components/VerticalBar';
 import { useSetModal } from '../../../../client/contexts/ModalContext';
 import { useMethod } from '../../../../client/contexts/ServerContext';
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
-import { withResponseData } from './withResponseData';
 
 const breakWord = css`
 	word-break: break-word;

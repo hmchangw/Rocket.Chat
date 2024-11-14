@@ -1,8 +1,8 @@
 import React from 'react';
 
+import ViewLogs from './ViewLogs';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../contexts/AuthorizationContext';
-import ViewLogs from './ViewLogs';
 
 export default function ViewLogsRoute() {
 	const canViewLogs = usePermission('view-logs');

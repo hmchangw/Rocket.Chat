@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
-import SideBarItemTemplateWithData from '../RoomList/SideBarItemTemplateWithData';
 import UserItem from './UserItem';
+import SideBarItemTemplateWithData from '../RoomList/SideBarItemTemplateWithData';
 
 const Row = ({ item, data }) => {
 	const { t, SideBarItemTemplate, avatarTemplate: AvatarTemplate, useRealName, extended } = data;

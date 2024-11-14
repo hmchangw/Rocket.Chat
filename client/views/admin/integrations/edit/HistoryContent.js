@@ -1,9 +1,9 @@
 import { Skeleton, Box, Accordion } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import HistoryItem from './HistoryItem';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../hooks/useAsyncState';
-import HistoryItem from './HistoryItem';
 
 function HistoryContent({ data, state, onChange, ...props }) {
 	const t = useTranslation();

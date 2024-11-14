@@ -2,6 +2,7 @@ import { Box, Table, Flex } from '@rocket.chat/fuselage';
 import { useMediaQuery, useAutoFocus } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useState, useCallback } from 'react';
 
+import { useQuery } from './hooks';
 import FilterByText from '../../components/FilterByText';
 import GenericTable from '../../components/GenericTable';
 import MarkdownText from '../../components/MarkdownText';
@@ -11,7 +12,6 @@ import { useRoute } from '../../contexts/RouterContext';
 import { useTranslation } from '../../contexts/TranslationContext';
 import { useEndpointData } from '../../hooks/useEndpointData';
 import { useFormatDate } from '../../hooks/useFormatDate';
-import { useQuery } from './hooks';
 
 function UserTable({ workspace = 'local' }) {
 	const [params, setParams] = useState({ current: 0, itemsPerPage: 25 });

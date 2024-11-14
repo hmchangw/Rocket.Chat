@@ -1,12 +1,12 @@
 import { ButtonGroup, Button, Field, Modal } from '@rocket.chat/fuselage';
 import React, { memo, FC, useCallback } from 'react';
 
+import RoomsInput from './RoomsInput';
 import { IRoom } from '../../../../../../definition/IRoom';
 import { useEndpoint } from '../../../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../../../contexts/TranslationContext';
 import { useForm } from '../../../../../hooks/useForm';
-import RoomsInput from './RoomsInput';
 
 type AddExistingModalState = {
 	onAdd: any;

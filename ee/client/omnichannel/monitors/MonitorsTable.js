@@ -1,10 +1,10 @@
 import React from 'react';
 
+import MonitorsRow from './MonitorsRow';
 import FilterByText from '../../../../client/components/FilterByText';
 import GenericTable from '../../../../client/components/GenericTable';
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
 import { useResizeInlineBreakpoint } from '../../../../client/hooks/useResizeInlineBreakpoint';
-import MonitorsRow from './MonitorsRow';
 
 function MonitorsTable({
 	monitors,

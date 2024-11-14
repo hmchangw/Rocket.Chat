@@ -1,15 +1,15 @@
 import React, { FC, ReactNode } from 'react';
 
+import { ActionAttachment } from './ActionAttachtment';
+import Attachment from './Attachment';
+import FieldsAttachment from './FieldsAttachment';
+import { useCollapse } from './hooks/useCollapse';
 import { isActionAttachment } from '../../../../definition/IMessage/MessageAttachment/MessageAttachmentAction';
 import {
 	MarkdownFields,
 	MessageAttachmentDefault,
 } from '../../../../definition/IMessage/MessageAttachment/MessageAttachmentDefault';
 import MarkdownText from '../../MarkdownText';
-import { ActionAttachment } from './ActionAttachtment';
-import Attachment from './Attachment';
-import FieldsAttachment from './FieldsAttachment';
-import { useCollapse } from './hooks/useCollapse';
 
 const applyMarkdownIfRequires = (
 	list: MessageAttachmentDefault['mrkdwn_in'] = ['text', 'pretext'],

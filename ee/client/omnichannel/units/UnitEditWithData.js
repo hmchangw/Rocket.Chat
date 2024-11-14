@@ -1,11 +1,11 @@
 import { Callout } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
+import UnitEdit from './UnitEdit';
 import { FormSkeleton } from '../../../../client/components/Skeleton';
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../client/hooks/useAsyncState';
 import { useEndpointData } from '../../../../client/hooks/useEndpointData';
-import UnitEdit from './UnitEdit';
 
 function UnitEditWithData({ unitId, reload }) {
 	const query = useMemo(() => ({ unitId }), [unitId]);

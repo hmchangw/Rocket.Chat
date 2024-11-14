@@ -2,8 +2,8 @@ import { Box } from '@rocket.chat/fuselage';
 import { Story } from '@storybook/react';
 import React, { ReactNode, ReactElement } from 'react';
 
-import { centeredDecorator } from '../../../.storybook/decorators';
 import BurgerBadge from './BurgerBadge';
+import { centeredDecorator } from '../../../.storybook/decorators';
 
 export default {
 	title: 'components/burger/BurgerBadge',

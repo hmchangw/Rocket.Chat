@@ -1,9 +1,9 @@
 import { Box, Divider } from '@rocket.chat/fuselage';
 import React, { FC } from 'react';
 
+import { apiCurlGetter } from './helpers';
 import { useAbsoluteUrl } from '../../../contexts/ServerContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import { apiCurlGetter } from './helpers';
 
 type APIsDisplayProps = {
 	apis: {

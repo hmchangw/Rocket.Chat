@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 
+import Chart from './Chart';
+import { useUpdateChartData } from './useUpdateChartData';
 import { drawLineChart } from '../../../../../app/livechat/client/lib/chartHandler';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../../hooks/useEndpointData';
-import Chart from './Chart';
-import { useUpdateChartData } from './useUpdateChartData';
 
 const initialData = {
 	agents: {},

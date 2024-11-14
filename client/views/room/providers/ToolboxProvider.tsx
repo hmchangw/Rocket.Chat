@@ -8,6 +8,7 @@ import React, {
 	useLayoutEffect,
 } from 'react';
 
+import VirtualAction from './VirtualAction';
 import { IRoom } from '../../../../definition/IRoom';
 import { useCurrentRoute, useRoute } from '../../../contexts/RouterContext';
 import { useSession } from '../../../contexts/SessionContext';
@@ -16,7 +17,6 @@ import { useUserId } from '../../../contexts/UserContext';
 import { ToolboxContext, ToolboxEventHandler } from '../lib/Toolbox/ToolboxContext';
 import { Store } from '../lib/Toolbox/generator';
 import { ToolboxAction, ToolboxActionConfig } from '../lib/Toolbox/index';
-import VirtualAction from './VirtualAction';
 
 const useToolboxActions = (
 	room: IRoom,

@@ -3,8 +3,8 @@ import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import { kitContext } from '@rocket.chat/fuselage-ui-kit';
 import React, { useEffect, useReducer, useState } from 'react';
 
-import * as ActionManager from '../../../app/ui-message/client/ActionManager';
 import ModalBlock from './ModalBlock';
+import * as ActionManager from '../../../app/ui-message/client/ActionManager';
 import './textParsers';
 
 const useActionManagerState = (initialState) => {

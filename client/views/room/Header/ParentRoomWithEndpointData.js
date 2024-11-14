@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 
+import ParentRoom from './ParentRoom';
 import Header from '../../../components/Header';
 import { useEndpoint } from '../../../contexts/ServerContext';
 import { AsyncStatePhase, useAsyncState } from '../../../hooks/useAsyncState';
-import ParentRoom from './ParentRoom';
 
 const ParentRoomWithEndpointData = ({ rid }) => {
 	const { resolve, reject, reset, phase, value } = useAsyncState();

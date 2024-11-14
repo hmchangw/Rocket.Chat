@@ -1,10 +1,10 @@
 import { useMemo, useCallback } from 'react';
 
+import { useEndpointAction } from './useEndpointAction';
+import { useEndpointUpload } from './useEndpointUpload';
 import { useMethod } from '../contexts/ServerContext';
 import { useToastMessageDispatch } from '../contexts/ToastMessagesContext';
 import { useTranslation } from '../contexts/TranslationContext';
-import { useEndpointAction } from './useEndpointAction';
-import { useEndpointUpload } from './useEndpointUpload';
 
 export const useUpdateAvatar = (avatarObj, userId) => {
 	const t = useTranslation();

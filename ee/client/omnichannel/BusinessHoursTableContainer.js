@@ -1,10 +1,10 @@
 import { Callout } from '@rocket.chat/fuselage';
 import React, { useState } from 'react';
 
+import BusinessHoursTable from './BusinessHoursTable';
 import { useTranslation } from '../../../client/contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../client/hooks/useAsyncState';
 import { useEndpointData } from '../../../client/hooks/useEndpointData';
-import BusinessHoursTable from './BusinessHoursTable';
 
 const BusinessHoursTableContainer = () => {
 	const t = useTranslation();

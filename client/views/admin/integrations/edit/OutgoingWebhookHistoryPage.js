@@ -2,6 +2,7 @@ import { Button, ButtonGroup, Icon, Pagination } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
 
+import HistoryContent from './HistoryContent';
 import { integrationHistoryStreamer } from '../../../../../app/integrations/client/streamer';
 import Page from '../../../../components/Page';
 import { useRoute, useRouteParameter } from '../../../../contexts/RouterContext';
@@ -10,7 +11,6 @@ import { useToastMessageDispatch } from '../../../../contexts/ToastMessagesConte
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../../hooks/useEndpointData';
-import HistoryContent from './HistoryContent';
 
 function OutgoingWebhookHistoryPage(props) {
 	const dispatchToastMessage = useToastMessageDispatch();

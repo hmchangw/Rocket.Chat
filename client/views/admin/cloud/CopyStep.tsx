@@ -2,11 +2,11 @@ import { Box, Button, ButtonGroup, Icon, Scrollable, Modal } from '@rocket.chat/
 import Clipboard from 'clipboard';
 import React, { useEffect, useState, useRef, FC } from 'react';
 
+import { cloudConsoleUrl } from './constants';
 import MarkdownText from '../../../components/MarkdownText';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import { cloudConsoleUrl } from './constants';
 
 type CopyStepProps = {
 	onNextButtonClick: () => void;

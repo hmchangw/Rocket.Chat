@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-import { ServerMethods } from '../contexts/ServerContext';
 import { AsyncState } from './useAsyncState';
 import { useMethodData } from './useMethodData';
+import { ServerMethods } from '../contexts/ServerContext';
 
 export const usePolledMethodData = <T>(
 	methodName: keyof ServerMethods,

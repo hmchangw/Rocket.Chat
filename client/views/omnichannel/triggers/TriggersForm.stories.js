@@ -1,8 +1,8 @@
 import { FieldGroup, Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import { useForm } from '../../../hooks/useForm';
 import TriggersForm from './TriggersForm';
+import { useForm } from '../../../hooks/useForm';
 
 export default {
 	title: 'omnichannel/TriggersForm',

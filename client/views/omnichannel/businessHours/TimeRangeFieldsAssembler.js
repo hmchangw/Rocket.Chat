@@ -2,9 +2,9 @@ import { Field } from '@rocket.chat/fuselage';
 import { useStableArray } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo } from 'react';
 
-import { useTranslation } from '../../../contexts/TranslationContext';
 import { DAYS_OF_WEEK } from './BusinessHoursForm';
 import TimeRangeInput from './TimeRangeInput';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 const TimeRangeFieldsAssembler = ({ onChange, daysOpen, daysTime, className }) => {
 	const t = useTranslation();

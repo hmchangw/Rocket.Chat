@@ -1,8 +1,8 @@
 import { createContext, useContext, useMemo } from 'react';
 import { useSubscription, Subscription, Unsubscribe } from 'use-subscription';
 
-import { ISetting, SectionName, SettingId, GroupId } from '../../definition/ISetting';
 import { SettingsContextQuery } from './SettingsContext';
+import { ISetting, SectionName, SettingId, GroupId } from '../../definition/ISetting';
 
 export interface IEditableSetting extends ISetting {
 	disabled: boolean;

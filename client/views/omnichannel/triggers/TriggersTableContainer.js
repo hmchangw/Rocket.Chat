@@ -1,10 +1,10 @@
 import { Callout } from '@rocket.chat/fuselage';
 import React, { useState, useMemo } from 'react';
 
+import TriggersTable from './TriggersTable';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import TriggersTable from './TriggersTable';
 
 const TriggersTableContainer = ({ reloadRef }) => {
 	const t = useTranslation();

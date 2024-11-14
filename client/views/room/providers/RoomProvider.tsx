@@ -1,12 +1,12 @@
 import React, { ReactNode, useMemo, memo, useEffect } from 'react';
 
+import ToolboxProvider from './ToolboxProvider';
 import { roomTypes } from '../../../../app/utils/client';
 import { IRoom } from '../../../../definition/IRoom';
 import { RoomManager, useHandleRoom } from '../../../lib/RoomManager';
 import { AsyncStatePhase } from '../../../lib/asyncState';
 import Skeleton from '../Room/Skeleton';
 import { RoomContext } from '../contexts/RoomContext';
-import ToolboxProvider from './ToolboxProvider';
 
 export type Props = {
 	children: ReactNode;

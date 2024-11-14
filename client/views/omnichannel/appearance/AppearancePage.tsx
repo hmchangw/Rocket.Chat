@@ -2,13 +2,13 @@ import { ButtonGroup, Button, Box } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { FC } from 'react';
 
+import AppearanceForm from './AppearanceForm';
 import { ISetting } from '../../../../definition/ISetting';
 import Page from '../../../components/Page';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useForm } from '../../../hooks/useForm';
-import AppearanceForm from './AppearanceForm';
 
 type LivechatAppearanceSettings = {
 	Livechat_title: string;

@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { Tracker } from 'meteor/tracker';
 import React, { useEffect, useMemo, FunctionComponent, useRef, MutableRefObject } from 'react';
 
+import { createReactiveSubscriptionFactory } from './createReactiveSubscriptionFactory';
 import { SettingId, GroupId } from '../../definition/ISetting';
 import {
 	EditableSettingsContext,
@@ -10,7 +11,6 @@ import {
 	EditableSettingsContextValue,
 } from '../contexts/EditableSettingsContext';
 import { useSettings, SettingsContextQuery } from '../contexts/SettingsContext';
-import { createReactiveSubscriptionFactory } from './createReactiveSubscriptionFactory';
 
 const defaultQuery: SettingsContextQuery = {};
 

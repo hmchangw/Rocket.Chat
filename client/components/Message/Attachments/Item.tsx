@@ -1,12 +1,12 @@
 import React, { FC, memo } from 'react';
 
+import DefaultAttachment from './DefaultAttachment';
+import { FileAttachment } from './Files';
+import { QuoteAttachment } from './QuoteAttachment';
 import { isFileAttachment } from '../../../../definition/IMessage/MessageAttachment/Files/FileAttachmentProps';
 import { FileProp } from '../../../../definition/IMessage/MessageAttachment/Files/FileProp';
 import { MessageAttachmentBase } from '../../../../definition/IMessage/MessageAttachment/MessageAttachmentBase';
 import { isQuoteAttachment } from '../../../../definition/IMessage/MessageAttachment/MessageQuoteAttachment';
-import DefaultAttachment from './DefaultAttachment';
-import { FileAttachment } from './Files';
-import { QuoteAttachment } from './QuoteAttachment';
 
 const Item: FC<{ attachment: MessageAttachmentBase; file?: FileProp | undefined }> = ({
 	attachment,

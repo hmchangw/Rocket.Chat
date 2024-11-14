@@ -1,16 +1,16 @@
 import { Button, ButtonGroup, Icon, Box, Throbber } from '@rocket.chat/fuselage';
 import React, { useState, useCallback, useRef } from 'react';
 
-import { Apps } from '../../../../app/apps/client/orchestrator';
-import Page from '../../../components/Page';
-import { useRoute, useCurrentRoute } from '../../../contexts/RouterContext';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import APIsDisplay from './APIsDisplay';
 import AppDetailsPageContent from './AppDetailsPageContent';
 import LoadingDetails from './LoadingDetails';
 import SettingsDisplay from './SettingsDisplay';
 import { handleAPIError } from './helpers';
 import { useAppInfo } from './hooks/useAppInfo';
+import { Apps } from '../../../../app/apps/client/orchestrator';
+import Page from '../../../components/Page';
+import { useRoute, useCurrentRoute } from '../../../contexts/RouterContext';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 function AppDetailsPage({ id }) {
 	const t = useTranslation();

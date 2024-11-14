@@ -12,11 +12,11 @@ import {
 } from '@rocket.chat/fuselage';
 import React, { useMemo, useCallback } from 'react';
 
+import { useExampleData } from './exampleIncomingData';
 import { integrations as eventList } from '../../../../app/integrations/lib/rocketchat';
 import Page from '../../../components/Page';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useHighlightedCode } from '../../../hooks/useHighlightedCode';
-import { useExampleData } from './exampleIncomingData';
 
 const { outgoingEvents } = eventList;
 

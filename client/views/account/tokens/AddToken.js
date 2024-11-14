@@ -10,13 +10,13 @@ import {
 import { useUniqueId } from '@rocket.chat/fuselage-hooks';
 import React, { useCallback } from 'react';
 
+import InfoModal from './InfoModal';
 import { useSetModal } from '../../../contexts/ModalContext';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useUserId } from '../../../contexts/UserContext';
 import { useForm } from '../../../hooks/useForm';
-import InfoModal from './InfoModal';
 
 const initialValues = {
 	name: '',

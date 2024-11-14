@@ -1,9 +1,9 @@
 import { Button, PositionAnimated, Options, useCursor, Box } from '@rocket.chat/fuselage';
 import React, { useRef, useCallback, useState, useMemo, useEffect } from 'react';
 
+import { UserStatus } from './UserStatus';
 import { useSetting } from '../contexts/SettingsContext';
 import { useTranslation } from '../contexts/TranslationContext';
-import { UserStatus } from './UserStatus';
 
 const UserStatusMenu = ({
 	onChange = () => {},

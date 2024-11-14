@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
-import { useTranslation } from '../../../contexts/TranslationContext';
-import { useTimeAgo } from '../../../hooks/useTimeAgo';
-import { useBlockRendered } from '../hooks/useBlockRendered';
 import Content from './Content';
 import Reply from './Reply';
 import Metrics from './index';
+import { useTranslation } from '../../../contexts/TranslationContext';
+import { useTimeAgo } from '../../../hooks/useTimeAgo';
+import { useBlockRendered } from '../hooks/useBlockRendered';
 
 type DicussionOptions = {
 	drid: string;

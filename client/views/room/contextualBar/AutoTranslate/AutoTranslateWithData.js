@@ -1,12 +1,12 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useEffect, useState, memo } from 'react';
 
+import AutoTranslate from './AutoTranslate';
 import { useLanguage } from '../../../../contexts/TranslationContext';
 import { useUserSubscription } from '../../../../contexts/UserContext';
 import { useEndpointActionExperimental } from '../../../../hooks/useEndpointAction';
 import { useEndpointData } from '../../../../hooks/useEndpointData';
 import { useTabBarClose } from '../../providers/ToolboxProvider';
-import AutoTranslate from './AutoTranslate';
 
 const AutoTranslateWithData = ({ rid }) => {
 	const close = useTabBarClose();

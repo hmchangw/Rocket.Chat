@@ -1,11 +1,11 @@
 import { Callout } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import EditTriggerPage from './EditTriggerPage';
 import PageSkeleton from '../../../components/PageSkeleton';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import EditTriggerPage from './EditTriggerPage';
 
 const EditTriggerPageContainer = ({ id, onSave }) => {
 	const t = useTranslation();

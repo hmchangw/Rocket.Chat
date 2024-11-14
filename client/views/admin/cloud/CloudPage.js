@@ -2,6 +2,13 @@ import { Box, Button, ButtonGroup, Margins } from '@rocket.chat/fuselage';
 import { useMutableCallback, useSafely } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useEffect } from 'react';
 
+import ConnectToCloudSection from './ConnectToCloudSection';
+import ManualWorkspaceRegistrationModal from './ManualWorkspaceRegistrationModal';
+import TroubleshootingSection from './TroubleshootingSection';
+import WhatIsItSection from './WhatIsItSection';
+import WorkspaceLoginSection from './WorkspaceLoginSection';
+import WorkspaceRegistrationSection from './WorkspaceRegistrationSection';
+import { cloudConsoleUrl } from './constants';
 import Page from '../../../components/Page';
 import { useSetModal } from '../../../contexts/ModalContext';
 import {
@@ -12,13 +19,6 @@ import {
 import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import ConnectToCloudSection from './ConnectToCloudSection';
-import ManualWorkspaceRegistrationModal from './ManualWorkspaceRegistrationModal';
-import TroubleshootingSection from './TroubleshootingSection';
-import WhatIsItSection from './WhatIsItSection';
-import WorkspaceLoginSection from './WorkspaceLoginSection';
-import WorkspaceRegistrationSection from './WorkspaceRegistrationSection';
-import { cloudConsoleUrl } from './constants';
 
 function CloudPage() {
 	const t = useTranslation();

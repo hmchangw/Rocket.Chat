@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 
-import AttachmentProvider from '../components/Message/Attachments/providers/AttachmentProvider';
 import AuthorizationProvider from './AuthorizationProvider';
 import AvatarUrlProvider from './AvatarUrlProvider';
 import ConnectionStatusProvider from './ConnectionStatusProvider';
@@ -16,6 +15,7 @@ import SidebarProvider from './SidebarProvider';
 import ToastMessagesProvider from './ToastMessagesProvider';
 import TranslationProvider from './TranslationProvider';
 import UserProvider from './UserProvider';
+import AttachmentProvider from '../components/Message/Attachments/providers/AttachmentProvider';
 
 const MeteorProvider: FC = ({ children }) => (
 	<ConnectionStatusProvider>

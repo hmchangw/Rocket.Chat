@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
 
+import SetupWizardPage from './SetupWizardPage';
 import { useRouteParameter, useRoute } from '../../contexts/RouterContext';
 import { useMethod } from '../../contexts/ServerContext';
 import { useUserId } from '../../contexts/UserContext';
-import SetupWizardPage from './SetupWizardPage';
 
 export const finalStep = 'final';
 

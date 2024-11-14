@@ -1,10 +1,10 @@
 import { Skeleton } from '@rocket.chat/fuselage';
 import React, { useEffect, useState } from 'react';
 
-import { useTranslation } from '../../../../contexts/TranslationContext';
-import { AsyncStatePhase } from '../../../../hooks/useAsyncState';
 import CounterItem from './CounterItem';
 import CounterRow from './CounterRow';
+import { useTranslation } from '../../../../contexts/TranslationContext';
+import { AsyncStatePhase } from '../../../../hooks/useAsyncState';
 
 const CounterContainer = ({ data, state, initialData, ...props }) => {
 	const t = useTranslation();

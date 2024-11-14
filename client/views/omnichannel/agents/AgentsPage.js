@@ -1,9 +1,9 @@
 import React from 'react';
 
+import AddAgent from './AddAgent';
 import FilterByText from '../../../components/FilterByText';
 import GenericTable from '../../../components/GenericTable';
 import Page from '../../../components/Page';
-import AddAgent from './AddAgent';
 
 function AgentsPage({ data, reload, header, setParams, params, title, renderRow, children }) {
 	return (

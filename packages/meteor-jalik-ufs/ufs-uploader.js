@@ -162,7 +162,7 @@ export class Uploader {
 
 		function finish() {
 			// Finish the upload by telling the store the upload is complete
-			Meteor.call('ufsComplete', fileId, store, token, function (err, uploadedFile) {
+			Meteor.call('ufsComplete', fileId, store, token, function(err, uploadedFile) {
 				if (err) {
 					self.onError(err, file);
 					self.abort();
@@ -178,10 +178,10 @@ export class Uploader {
 		/**
 		 * Aborts the current transfer
 		 */
-		self.abort = function () {
+		self.abort = function() {
 			// Remove the file from database
 			// eslint-disable-next-line no-unused-vars
-			Meteor.call('ufsDelete', fileId, store, token, function (err, result) {
+			Meteor.call('ufsDelete', fileId, store, token, function(err, result) {
 				if (err) {
 					self.onError(err, file);
 				}
@@ -202,7 +202,7 @@ export class Uploader {
 		 * Returns the average speed in bytes per second
 		 * @returns {number}
 		 */
-		self.getAverageSpeed = function () {
+		self.getAverageSpeed = function() {
 			const seconds = self.getElapsedTime() / 1000;
 			return self.getLoaded() / seconds;
 		};
@@ -211,7 +211,7 @@ export class Uploader {
 		 * Returns the elapsed time in milliseconds
 		 * @returns {number}
 		 */
-		self.getElapsedTime = function () {
+		self.getElapsedTime = function() {
 			if (startTime && self.isUploading()) {
 				return elapsedTime + (Date.now() - startTime);
 			}
@@ -222,7 +222,7 @@ export class Uploader {
 		 * Returns the file
 		 * @return {object}
 		 */
-		self.getFile = function () {
+		self.getFile = function() {
 			return file;
 		};
 
@@ -230,7 +230,7 @@ export class Uploader {
 		 * Returns the loaded bytes
 		 * @return {number}
 		 */
-		self.getLoaded = function () {
+		self.getLoaded = function() {
 			return loaded;
 		};
 
@@ -238,7 +238,7 @@ export class Uploader {
 		 * Returns current progress
 		 * @return {number}
 		 */
-		self.getProgress = function () {
+		self.getProgress = function() {
 			return Math.min(((loaded / total) * 100) / 100, 1.0);
 		};
 
@@ -246,7 +246,7 @@ export class Uploader {
 		 * Returns the remaining time in milliseconds
 		 * @returns {number}
 		 */
-		self.getRemainingTime = function () {
+		self.getRemainingTime = function() {
 			const averageSpeed = self.getAverageSpeed();
 			const remainingBytes = total - self.getLoaded();
 			return averageSpeed && remainingBytes ? Math.max(remainingBytes / averageSpeed, 0) : 0;
@@ -256,7 +256,7 @@ export class Uploader {
 		 * Returns the upload speed in bytes per second
 		 * @returns {number}
 		 */
-		self.getSpeed = function () {
+		self.getSpeed = function() {
 			if (timeA && timeB && self.isUploading()) {
 				const seconds = (timeB - timeA) / 1000;
 				return self.chunkSize / seconds;
@@ -268,7 +268,7 @@ export class Uploader {
 		 * Returns the total bytes
 		 * @return {number}
 		 */
-		self.getTotal = function () {
+		self.getTotal = function() {
 			return total;
 		};
 
@@ -276,7 +276,7 @@ export class Uploader {
 		 * Checks if the transfer is complete
 		 * @return {boolean}
 		 */
-		self.isComplete = function () {
+		self.isComplete = function() {
 			return complete;
 		};
 
@@ -284,7 +284,7 @@ export class Uploader {
 		 * Checks if the transfer is active
 		 * @return {boolean}
 		 */
-		self.isUploading = function () {
+		self.isUploading = function() {
 			return uploading;
 		};
 
@@ -295,7 +295,7 @@ export class Uploader {
 		 * @param callback
 		 * @returns {Blob}
 		 */
-		self.readChunk = function (start, length, callback) {
+		self.readChunk = function(start, length, callback) {
 			if (typeof callback !== 'function') {
 				throw new Error('readChunk is missing callback');
 			}
@@ -315,7 +315,7 @@ export class Uploader {
 			} catch (err) {
 				console.error('read error', err);
 				// Retry to read chunk
-				Meteor.setTimeout(function () {
+				Meteor.setTimeout(function() {
 					if (tries < self.maxTries) {
 						tries += 1;
 						self.readChunk(start, length, callback);
@@ -327,7 +327,7 @@ export class Uploader {
 		/**
 		 * Sends a file chunk to the store
 		 */
-		self.sendChunk = function () {
+		self.sendChunk = function() {
 			if (!complete && startTime !== null) {
 				if (offset < total) {
 					let { chunkSize } = self;
@@ -355,14 +355,14 @@ export class Uploader {
 					}
 
 					// Prepare the chunk
-					self.readChunk(offset, chunkSize, function (err, chunk) {
+					self.readChunk(offset, chunkSize, function(err, chunk) {
 						if (err) {
 							self.onError(err, file);
 							return;
 						}
 
 						const xhr = new XMLHttpRequest();
-						xhr.onreadystatechange = function () {
+						xhr.onreadystatechange = function() {
 							if (xhr.readyState === 4) {
 								if ([200, 201, 202, 204].includes(xhr.status)) {
 									timeB = Date.now();
@@ -400,7 +400,7 @@ export class Uploader {
 						// let formData = new FormData();
 						// formData.append('progress', progress);
 						// formData.append('chunk', chunk);
-						const url = `${postUrl}&progress=${progress}`;
+						const url = `${ postUrl }&progress=${ progress }`;
 
 						timeA = Date.now();
 						timeB = null;
@@ -417,11 +417,11 @@ export class Uploader {
 		/**
 		 * Starts or resumes the transfer
 		 */
-		self.start = function () {
+		self.start = function() {
 			if (!fileId) {
 				// Create the file document and get the token
 				// that allows the user to send chunks to the store.
-				Meteor.call('ufsCreate', _.extend({}, file), function (err, result) {
+				Meteor.call('ufsCreate', _.extend({}, file), function(err, result) {
 					if (err) {
 						self.onError(err, file);
 					} else if (result) {
@@ -448,7 +448,7 @@ export class Uploader {
 		/**
 		 * Stops the transfer
 		 */
-		self.stop = function () {
+		self.stop = function() {
 			if (uploading) {
 				// Update elapsed time
 				elapsedTime = Date.now() - startTime;
@@ -457,7 +457,7 @@ export class Uploader {
 				self.onStop(file);
 
 				// eslint-disable-next-line no-unused-vars
-				Meteor.call('ufsStop', fileId, store, token, function (err, result) {
+				Meteor.call('ufsStop', fileId, store, token, function(err, result) {
 					if (err) {
 						self.onError(err, file);
 					}
@@ -494,7 +494,7 @@ export class Uploader {
 	 */
 	// eslint-disable-next-line no-unused-vars
 	onError(err, file) {
-		console.error(`ufs: ${err.message}`);
+		console.error(`ufs: ${ err.message }`);
 	}
 
 	/**

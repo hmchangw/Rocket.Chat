@@ -1,8 +1,8 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import { useForm } from '../../../hooks/useForm';
 import BusinessHoursForm from './BusinessHoursForm';
+import { useForm } from '../../../hooks/useForm';
 
 export default {
 	title: 'omnichannel/businessHours',

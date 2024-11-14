@@ -1,10 +1,10 @@
 import React from 'react';
 
+import GroupSelector from './GroupSelector';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { useRouteParameter } from '../../../contexts/RouterContext';
 import { useIsPrivilegedSettingsContext } from '../../../contexts/SettingsContext';
 import EditableSettingsProvider from '../../../providers/EditableSettingsProvider';
-import GroupSelector from './GroupSelector';
 
 export function SettingsRoute() {
 	const hasPermission = useIsPrivilegedSettingsContext();

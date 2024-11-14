@@ -1,9 +1,9 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import ChannelDeletionTable from './ChannelDeletionTable';
 import GenericModal from '../../../../../components/GenericModal';
 import { useTranslation } from '../../../../../contexts/TranslationContext';
-import ChannelDeletionTable from './ChannelDeletionTable';
 
 export const StepTwo = ({
 	rooms,

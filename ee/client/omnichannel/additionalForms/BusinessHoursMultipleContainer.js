@@ -1,10 +1,10 @@
 import { Skeleton } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
+import BusinessHoursMultiple from './BusinessHoursMultiple';
 import { AsyncStatePhase } from '../../../../client/hooks/useAsyncState';
 import { useEndpointData } from '../../../../client/hooks/useEndpointData';
 import { useForm } from '../../../../client/hooks/useForm';
-import BusinessHoursMultiple from './BusinessHoursMultiple';
 
 const mapDepartments = (departments) => departments.map(({ _id }) => _id);
 

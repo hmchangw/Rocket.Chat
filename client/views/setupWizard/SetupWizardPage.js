@@ -2,14 +2,14 @@ import { Box, Margins, Tile } from '@rocket.chat/fuselage';
 import { useMediaQuery } from '@rocket.chat/fuselage-hooks';
 import React from 'react';
 
-import ScrollableContentWrapper from '../../components/ScrollableContentWrapper';
-import { useTranslation } from '../../contexts/TranslationContext';
 import { finalStep } from './SetupWizardState';
 import SideBar from './SideBar';
 import AdminUserInformationStep from './steps/AdminUserInformationStep';
 import FinalStep from './steps/FinalStep';
 import RegisterServerStep from './steps/RegisterServerStep';
 import SettingsBasedStep from './steps/SettingsBasedStep';
+import ScrollableContentWrapper from '../../components/ScrollableContentWrapper';
+import { useTranslation } from '../../contexts/TranslationContext';
 
 function SetupWizardPage({ currentStep = 1 }) {
 	const t = useTranslation();

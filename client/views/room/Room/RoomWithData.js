@@ -1,8 +1,8 @@
 import React from 'react';
 
+import Room from './Room';
 import { useOpenedRoom } from '../../../lib/RoomManager';
 import RoomProvider from '../providers/RoomProvider';
-import Room from './Room';
 
 const RoomWithData = () => {
 	const rid = useOpenedRoom();

@@ -1,8 +1,8 @@
 import { Box } from '@rocket.chat/fuselage';
 import React, { FC } from 'react';
 
-import { useLayout } from '../../contexts/LayoutContext';
 import HeaderDivider from './HeaderDivider';
+import { useLayout } from '../../contexts/LayoutContext';
 
 const Header: FC<any> = (props) => {
 	const { isMobile } = useLayout();

@@ -1,11 +1,11 @@
 import { Button, ButtonGroup, Icon, Skeleton } from '@rocket.chat/fuselage';
 import React, { useState, useEffect } from 'react';
 
+import MarketplaceTable from './MarketplaceTable';
 import Page from '../../../components/Page';
 import { useRoute } from '../../../contexts/RouterContext';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import MarketplaceTable from './MarketplaceTable';
 
 function MarketplacePage() {
 	const t = useTranslation();

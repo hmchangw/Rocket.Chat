@@ -1,8 +1,8 @@
 import React, { useMemo, useEffect } from 'react';
 
+import CustomFieldsAdditionalForm from './CustomFieldsAdditionalForm';
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
 import { useForm } from '../../../../client/hooks/useForm';
-import CustomFieldsAdditionalForm from './CustomFieldsAdditionalForm';
 
 const getInitialValues = (data) => ({
 	type: data.type || 'input',

@@ -3,9 +3,9 @@ import React, { memo } from 'react';
 
 import { roomTypes } from '../../../app/utils/client';
 import RoomMenu from '../RoomMenu';
-import { useSidebarClose } from '../hooks/useSidebarClose';
 import SidebarIcon from './SidebarIcon';
 import { normalizeSidebarMessage } from './normalizeSidebarMessage';
+import { useSidebarClose } from '../hooks/useSidebarClose';
 
 const getMessage = (room, lastMessage, t) => {
 	if (!lastMessage) {

@@ -1,11 +1,11 @@
 import { Field, Select, FieldGroup } from '@rocket.chat/fuselage';
 import React, { useState, useMemo } from 'react';
 
+import FileExport from './FileExport';
+import MailExportForm from './MailExportForm';
 import VerticalBar from '../../../../components/VerticalBar';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { useTabBarClose } from '../../providers/ToolboxProvider';
-import FileExport from './FileExport';
-import MailExportForm from './MailExportForm';
 
 function ExportMessages({ rid }) {
 	const t = useTranslation();

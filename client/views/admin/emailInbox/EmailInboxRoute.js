@@ -1,8 +1,8 @@
 import React from 'react';
 
+import EmailInboxPage from './EmailInboxPage';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../contexts/AuthorizationContext';
-import EmailInboxPage from './EmailInboxPage';
 
 function EmailInboxRoute() {
 	const canViewEmailInbox = usePermission('manage-email-inbox');

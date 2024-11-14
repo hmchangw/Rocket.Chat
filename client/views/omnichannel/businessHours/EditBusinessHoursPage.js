@@ -2,6 +2,9 @@ import { Button, ButtonGroup, Callout } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useRef, useMemo, useState } from 'react';
 
+import BusinessHoursFormContainer from './BusinessHoursFormContainer';
+import { useIsSingleBusinessHours } from './BusinessHoursRouter';
+import { mapBusinessHoursForm } from './mapBusinessHoursForm';
 import Page from '../../../components/Page';
 import PageSkeleton from '../../../components/PageSkeleton';
 import { useRoute } from '../../../contexts/RouterContext';
@@ -10,9 +13,6 @@ import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext'
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import BusinessHoursFormContainer from './BusinessHoursFormContainer';
-import { useIsSingleBusinessHours } from './BusinessHoursRouter';
-import { mapBusinessHoursForm } from './mapBusinessHoursForm';
 
 const EditBusinessHoursPage = ({ id, type }) => {
 	const t = useTranslation();

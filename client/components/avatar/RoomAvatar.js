@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
-import { useRoomAvatarPath } from '../../contexts/AvatarUrlContext';
 import BaseAvatar from './BaseAvatar';
+import { useRoomAvatarPath } from '../../contexts/AvatarUrlContext';
 
 function RoomAvatar({ room, ...rest }) {
 	const getRoomPathAvatar = useRoomAvatarPath();

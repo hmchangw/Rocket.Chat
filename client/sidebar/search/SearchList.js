@@ -13,6 +13,8 @@ import React, { forwardRef, useState, useMemo, useEffect, useRef } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 import tinykeys from 'tinykeys';
 
+import Row from './Row';
+import ScrollerWithCustomProps from './ScrollerWithCustomProps';
 import { useSetting } from '../../contexts/SettingsContext';
 import { useTranslation } from '../../contexts/TranslationContext';
 import { useUserPreference, useUserSubscriptions } from '../../contexts/UserContext';
@@ -20,8 +22,6 @@ import { AsyncStatePhase } from '../../hooks/useAsyncState';
 import { useMethodData } from '../../hooks/useMethodData';
 import { useAvatarTemplate } from '../hooks/useAvatarTemplate';
 import { useTemplateByViewMode } from '../hooks/useTemplateByViewMode';
-import Row from './Row';
-import ScrollerWithCustomProps from './ScrollerWithCustomProps';
 
 const shortcut = (() => {
 	if (!Meteor.Device.isDesktop()) {

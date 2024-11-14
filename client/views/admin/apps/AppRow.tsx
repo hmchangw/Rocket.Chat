@@ -1,12 +1,12 @@
 import { Box, Table, Tag } from '@rocket.chat/fuselage';
 import React, { FC, useState, memo, KeyboardEvent, MouseEvent } from 'react';
 
-import AppAvatar from '../../../components/avatar/AppAvatar';
-import { useRoute } from '../../../contexts/RouterContext';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import AppMenu from './AppMenu';
 import AppStatus from './AppStatus';
 import { App } from './types';
+import AppAvatar from '../../../components/avatar/AppAvatar';
+import { useRoute } from '../../../contexts/RouterContext';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 type AppRowProps = App & {
 	medium: boolean;

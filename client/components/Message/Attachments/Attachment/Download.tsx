@@ -1,7 +1,7 @@
 import React, { ComponentProps, FC } from 'react';
 
-import { useTranslation } from '../../../../contexts/TranslationContext';
 import Action from './Action';
+import { useTranslation } from '../../../../contexts/TranslationContext';
 
 const Download: FC<
 	Omit<ComponentProps<typeof Action>, 'icon'> & { title?: string | undefined; href: string }

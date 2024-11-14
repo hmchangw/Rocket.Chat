@@ -1,9 +1,5 @@
 import React, { FC } from 'react';
 
-import { IOmnichannelRoom } from '../../../../definition/IRoom';
-import Header from '../../../components/Header';
-import MarkdownText from '../../../components/MarkdownText';
-import RoomAvatar from '../../../components/avatar/RoomAvatar';
 import ParentRoomWithData from './ParentRoomWithData';
 import ParentTeam from './ParentTeam';
 import RoomTitle from './RoomTitle';
@@ -11,6 +7,10 @@ import ToolBox from './ToolBox';
 import Encrypted from './icons/Encrypted';
 import Favorite from './icons/Favorite';
 import Translate from './icons/Translate';
+import { IOmnichannelRoom } from '../../../../definition/IRoom';
+import Header from '../../../components/Header';
+import MarkdownText from '../../../components/MarkdownText';
+import RoomAvatar from '../../../components/avatar/RoomAvatar';
 
 export type RoomHeaderProps = {
 	room: IOmnichannelRoom;

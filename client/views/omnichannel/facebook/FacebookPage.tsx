@@ -1,9 +1,9 @@
 import { Box, Button, ButtonGroup, FieldGroup, Divider } from '@rocket.chat/fuselage';
 import React, { FC, Dispatch } from 'react';
 
+import PageToggleAssembler from './PageToggleAssembler';
 import Page from '../../../components/Page';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import PageToggleAssembler from './PageToggleAssembler';
 
 type OnToggleProps = {
 	onToggle: (id: string, isSubscribed: boolean, setSubscribed: Dispatch<boolean>) => void;

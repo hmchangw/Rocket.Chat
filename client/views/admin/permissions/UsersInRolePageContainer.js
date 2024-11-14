@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useRouteParameter } from '../../../contexts/RouterContext';
 import UsersInRolePage from './UsersInRolePage';
 import { useRole } from './useRole';
+import { useRouteParameter } from '../../../contexts/RouterContext';
 
 const UsersInRolePageContainer = () => {
 	const _id = useRouteParameter('_id');

@@ -1,13 +1,13 @@
 import { Callout } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import EditCustomFieldsPage from './EditCustomFieldsPage';
 import Page from '../../../components/Page';
 import PageSkeleton from '../../../components/PageSkeleton';
 import { useRouteParameter } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import EditCustomFieldsPage from './EditCustomFieldsPage';
 
 const EditCustomFieldsPageContainer = ({ reload }) => {
 	const t = useTranslation();

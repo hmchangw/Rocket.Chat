@@ -2,16 +2,16 @@ import { Table } from '@rocket.chat/fuselage';
 import { useDebouncedValue, useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import CustomFieldsPage from './CustomFieldsPage';
+import EditCustomFieldsPage from './EditCustomFieldsPageContainer';
+import NewCustomFieldsPage from './NewCustomFieldsPage';
+import RemoveCustomFieldButton from './RemoveCustomFieldButton';
 import GenericTable from '../../../components/GenericTable';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useRouteParameter, useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import CustomFieldsPage from './CustomFieldsPage';
-import EditCustomFieldsPage from './EditCustomFieldsPageContainer';
-import NewCustomFieldsPage from './NewCustomFieldsPage';
-import RemoveCustomFieldButton from './RemoveCustomFieldButton';
 
 const sortDir = (sortDir) => (sortDir === 'asc' ? 1 : -1);
 

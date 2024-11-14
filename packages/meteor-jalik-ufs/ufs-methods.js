@@ -62,11 +62,11 @@ if (Meteor.isServer) {
 			const fut = new Future();
 			const tmpFile = UploadFS.getTempFilePath(fileId);
 
-			const removeTempFile = function () {
+			const removeTempFile = function() {
 				fs.stat(tmpFile, (err) => {
-					!err &&
-						fs.unlink(tmpFile, (err2) => {
-							err2 && console.error(`ufs: cannot delete temp file "${tmpFile}" (${err2.message})`);
+					!err
+						&& fs.unlink(tmpFile, (err2) => {
+							err2 && console.error(`ufs: cannot delete temp file "${ tmpFile }" (${ err2.message })`);
 						});
 				});
 			};
@@ -90,7 +90,7 @@ if (Meteor.isServer) {
 				// Clean upload if error occurs
 				rs.on(
 					'error',
-					Meteor.bindEnvironment(function (err) {
+					Meteor.bindEnvironment(function(err) {
 						console.error(err);
 						store.getCollection().remove({ _id: fileId });
 						fut.throw(err);
@@ -101,7 +101,7 @@ if (Meteor.isServer) {
 				store.write(
 					rs,
 					fileId,
-					Meteor.bindEnvironment(function (err, file) {
+					Meteor.bindEnvironment(function(err, file) {
 						removeTempFile();
 
 						if (err) {
@@ -167,7 +167,7 @@ if (Meteor.isServer) {
 			// Create the file
 			const fileId = store.create(file);
 			const token = store.createToken(fileId);
-			const uploadUrl = store.getURL(`${fileId}?token=${token}`);
+			const uploadUrl = store.getURL(`${ fileId }?token=${ token }`);
 
 			return {
 				fileId,
@@ -286,9 +286,9 @@ if (Meteor.isServer) {
 			proto
 				.get(
 					url,
-					Meteor.bindEnvironment(function (res) {
+					Meteor.bindEnvironment(function(res) {
 						// Save the file in the store
-						store.write(res, file._id, function (err, file) {
+						store.write(res, file._id, function(err, file) {
 							if (err) {
 								fut.throw(err);
 							} else {
@@ -297,7 +297,7 @@ if (Meteor.isServer) {
 						});
 					}),
 				)
-				.on('error', function (err) {
+				.on('error', function(err) {
 					fut.throw(err);
 				});
 			return fut.wait();

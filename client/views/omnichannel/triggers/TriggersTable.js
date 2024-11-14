@@ -1,9 +1,9 @@
 import React from 'react';
 
+import TriggersRow from './TriggersRow';
 import GenericTable from '../../../components/GenericTable';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useResizeInlineBreakpoint } from '../../../hooks/useResizeInlineBreakpoint';
-import TriggersRow from './TriggersRow';
 
 function TriggersTable({ triggers, totalTriggers, params, onChangeParams, onDelete }) {
 	const t = useTranslation();

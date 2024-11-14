@@ -1,9 +1,9 @@
 import React from 'react';
 
+import AddManager from './AddManager';
 import FilterByText from '../../../components/FilterByText';
 import GenericTable from '../../../components/GenericTable';
 import Page from '../../../components/Page';
-import AddManager from './AddManager';
 
 function ManagersPage({ data, reload, header, setParams, params, title, renderRow, children }) {
 	return (

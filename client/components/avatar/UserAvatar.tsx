@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 
-import { useUserAvatarPath } from '../../contexts/AvatarUrlContext';
 import BaseAvatar, { BaseAvatarProps } from './BaseAvatar';
+import { useUserAvatarPath } from '../../contexts/AvatarUrlContext';
 
 type UserAvatarProps = Omit<BaseAvatarProps, 'url' | 'title'> & {
 	username: string;

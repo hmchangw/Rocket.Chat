@@ -1,13 +1,13 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { memo } from 'react';
 
+import NotificationPreferences from './NotificationPreferences';
 import { useCustomSound } from '../../../../contexts/CustomSoundContext';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { useUserSubscription } from '../../../../contexts/UserContext';
 import { useEndpointActionExperimental } from '../../../../hooks/useEndpointAction';
 import { useForm } from '../../../../hooks/useForm';
 import { useTabBarClose } from '../../providers/ToolboxProvider';
-import NotificationPreferences from './NotificationPreferences';
 
 const NotificationPreferencesWithData = ({ rid }) => {
 	const t = useTranslation();

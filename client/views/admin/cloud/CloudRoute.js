@@ -1,8 +1,8 @@
 import React from 'react';
 
+import CloudPage from './CloudPage';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../contexts/AuthorizationContext';
-import CloudPage from './CloudPage';
 
 function CloudRoute() {
 	const canManageCloud = usePermission('manage-cloud');

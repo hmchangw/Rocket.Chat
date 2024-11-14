@@ -1,9 +1,9 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useCallback } from 'react';
 
-import { usePermission } from '../../../../../contexts/AuthorizationContext';
 import RemoveUsersFirstStep from './RemoveUsersFirstStep';
 import RemoveUsersSecondStep from './RemoveUsersSecondStep';
+import { usePermission } from '../../../../../contexts/AuthorizationContext';
 
 const STEPS = {
 	LIST_ROOMS: 'LIST_ROOMS',

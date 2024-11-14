@@ -1,8 +1,8 @@
 import { Box } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
-import { useTranslation } from '../../../contexts/TranslationContext';
 import { formatPricingPlan, formatPrice } from './helpers';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 const formatPriceAndPurchaseType = (purchaseType, pricingPlans, price) => {
 	if (purchaseType === 'subscription') {

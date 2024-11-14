@@ -1,12 +1,12 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React from 'react';
 
+import AddUsers from './AddUsers';
 import { useMethod } from '../../../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../../../contexts/TranslationContext';
 import { useForm } from '../../../../../hooks/useForm';
 import { useTabBarClose } from '../../../providers/ToolboxProvider';
-import AddUsers from './AddUsers';
 
 const AddUsersWithData = ({ rid, onClickBack, reload }) => {
 	const t = useTranslation();

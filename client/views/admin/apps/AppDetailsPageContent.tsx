@@ -2,13 +2,13 @@
 import { Box, Callout, Chip, Divider, Margins } from '@rocket.chat/fuselage';
 import React, { FC } from 'react';
 
-import ExternalLink from '../../../components/ExternalLink';
-import AppAvatar from '../../../components/avatar/AppAvatar';
-import { TranslationKey, useTranslation } from '../../../contexts/TranslationContext';
 import AppMenu from './AppMenu';
 import AppStatus from './AppStatus';
 import PriceDisplay from './PriceDisplay';
 import { App } from './types';
+import ExternalLink from '../../../components/ExternalLink';
+import AppAvatar from '../../../components/avatar/AppAvatar';
+import { TranslationKey, useTranslation } from '../../../contexts/TranslationContext';
 
 type AppDetailsPageContentProps = {
 	data: App;

@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
+import ContactEditWithData from './ContactEditWithData';
+import ContactInfo from './ContactInfo';
 import { IOmnichannelRoom } from '../../../../../../definition/IRoom';
 import VerticalBar from '../../../../../components/VerticalBar';
 import { useRoute, useRouteParameter } from '../../../../../contexts/RouterContext';
 import { useTranslation } from '../../../../../contexts/TranslationContext';
 import { useOmnichannelRoom } from '../../../../room/contexts/RoomContext';
 import { useTabBarClose } from '../../../../room/providers/ToolboxProvider';
-import ContactEditWithData from './ContactEditWithData';
-import ContactInfo from './ContactInfo';
 
 const PATH = 'live';
 

@@ -1,8 +1,8 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import { useForm } from '../../../hooks/useForm';
 import CustomFieldsForm from './CustomFieldsForm';
+import { useForm } from '../../../hooks/useForm';
 
 export default {
 	title: 'omnichannel/customFields/NewCustomFieldsForm',

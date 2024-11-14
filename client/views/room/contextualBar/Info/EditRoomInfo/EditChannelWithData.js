@@ -1,8 +1,8 @@
 import React from 'react';
 
+import EditChannel from './EditChannel';
 import { useUserRoom } from '../../../hooks/useUserRoom';
 import { useTabBarClose } from '../../../providers/ToolboxProvider';
-import EditChannel from './EditChannel';
 
 function EditChannelWithData({ rid, onClickBack }) {
 	const room = useUserRoom(rid);

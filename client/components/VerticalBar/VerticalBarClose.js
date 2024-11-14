@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
-import { useTranslation } from '../../contexts/TranslationContext';
 import VerticalBarAction from './VerticalBarAction';
+import { useTranslation } from '../../contexts/TranslationContext';
 
 function VerticalBarClose(props) {
 	const t = useTranslation();

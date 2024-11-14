@@ -2,6 +2,9 @@ import { Box, ButtonGroup, Button, Skeleton, Margins } from '@rocket.chat/fusela
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React from 'react';
 
+import Feature from './Feature';
+import OfflineLicenseModal from './OfflineLicenseModal';
+import UsagePieGraph from './UsagePieGraph';
 import Card from '../../../components/Card';
 import PlanTag from '../../../components/PlanTag';
 import { useSetModal } from '../../../contexts/ModalContext';
@@ -9,9 +12,6 @@ import { useSetting } from '../../../contexts/SettingsContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import Feature from './Feature';
-import OfflineLicenseModal from './OfflineLicenseModal';
-import UsagePieGraph from './UsagePieGraph';
 
 const LicenseCard = ({ statistics, isLoading }) => {
 	const t = useTranslation();

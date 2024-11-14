@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 
+import { useScrollableRecordList } from './useScrollableRecordList';
 import { IMessage } from '../../../definition/IMessage';
 import { ObjectFromApi } from '../../../definition/ObjectFromApi';
 import { MessageList } from '../../lib/lists/MessageList';
 import { RecordListBatchChanges } from '../../lib/lists/RecordList';
-import { useScrollableRecordList } from './useScrollableRecordList';
 
 const convertMessageFromApi = (apiMessage: ObjectFromApi<IMessage>): IMessage => ({
 	...apiMessage,

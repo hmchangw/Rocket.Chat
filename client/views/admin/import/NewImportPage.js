@@ -16,6 +16,7 @@ import {
 import { useUniqueId, useSafely } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useMemo, useEffect } from 'react';
 
+import { useErrorHandler } from './useErrorHandler';
 import { Importers } from '../../../../app/importer/client/index';
 import Page from '../../../components/Page';
 import { useRoute, useRouteParameter } from '../../../contexts/RouterContext';
@@ -24,7 +25,6 @@ import { useSetting } from '../../../contexts/SettingsContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useFormatMemorySize } from '../../../hooks/useFormatMemorySize';
-import { useErrorHandler } from './useErrorHandler';
 
 function NewImportPage() {
 	const t = useTranslation();

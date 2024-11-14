@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 
-import { GroupId } from '../../../../definition/ISetting';
-import { useSettingStructure } from '../../../contexts/SettingsContext';
 import GroupPage from './GroupPage';
 import AssetsGroupPage from './groups/AssetsGroupPage';
 import GenericGroupPage from './groups/GenericGroupPage';
 import OAuthGroupPage from './groups/OAuthGroupPage';
+import { GroupId } from '../../../../definition/ISetting';
+import { useSettingStructure } from '../../../contexts/SettingsContext';
 
 type GroupSelectorProps = {
 	groupId: GroupId;

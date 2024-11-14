@@ -2,12 +2,12 @@ import { ActionButton, Box, Icon, Option, Tag } from '@rocket.chat/fuselage';
 import { usePrefersReducedMotion } from '@rocket.chat/fuselage-hooks';
 import React, { useState } from 'react';
 
+import RoomActions from './RoomActions';
 import { roomTypes } from '../../../../../app/utils/client';
 import RoomAvatar from '../../../../components/avatar/RoomAvatar';
 import { usePermission } from '../../../../contexts/AuthorizationContext';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { usePreventProgation } from '../../../../hooks/usePreventProgation';
-import RoomActions from './RoomActions';
 
 const TeamsChannelItem = ({ room, onClickView, reload }) => {
 	const t = useTranslation();

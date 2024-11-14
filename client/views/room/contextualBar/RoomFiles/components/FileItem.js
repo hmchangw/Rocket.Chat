@@ -3,9 +3,9 @@ import { Box, Avatar } from '@rocket.chat/fuselage';
 import colors from '@rocket.chat/fuselage-tokens/colors';
 import React from 'react';
 
-import { useFormatDateAndTime } from '../../../../../hooks/useFormatDateAndTime';
 import FileItemIcon from './FileItemIcon';
 import MenuItem from './MenuItem';
+import { useFormatDateAndTime } from '../../../../../hooks/useFormatDateAndTime';
 
 const hoverClass = css`
 	&:hover {

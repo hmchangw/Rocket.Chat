@@ -3,6 +3,7 @@ import { useAutoFocus, useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import { escapeHTML } from '@rocket.chat/string-helpers';
 import React, { useCallback, useMemo } from 'react';
 
+import { useUserRoom } from './useUserRoom';
 import { RoomRoles } from '../../../../app/models/client';
 import { roomTypes, RoomMemberActions } from '../../../../app/utils/client';
 import { WebRTC } from '../../../../app/webrtc/client';
@@ -20,7 +21,6 @@ import {
 import { useEndpointActionExperimental } from '../../../hooks/useEndpointAction';
 import { useReactiveValue } from '../../../hooks/useReactiveValue';
 import RemoveUsersModal from '../../teams/contextualBar/members/RemoveUsersModal';
-import { useUserRoom } from './useUserRoom';
 
 const useUserHasRoomRole = (uid, rid, role) =>
 	useReactiveValue(

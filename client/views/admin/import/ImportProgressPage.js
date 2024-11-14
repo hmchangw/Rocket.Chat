@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { useEffect, useState, useMemo } from 'react';
 import s from 'underscore.string';
 
+import { useErrorHandler } from './useErrorHandler';
 import {
 	ProgressStep,
 	ImportingStartedStates,
@@ -13,7 +14,6 @@ import { useRoute } from '../../../contexts/RouterContext';
 import { useEndpoint } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import { useErrorHandler } from './useErrorHandler';
 
 function ImportProgressPage() {
 	const t = useTranslation();

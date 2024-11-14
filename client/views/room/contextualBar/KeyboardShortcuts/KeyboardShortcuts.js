@@ -1,8 +1,8 @@
 import React from 'react';
 
+import ShortcutSection from './ShortcutSection';
 import VerticalBar from '../../../../components/VerticalBar';
 import { useTranslation } from '../../../../contexts/TranslationContext';
-import ShortcutSection from './ShortcutSection';
 
 const KeyboardShortcuts = ({ handleClose }) => {
 	const t = useTranslation();

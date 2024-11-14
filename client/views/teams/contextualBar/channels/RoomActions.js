@@ -2,13 +2,13 @@ import { Box, CheckBox, Menu, Option } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo } from 'react';
 
+import ConfirmationModal from './ConfirmationModal';
 import { roomTypes } from '../../../../../app/utils/client';
 import { usePermission } from '../../../../contexts/AuthorizationContext';
 import { useSetModal } from '../../../../contexts/ModalContext';
 import { useToastMessageDispatch } from '../../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { useEndpointActionExperimental } from '../../../../hooks/useEndpointAction';
-import ConfirmationModal from './ConfirmationModal';
 
 const useReactModal = (Component, props) => {
 	const setModal = useSetModal();

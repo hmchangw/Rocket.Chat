@@ -2,11 +2,11 @@ import { Box } from '@rocket.chat/fuselage';
 import React, { FC } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 
-import VerticalBar from '../../../../components/VerticalBar/VerticalBar';
 import { Aside } from './slots/Aside';
 import { Body } from './slots/Body';
 import { Footer } from './slots/Footer';
 import { Header } from './slots/Header';
+import VerticalBar from '../../../../components/VerticalBar/VerticalBar';
 
 export const RoomTemplate: FC & {
 	Header: FC;

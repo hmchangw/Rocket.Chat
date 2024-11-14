@@ -1,8 +1,8 @@
 import React from 'react';
 
+import FilterByText from './FilterByText';
 import GenericTable from '../../../components/GenericTable';
 import Page from '../../../components/Page';
-import FilterByText from './FilterByText';
 
 function CurrentChatsPage({ data, header, setParams, params, title, renderRow, reload, children }) {
 	return (

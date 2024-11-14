@@ -1,15 +1,15 @@
 import { Button, ButtonGroup, Icon } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import Page from '../../../components/Page';
-import VerticalBar from '../../../components/VerticalBar';
-import { useRoute, useCurrentRoute } from '../../../contexts/RouterContext';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import { AddUser } from './AddUser';
 import EditUserWithData from './EditUserWithData';
 import { InviteUsers } from './InviteUsers';
 import { UserInfoWithData } from './UserInfo';
 import UsersTable from './UsersTable';
+import Page from '../../../components/Page';
+import VerticalBar from '../../../components/VerticalBar';
+import { useRoute, useCurrentRoute } from '../../../contexts/RouterContext';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 function UsersPage() {
 	const t = useTranslation();

@@ -1,6 +1,8 @@
 import { Box } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
+import UserInfo from './UserInfo';
+import UserActions from './actions/UserActions';
 import { getUserEmailAddress } from '../../../../../lib/getUserEmailAddress';
 import { FormSkeleton } from '../../../../components/Skeleton';
 import UserCard from '../../../../components/UserCard';
@@ -12,8 +14,6 @@ import { useTranslation } from '../../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../../hooks/useEndpointData';
 import { getUserEmailVerified } from '../../../../lib/getUserEmailVerified';
-import UserInfo from './UserInfo';
-import UserActions from './actions/UserActions';
 
 function UserInfoWithData({
 	uid,

@@ -1,6 +1,8 @@
 import { Box } from '@rocket.chat/fuselage';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import AccountTokensRow from './AccountTokensRow';
+import InfoModal from './InfoModal';
 import GenericTable from '../../../components/GenericTable';
 import { useSetModal } from '../../../contexts/ModalContext';
 import { useMethod } from '../../../contexts/ServerContext';
@@ -8,8 +10,6 @@ import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext'
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useUserId } from '../../../contexts/UserContext';
 import { useResizeInlineBreakpoint } from '../../../hooks/useResizeInlineBreakpoint';
-import AccountTokensRow from './AccountTokensRow';
-import InfoModal from './InfoModal';
 
 const AccountTokensTable = ({ data, reload }) => {
 	const t = useTranslation();

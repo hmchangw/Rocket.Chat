@@ -1,11 +1,11 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import ContactNewEdit from './ContactNewEdit';
 import { useTranslation } from '../../../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../../../hooks/useEndpointData';
 import { FormSkeleton } from '../../Skeleton';
-import ContactNewEdit from './ContactNewEdit';
 
 function ContactEditWithData({ id, close }) {
 	const t = useTranslation();

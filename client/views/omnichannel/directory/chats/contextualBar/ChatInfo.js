@@ -4,6 +4,11 @@ import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 
+import AgentField from './AgentField';
+import ContactField from './ContactField';
+import DepartmentField from './DepartmentField';
+import PriorityField from './PriorityField';
+import VisitorClientInfo from './VisitorClientInfo';
 import { hasPermission } from '../../../../../../app/authorization/client';
 import VerticalBar from '../../../../../components/VerticalBar';
 import { useRoute } from '../../../../../contexts/RouterContext';
@@ -18,11 +23,6 @@ import CustomField from '../../../components/CustomField';
 import Field from '../../../components/Field';
 import Info from '../../../components/Info';
 import Label from '../../../components/Label';
-import AgentField from './AgentField';
-import ContactField from './ContactField';
-import DepartmentField from './DepartmentField';
-import PriorityField from './PriorityField';
-import VisitorClientInfo from './VisitorClientInfo';
 
 function ChatInfo({ id, route }) {
 	const t = useTranslation();

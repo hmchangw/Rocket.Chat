@@ -1,6 +1,7 @@
 import { Box, Margins, Tag } from '@rocket.chat/fuselage';
 import React, { memo } from 'react';
 
+import Avatar from './Avatar';
 import MarkdownText from '../../../../components/MarkdownText';
 import UTCClock from '../../../../components/UTCClock';
 import UserCard from '../../../../components/UserCard';
@@ -9,7 +10,6 @@ import { useSetting } from '../../../../contexts/SettingsContext';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { useTimeAgo } from '../../../../hooks/useTimeAgo';
 import InfoPanel from '../../../InfoPanel';
-import Avatar from './Avatar';
 
 function UserInfo({
 	username,

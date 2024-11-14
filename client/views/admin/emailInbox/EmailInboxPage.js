@@ -1,12 +1,12 @@
 import { Button, Icon } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import Page from '../../../components/Page';
-import { useRoute, useRouteParameter } from '../../../contexts/RouterContext';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import EmailInboxEditWithData from './EmailInboxEditWithData';
 import EmailInboxForm from './EmailInboxForm';
 import EmailInboxTable from './EmailInboxTable';
+import Page from '../../../components/Page';
+import { useRoute, useRouteParameter } from '../../../contexts/RouterContext';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 export function EmailInboxPage() {
 	const t = useTranslation();

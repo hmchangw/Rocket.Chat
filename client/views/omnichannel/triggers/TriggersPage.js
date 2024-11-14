@@ -2,15 +2,15 @@ import { Button, Icon } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useRef } from 'react';
 
+import EditTriggerPageContainer from './EditTriggerPageContainer';
+import NewTriggerPage from './NewTriggerPage';
+import TriggersTableContainer from './TriggersTableContainer';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import Page from '../../../components/Page';
 import VerticalBar from '../../../components/VerticalBar';
 import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useRoute, useRouteParameter } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import EditTriggerPageContainer from './EditTriggerPageContainer';
-import NewTriggerPage from './NewTriggerPage';
-import TriggersTableContainer from './TriggersTableContainer';
 
 const MonitorsPage = () => {
 	const t = useTranslation();

@@ -1,8 +1,8 @@
 import React from 'react';
 
+import BurgerIcon from './BurgerIcon';
 import { centeredDecorator } from '../../../.storybook/decorators';
 import { useAutoToggle } from '../../../.storybook/hooks';
-import BurgerIcon from './BurgerIcon';
 
 export default {
 	title: 'components/burger/BurgerIcon',

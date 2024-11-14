@@ -1,8 +1,8 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import VerticalBar from '../../../../components/VerticalBar';
 import AutoTranslate from './AutoTranslate';
+import VerticalBar from '../../../../components/VerticalBar';
 
 export default {
 	title: 'room/contextualBar/AutoTranslate',

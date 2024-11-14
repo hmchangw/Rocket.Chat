@@ -1,10 +1,10 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { FC, MouseEvent } from 'react';
 
-import MarkdownText from '../../../components/MarkdownText';
-import { useSetModal } from '../../../contexts/ModalContext';
 import AnnouncementComponent from './AnnouncementComponent';
 import AnnouncementModal from './AnnouncementModal';
+import MarkdownText from '../../../components/MarkdownText';
+import { useSetModal } from '../../../contexts/ModalContext';
 
 type AnnouncementParams = {
 	announcement: string;

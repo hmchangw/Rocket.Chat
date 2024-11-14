@@ -2,13 +2,13 @@ import { Box, Field, Margins, Button } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useState, useCallback } from 'react';
 
+import UserForm from './UserForm';
 import UserAvatarEditor from '../../../components/avatar/UserAvatarEditor';
 import { useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointAction } from '../../../hooks/useEndpointAction';
 import { useEndpointUpload } from '../../../hooks/useEndpointUpload';
 import { useForm } from '../../../hooks/useForm';
-import UserForm from './UserForm';
 
 const getInitialValue = (data) => ({
 	roles: data.roles,

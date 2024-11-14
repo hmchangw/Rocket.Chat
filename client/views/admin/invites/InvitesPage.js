@@ -2,11 +2,11 @@ import { Table } from '@rocket.chat/fuselage';
 import { useMediaQuery } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useEffect } from 'react';
 
+import InviteRow from './InviteRow';
 import GenericTable from '../../../components/GenericTable';
 import Page from '../../../components/Page';
 import { useEndpoint } from '../../../contexts/ServerContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import InviteRow from './InviteRow';
 
 function InvitesPage() {
 	const t = useTranslation();

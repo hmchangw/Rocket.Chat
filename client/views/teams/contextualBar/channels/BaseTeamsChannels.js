@@ -12,10 +12,10 @@ import { useMutableCallback, useAutoFocus } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
+import Row from './Row';
 import ScrollableContentWrapper from '../../../../components/ScrollableContentWrapper';
 import VerticalBar from '../../../../components/VerticalBar';
 import { useTranslation } from '../../../../contexts/TranslationContext';
-import Row from './Row';
 
 const BaseTeamsChannels = ({
 	loading,

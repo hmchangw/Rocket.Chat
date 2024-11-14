@@ -2,6 +2,10 @@ import { Table } from '@rocket.chat/fuselage';
 import { useDebouncedValue, useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import RemoveUnitButton from './RemoveUnitButton';
+import UnitEditWithData from './UnitEditWithData';
+import UnitNew from './UnitNew';
+import UnitsPage from './UnitsPage';
 import GenericTable from '../../../../client/components/GenericTable';
 import NotAuthorizedPage from '../../../../client/components/NotAuthorizedPage';
 import VerticalBar from '../../../../client/components/VerticalBar';
@@ -9,10 +13,6 @@ import { usePermission } from '../../../../client/contexts/AuthorizationContext'
 import { useRouteParameter, useRoute } from '../../../../client/contexts/RouterContext';
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
 import { useEndpointData } from '../../../../client/hooks/useEndpointData';
-import RemoveUnitButton from './RemoveUnitButton';
-import UnitEditWithData from './UnitEditWithData';
-import UnitNew from './UnitNew';
-import UnitsPage from './UnitsPage';
 
 const sortDir = (sortDir) => (sortDir === 'asc' ? 1 : -1);
 

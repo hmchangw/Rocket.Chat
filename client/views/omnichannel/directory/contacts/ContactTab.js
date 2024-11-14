@@ -1,8 +1,8 @@
 import React from 'react';
 
+import ContactTable from './ContactTable';
 import NotAuthorizedPage from '../../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../../contexts/AuthorizationContext';
-import ContactTable from './ContactTable';
 
 function ContactTab(props) {
 	const hasAccess = usePermission('view-l-room');

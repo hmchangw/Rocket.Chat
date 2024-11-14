@@ -1,6 +1,7 @@
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { FC, useEffect } from 'react';
 
+import CallBBB from './CallBBB';
 import { popout } from '../../../../../../app/ui-utils/client';
 import { IRoom } from '../../../../../../definition/IRoom';
 import { usePermission } from '../../../../../contexts/AuthorizationContext';
@@ -8,7 +9,6 @@ import { useMethod } from '../../../../../contexts/ServerContext';
 import { useSetting } from '../../../../../contexts/SettingsContext';
 import { useRoom } from '../../../contexts/RoomContext';
 import { useTabBarClose } from '../../../providers/ToolboxProvider';
-import CallBBB from './CallBBB';
 
 type DProps = {
 	rid: IRoom['_id'];

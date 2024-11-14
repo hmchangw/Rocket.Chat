@@ -1,8 +1,8 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import VerticalBar from '../../../../components/VerticalBar';
 import KeyboardShortcutsWithClose from './KeyboardShortcutsWithClose';
+import VerticalBar from '../../../../components/VerticalBar';
 
 export default {
 	title: 'room/contextualBar/KeyboardShortcut',

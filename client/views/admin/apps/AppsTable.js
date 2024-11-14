@@ -1,12 +1,12 @@
 import { useDebouncedValue } from '@rocket.chat/fuselage-hooks';
 import React, { useState } from 'react';
 
+import AppRow from './AppRow';
+import { useFilteredApps } from './hooks/useFilteredApps';
 import FilterByText from '../../../components/FilterByText';
 import GenericTable from '../../../components/GenericTable';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useResizeInlineBreakpoint } from '../../../hooks/useResizeInlineBreakpoint';
-import AppRow from './AppRow';
-import { useFilteredApps } from './hooks/useFilteredApps';
 
 const filterFunction = (text) => {
 	if (!text) {

@@ -1,11 +1,11 @@
 import { Callout } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
+import PriorityEdit from './PriorityEdit';
 import { FormSkeleton } from '../../../../client/components/Skeleton';
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../client/hooks/useAsyncState';
 import { useEndpointData } from '../../../../client/hooks/useEndpointData';
-import PriorityEdit from './PriorityEdit';
 
 function PriorityEditWithData({ priorityId, reload }) {
 	const query = useMemo(() => ({ priorityId }), [priorityId]);

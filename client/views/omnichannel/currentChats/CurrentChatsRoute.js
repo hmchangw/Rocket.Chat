@@ -4,13 +4,13 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import moment from 'moment';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import CurrentChatsPage from './CurrentChatsPage';
+import RemoveChatButton from './RemoveChatButton';
 import GenericTable from '../../../components/GenericTable';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import CurrentChatsPage from './CurrentChatsPage';
-import RemoveChatButton from './RemoveChatButton';
 
 const sortDir = (sortDir) => (sortDir === 'asc' ? 1 : -1);
 

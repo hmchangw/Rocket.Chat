@@ -9,6 +9,10 @@ import {
 } from '@rocket.chat/fuselage';
 import React, { useCallback, useEffect, useState } from 'react';
 
+import AppPermissionsReviewModal from './AppPermissionsReviewModal';
+import AppUpdateModal from './AppUpdateModal';
+import { handleInstallError } from './helpers';
+import { getManifestFromZippedApp } from './lib/getManifestFromZippedApp';
 import { Apps } from '../../../../app/apps/client/orchestrator';
 import Page from '../../../components/Page';
 import { useSetModal } from '../../../contexts/ModalContext';
@@ -17,10 +21,6 @@ import { useEndpoint, useUpload } from '../../../contexts/ServerContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useFileInput } from '../../../hooks/useFileInput';
 import { useForm } from '../../../hooks/useForm';
-import AppPermissionsReviewModal from './AppPermissionsReviewModal';
-import AppUpdateModal from './AppUpdateModal';
-import { handleInstallError } from './helpers';
-import { getManifestFromZippedApp } from './lib/getManifestFromZippedApp';
 
 const placeholderUrl = 'https://rocket.chat/apps/package.zip';
 

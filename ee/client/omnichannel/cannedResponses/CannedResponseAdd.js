@@ -2,10 +2,10 @@ import { ButtonGroup, Button } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { memo, useState } from 'react';
 
+import CannedResponsesForm from './CannedResponseForm';
 import VerticalBar from '../../../../client/components/VerticalBar';
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
 import { useForm } from '../../../../client/hooks/useForm';
-import CannedResponsesForm from './CannedResponseForm';
 
 const CannedResponseEdit = ({ onSave, onReturn, onClose }) => {
 	const t = useTranslation();

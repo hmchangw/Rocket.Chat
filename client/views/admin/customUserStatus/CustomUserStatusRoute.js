@@ -2,6 +2,9 @@ import { Button, Icon } from '@rocket.chat/fuselage';
 import { useDebouncedValue } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useState, useCallback } from 'react';
 
+import AddCustomUserStatus from './AddCustomUserStatus';
+import CustomUserStatus from './CustomUserStatus';
+import EditCustomUserStatusWithData from './EditCustomUserStatusWithData';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import Page from '../../../components/Page';
 import VerticalBar from '../../../components/VerticalBar';
@@ -9,9 +12,6 @@ import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useRoute, useRouteParameter } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import AddCustomUserStatus from './AddCustomUserStatus';
-import CustomUserStatus from './CustomUserStatus';
-import EditCustomUserStatusWithData from './EditCustomUserStatusWithData';
 
 function CustomUserStatusRoute() {
 	const route = useRoute('custom-user-status');

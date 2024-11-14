@@ -1,11 +1,11 @@
 import { Field } from '@rocket.chat/fuselage';
 import React, { useMemo, useState } from 'react';
 
+import AuditLogTable from './AuditLogTable';
+import DateRangePicker from './DateRangePicker';
 import Page from '../../../client/components/Page';
 import { useTranslation } from '../../../client/contexts/TranslationContext';
 import { useMethodData } from '../../../client/hooks/useMethodData';
-import AuditLogTable from './AuditLogTable';
-import DateRangePicker from './DateRangePicker';
 
 const AuditLogPage = () => {
 	const t = useTranslation();

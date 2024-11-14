@@ -2,10 +2,10 @@ import { Box } from '@rocket.chat/fuselage';
 import { useMediaQuery } from '@rocket.chat/fuselage-hooks';
 import React, { useContext, FC } from 'react';
 
+import PageContext from './PageContext';
 import { useSession } from '../../contexts/SessionContext';
 import { useSidebar } from '../../contexts/SidebarContext';
 import BurgerMenuButton from '../burger/BurgerMenuButton';
-import PageContext from './PageContext';
 
 type PageHeaderProps = {
 	title: string;

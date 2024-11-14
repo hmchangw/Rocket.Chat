@@ -1,11 +1,11 @@
 import { Button, ButtonGroup, Icon } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import AppsTable from './AppsTable';
 import Page from '../../../components/Page';
 import { useRoute } from '../../../contexts/RouterContext';
 import { useSetting } from '../../../contexts/SettingsContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import AppsTable from './AppsTable';
 
 function AppsPage() {
 	const t = useTranslation();

@@ -1,10 +1,10 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
-import Page from '../../../components/Page';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import OverviewSection from './OverviewSection';
 import ServersSection from './ServersSection';
+import Page from '../../../components/Page';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 function FederationDashboardPage() {
 	const t = useTranslation();

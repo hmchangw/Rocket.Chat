@@ -1,16 +1,16 @@
 import { Sidebar } from '@rocket.chat/fuselage';
 import React, { memo } from 'react';
 
-import { useTranslation } from '../../contexts/TranslationContext';
-import { useUser } from '../../contexts/UserContext';
-import { useSidebarPaletteColor } from '../hooks/useSidebarPaletteColor';
 import UserAvatarButton from './UserAvatarButton';
+import { useSidebarPaletteColor } from '../hooks/useSidebarPaletteColor';
 import CreateRoom from './actions/CreateRoom';
 import Directory from './actions/Directory';
 import Home from './actions/Home';
 import Login from './actions/Login';
 import Search from './actions/Search';
 import Sort from './actions/Sort';
+import { useTranslation } from '../../contexts/TranslationContext';
+import { useUser } from '../../contexts/UserContext';
 
 const HeaderWithData = () => {
 	const user = useUser();

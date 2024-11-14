@@ -13,6 +13,9 @@ import { Meteor } from 'meteor/meteor';
 import React, { useEffect, useState, useMemo } from 'react';
 import s from 'underscore.string';
 
+import PrepareChannels from './PrepareChannels';
+import PrepareUsers from './PrepareUsers';
+import { useErrorHandler } from './useErrorHandler';
 import {
 	ProgressStep,
 	ImportWaitingStates,
@@ -25,9 +28,6 @@ import Page from '../../../components/Page';
 import { useRoute } from '../../../contexts/RouterContext';
 import { useEndpoint } from '../../../contexts/ServerContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import PrepareChannels from './PrepareChannels';
-import PrepareUsers from './PrepareUsers';
-import { useErrorHandler } from './useErrorHandler';
 
 const waitFor = (fn, predicate) =>
 	new Promise((resolve, reject) => {

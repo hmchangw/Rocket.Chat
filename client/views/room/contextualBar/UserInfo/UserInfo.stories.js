@@ -1,8 +1,8 @@
 import React from 'react';
 
+import UserInfo from './UserInfo';
 import * as Status from '../../../../components/UserStatus';
 import VerticalBar from '../../../../components/VerticalBar';
-import UserInfo from './UserInfo';
 
 export default {
 	title: 'room/contextualBar/UserInfo',

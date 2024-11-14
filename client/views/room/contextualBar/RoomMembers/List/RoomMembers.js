@@ -13,10 +13,10 @@ import { useMutableCallback, useAutoFocus } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
+import DefaultRow from './DefaultRow';
 import ScrollableContentWrapper from '../../../../../components/ScrollableContentWrapper';
 import VerticalBar from '../../../../../components/VerticalBar';
 import { useTranslation } from '../../../../../contexts/TranslationContext';
-import DefaultRow from './DefaultRow';
 
 const RoomMembers = ({
 	loading,

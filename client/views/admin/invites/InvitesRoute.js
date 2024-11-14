@@ -1,8 +1,8 @@
 import React from 'react';
 
+import InvitesPage from './InvitesPage';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../contexts/AuthorizationContext';
-import InvitesPage from './InvitesPage';
 
 function InvitesRoute() {
 	const canCreateInviteLinks = usePermission('create-invite-links');

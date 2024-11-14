@@ -1,8 +1,8 @@
 import { Box, Accordion } from '@rocket.chat/fuselage';
 import React, { FC } from 'react';
 
-import { useTranslation } from '../../../contexts/TranslationContext';
 import LogEntry from './LogEntry';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 type LogItemProps = {
 	entries: {

@@ -1,9 +1,9 @@
 import { Box, ActionButton } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import Condensed from './Condensed';
 import * as Status from '../../components/UserStatus';
 import UserAvatar from '../../components/avatar/UserAvatar';
-import Condensed from './Condensed';
 
 export default {
 	title: 'Sidebar/Condensed',

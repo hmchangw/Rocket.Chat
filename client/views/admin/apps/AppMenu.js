@@ -1,14 +1,14 @@
 import { Box, Icon, Menu } from '@rocket.chat/fuselage';
 import React, { useMemo, useCallback } from 'react';
 
-import { useSetModal } from '../../../contexts/ModalContext';
-import { useRoute } from '../../../contexts/RouterContext';
-import { useMethod, useEndpoint } from '../../../contexts/ServerContext';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import CloudLoginModal from './CloudLoginModal';
 import IframeModal from './IframeModal';
 import WarningModal from './WarningModal';
 import { appEnabledStatuses, warnStatusChange, handleAPIError } from './helpers';
+import { useSetModal } from '../../../contexts/ModalContext';
+import { useRoute } from '../../../contexts/RouterContext';
+import { useMethod, useEndpoint } from '../../../contexts/ServerContext';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 function AppMenu({ app, ...props }) {
 	const t = useTranslation();

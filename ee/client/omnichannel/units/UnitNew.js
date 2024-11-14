@@ -1,11 +1,11 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import UnitEdit from './UnitEdit';
 import { FormSkeleton } from '../../../../client/components/Skeleton';
 import { useTranslation } from '../../../../client/contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../client/hooks/useAsyncState';
 import { useEndpointData } from '../../../../client/hooks/useEndpointData';
-import UnitEdit from './UnitEdit';
 
 function UnitNew({ reload, allUnits }) {
 	const t = useTranslation();

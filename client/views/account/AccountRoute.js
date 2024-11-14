@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 
-import { SideNav } from '../../../app/ui-utils/client';
-import NotAuthorizedPage from '../../components/NotAuthorizedPage';
-import { usePermission } from '../../contexts/AuthorizationContext';
-import { useRouteParameter, useRoute, useCurrentRoute } from '../../contexts/RouterContext';
-import { useSetting } from '../../contexts/SettingsContext';
 import AccountIntegrationsPage from './AccountIntegrationsPage';
 import AccountProfilePage from './AccountProfilePage';
 import AccountPreferencesPage from './preferences/AccountPreferencesPage';
 import AccountSecurityPage from './security/AccountSecurityPage';
 import AccountTokensPage from './tokens/AccountTokensPage';
+import { SideNav } from '../../../app/ui-utils/client';
+import NotAuthorizedPage from '../../components/NotAuthorizedPage';
+import { usePermission } from '../../contexts/AuthorizationContext';
+import { useRouteParameter, useRoute, useCurrentRoute } from '../../contexts/RouterContext';
+import { useSetting } from '../../contexts/SettingsContext';
 import './sidebarItems';
 
 const AccountRoute = () => {

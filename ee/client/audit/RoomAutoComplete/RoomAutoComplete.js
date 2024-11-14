@@ -1,8 +1,8 @@
 import { AutoComplete, Option } from '@rocket.chat/fuselage';
 import React, { memo, useMemo, useState } from 'react';
 
-import { useEndpointData } from '../../../../client/hooks/useEndpointData';
 import Avatar from './Avatar';
+import { useEndpointData } from '../../../../client/hooks/useEndpointData';
 
 const query = (name = '') => ({ selector: JSON.stringify({ name }) });
 

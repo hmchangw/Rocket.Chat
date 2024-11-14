@@ -10,11 +10,11 @@ import {
 } from '@rocket.chat/fuselage';
 import React, { useMemo, useCallback } from 'react';
 
+import { useExampleData } from './exampleIncomingData';
 import Page from '../../../components/Page';
 import { useAbsoluteUrl } from '../../../contexts/ServerContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useHighlightedCode } from '../../../hooks/useHighlightedCode';
-import { useExampleData } from './exampleIncomingData';
 
 export default function IncomingWebhookForm({
 	formValues,

@@ -1,6 +1,7 @@
 import { Box, Button, ButtonGroup, Margins, TextInput, Field, Icon } from '@rocket.chat/fuselage';
 import React, { useCallback, useState, useMemo, useEffect } from 'react';
 
+import { validate, createSoundData } from './lib';
 import GenericModal from '../../../components/GenericModal';
 import VerticalBar from '../../../components/VerticalBar';
 import { useSetModal } from '../../../contexts/ModalContext';
@@ -8,7 +9,6 @@ import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useFileInput } from '../../../hooks/useFileInput';
-import { validate, createSoundData } from './lib';
 
 function EditSound({ close, onChange, data, ...props }) {
 	const t = useTranslation();

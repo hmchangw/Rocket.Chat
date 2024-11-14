@@ -1,12 +1,12 @@
 import { useDebouncedValue, useMediaQuery } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import UserRow from './UserRow';
 import FilterByText from '../../../components/FilterByText';
 import GenericTable from '../../../components/GenericTable';
 import { useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import UserRow from './UserRow';
 
 const sortDir = (sortDir) => (sortDir === 'asc' ? 1 : -1);
 

@@ -1,12 +1,12 @@
 import { Tracker } from 'meteor/tracker';
 import React, { useCallback, useEffect, useMemo, useState, FunctionComponent } from 'react';
 
+import { createReactiveSubscriptionFactory } from './createReactiveSubscriptionFactory';
 import { useAtLeastOnePermission } from '../contexts/AuthorizationContext';
 import { useMethod } from '../contexts/ServerContext';
 import { SettingsContext, SettingsContextValue } from '../contexts/SettingsContext';
 import { PrivateSettingsCachedCollection } from '../lib/settings/PrivateSettingsCachedCollection';
 import { PublicSettingsCachedCollection } from '../lib/settings/PublicSettingsCachedCollection';
-import { createReactiveSubscriptionFactory } from './createReactiveSubscriptionFactory';
 
 type SettingsProviderProps = {
 	readonly privileged?: boolean;

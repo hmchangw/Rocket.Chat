@@ -1,8 +1,8 @@
 import { useCallback, useEffect } from 'react';
 
+import { AsyncState, useAsyncState } from './useAsyncState';
 import { ServerMethods, useMethod } from '../contexts/ServerContext';
 import { useToastMessageDispatch } from '../contexts/ToastMessagesContext';
-import { AsyncState, useAsyncState } from './useAsyncState';
 
 const defaultArgs: unknown[] = [];
 

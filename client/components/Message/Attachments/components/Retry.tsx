@@ -3,8 +3,8 @@ import { Box, Icon } from '@rocket.chat/fuselage';
 import colors from '@rocket.chat/fuselage-tokens/colors';
 import React, { FC, ComponentProps } from 'react';
 
-import { useTranslation } from '../../../../contexts/TranslationContext';
 import ImageBox from './ImageBox';
+import { useTranslation } from '../../../../contexts/TranslationContext';
 
 type RetryProps = ComponentProps<typeof Box> & { retry: () => void };
 

@@ -1,12 +1,12 @@
 import { useDebouncedValue, useResizeObserver } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import FilterByTypeAndText from './FilterByTypeAndText';
+import IntegrationRow from './IntegrationRow';
 import GenericTable from '../../../components/GenericTable';
 import { useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import FilterByTypeAndText from './FilterByTypeAndText';
-import IntegrationRow from './IntegrationRow';
 
 const useQuery = ({ text, type, itemsPerPage, current }, [column, direction]) =>
 	useMemo(

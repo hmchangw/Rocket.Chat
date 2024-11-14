@@ -1,8 +1,8 @@
 import { Box, Icon, Tag } from '@rocket.chat/fuselage';
 import React, { memo, useMemo } from 'react';
 
-import { useRoutePath } from '../../contexts/RouterContext';
 import Sidebar from './Sidebar';
+import { useRoutePath } from '../../contexts/RouterContext';
 
 const NavigationItem = ({
 	permissionGranted,

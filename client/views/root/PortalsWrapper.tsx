@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { useSubscription } from 'use-subscription';
 
-import { portalsSubscription } from '../../lib/portals/portalsSubscription';
 import PortalWrapper from './PortalWrapper';
+import { portalsSubscription } from '../../lib/portals/portalsSubscription';
 
 const PortalsWrapper: FC = () => {
 	const portals = useSubscription(portalsSubscription);

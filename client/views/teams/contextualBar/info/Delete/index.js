@@ -1,13 +1,13 @@
 import { Skeleton } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
+import DeleteTeamModal from './DeleteTeamModal';
+import StepOne from './StepOne';
+import StepTwo from './StepTwo';
 import GenericModal from '../../../../../components/GenericModal';
 import { useTranslation } from '../../../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../../../hooks/useEndpointData';
-import DeleteTeamModal from './DeleteTeamModal';
-import StepOne from './StepOne';
-import StepTwo from './StepTwo';
 
 const DeleteTeamModalWithRooms = ({ teamId, onConfirm, onCancel }) => {
 	const { value, phase } = useEndpointData(

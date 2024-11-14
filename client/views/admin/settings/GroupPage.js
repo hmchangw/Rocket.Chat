@@ -2,6 +2,7 @@ import { Accordion, Box, Button, ButtonGroup } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, memo } from 'react';
 
+import GroupPageSkeleton from './GroupPageSkeleton';
 import Page from '../../../components/Page';
 import {
 	useEditableSettingsDispatch,
@@ -11,7 +12,6 @@ import { useSettingsDispatch, useSettings } from '../../../contexts/SettingsCont
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation, useLoadLanguage } from '../../../contexts/TranslationContext';
 import { useUser } from '../../../contexts/UserContext';
-import GroupPageSkeleton from './GroupPageSkeleton';
 
 function GroupPage({ children, headerButtons, _id, i18nLabel, i18nDescription }) {
 	const changedEditableSettings = useEditableSettings(

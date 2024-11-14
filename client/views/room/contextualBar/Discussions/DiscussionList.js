@@ -3,13 +3,13 @@ import { useResizeObserver, useAutoFocus } from '@rocket.chat/fuselage-hooks';
 import React, { useCallback } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
+import Row from './Row';
+import { withData } from './withData';
 import ScrollableContentWrapper from '../../../../components/ScrollableContentWrapper';
 import VerticalBar from '../../../../components/VerticalBar';
 import { useSetting } from '../../../../contexts/SettingsContext';
 import { useTranslation } from '../../../../contexts/TranslationContext';
 import { goToRoomById } from '../../../../lib/goToRoomById';
-import Row from './Row';
-import { withData } from './withData';
 
 function DiscussionList({
 	total = 10,

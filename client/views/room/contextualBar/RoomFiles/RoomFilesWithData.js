@@ -1,6 +1,9 @@
 import { useMutableCallback, useLocalStorage } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useCallback, useMemo } from 'react';
 
+import RoomFiles from './RoomFiles';
+import { useFilesList } from './hooks/useFilesList';
+import { useMessageDeletionIsAllowed } from './hooks/useMessageDeletionIsAllowed';
 import GenericModal from '../../../../components/GenericModal';
 import { useSetModal } from '../../../../contexts/ModalContext';
 import { useMethod } from '../../../../contexts/ServerContext';
@@ -10,9 +13,6 @@ import { useUserId } from '../../../../contexts/UserContext';
 import { useRecordList } from '../../../../hooks/lists/useRecordList';
 import { AsyncStatePhase } from '../../../../hooks/useAsyncState';
 import { useTabBarClose } from '../../providers/ToolboxProvider';
-import RoomFiles from './RoomFiles';
-import { useFilesList } from './hooks/useFilesList';
-import { useMessageDeletionIsAllowed } from './hooks/useMessageDeletionIsAllowed';
 
 const RoomFilesWithData = ({ rid }) => {
 	const uid = useUserId();

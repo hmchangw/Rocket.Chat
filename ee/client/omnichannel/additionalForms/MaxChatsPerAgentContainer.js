@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { useForm } from '../../../../client/hooks/useForm';
 import MaxChatsPerAgent from './MaxChatsPerAgent';
+import { useForm } from '../../../../client/hooks/useForm';
 
 const MaxChatsPerAgentContainer = ({
 	data: { livechat: { maxNumberSimultaneousChat = '' } = {} } = {},

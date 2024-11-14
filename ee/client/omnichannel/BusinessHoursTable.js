@@ -1,10 +1,10 @@
 import React from 'react';
 
+import BusinessHoursRow from './BusinessHoursRow';
 import FilterByText from '../../../client/components/FilterByText';
 import GenericTable from '../../../client/components/GenericTable';
 import { useTranslation } from '../../../client/contexts/TranslationContext';
 import { useResizeInlineBreakpoint } from '../../../client/hooks/useResizeInlineBreakpoint';
-import BusinessHoursRow from './BusinessHoursRow';
 
 function BusinessHoursTable({ businessHours, totalbusinessHours, params, onChangeParams, reload }) {
 	const t = useTranslation();

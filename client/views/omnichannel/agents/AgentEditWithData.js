@@ -1,11 +1,11 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import AgentEdit from './AgentEdit';
 import { FormSkeleton } from '../../../components/Skeleton';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import AgentEdit from './AgentEdit';
 
 function AgentEditWithData({ uid, reload }) {
 	const t = useTranslation();

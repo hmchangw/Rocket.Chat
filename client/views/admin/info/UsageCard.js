@@ -2,13 +2,13 @@ import { Skeleton, ButtonGroup, Button } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { memo } from 'react';
 
+import TextSeparator from './TextSeparator';
 import { useHasLicense } from '../../../../ee/client/hooks/useHasLicense';
 import Card from '../../../components/Card';
 import { UserStatus } from '../../../components/UserStatus';
 import { useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useFormatMemorySize } from '../../../hooks/useFormatMemorySize';
-import TextSeparator from './TextSeparator';
 
 const UsageCard = memo(function UsageCard({ statistics, isLoading, vertical }) {
 	const s = (fn) => (isLoading ? <Skeleton width='x40' /> : fn());

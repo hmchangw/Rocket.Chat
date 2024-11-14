@@ -2,11 +2,11 @@ import { Table } from '@rocket.chat/fuselage';
 import { useDebouncedValue } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import SendTestButton from './SendTestButton';
 import GenericTable from '../../../components/GenericTable';
 import { useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import SendTestButton from './SendTestButton';
 
 const useQuery = ({ itemsPerPage, current }, [column, direction]) =>
 	useMemo(

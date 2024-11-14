@@ -4,10 +4,10 @@ import colors from '@rocket.chat/fuselage-tokens/colors';
 import React, { FC } from 'react';
 
 import Attachments from '.';
+import Attachment from './Attachment';
 import { MessageQuoteAttachment } from '../../../../definition/IMessage/MessageAttachment/MessageQuoteAttachment';
 import { useTimeAgo } from '../../../hooks/useTimeAgo';
 import MarkdownText from '../../MarkdownText';
-import Attachment from './Attachment';
 
 const hover = css`
 	&:hover,

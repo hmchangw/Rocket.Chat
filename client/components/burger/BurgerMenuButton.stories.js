@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 
-import { centeredDecorator } from '../../../.storybook/decorators';
 import BurgerMenuButton from './BurgerMenuButton';
+import { centeredDecorator } from '../../../.storybook/decorators';
 
 export default {
 	title: 'components/burger/BurgerMenuButton',

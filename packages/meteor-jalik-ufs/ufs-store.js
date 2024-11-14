@@ -118,7 +118,7 @@ export class Store {
 				self.permissions = UploadFS.config.defaultStorePermissions;
 			} else {
 				self.permissions = new StorePermissions();
-				console.warn(`ufs: permissions are not defined for store "${options.name}"`);
+				console.warn(`ufs: permissions are not defined for store "${ options.name }"`);
 			}
 		}
 
@@ -129,7 +129,7 @@ export class Store {
 			 * @param fileId
 			 * @returns {boolean}
 			 */
-			self.checkToken = function (token, fileId) {
+			self.checkToken = function(token, fileId) {
 				check(token, String);
 				check(fileId, String);
 				return Tokens.find({ value: token, fileId }).count() === 1;
@@ -141,7 +141,7 @@ export class Store {
 			 * @param store
 			 * @param callback
 			 */
-			self.copy = function (fileId, store, callback) {
+			self.copy = function(fileId, store, callback) {
 				check(fileId, String);
 
 				if (!(store instanceof Store)) {
@@ -172,7 +172,7 @@ export class Store {
 				// Catch errors to avoid app crashing
 				rs.on(
 					'error',
-					Meteor.bindEnvironment(function (err) {
+					Meteor.bindEnvironment(function(err) {
 						callback.call(self, err, null);
 					}),
 				);
@@ -181,7 +181,7 @@ export class Store {
 				store.write(
 					rs,
 					copyId,
-					Meteor.bindEnvironment(function (err) {
+					Meteor.bindEnvironment(function(err) {
 						if (err) {
 							self.getCollection().remove({ _id: copyId });
 							self.onCopyError.call(self, err, fileId, file);
@@ -199,7 +199,7 @@ export class Store {
 			 * @param callback
 			 * @return {string}
 			 */
-			self.create = function (file, callback) {
+			self.create = function(file, callback) {
 				check(file, Object);
 				file.store = self.options.name; // assign store to file
 				return self.getCollection().insert(file, callback);
@@ -210,7 +210,7 @@ export class Store {
 			 * @param fileId
 			 * @returns {*}
 			 */
-			self.createToken = function (fileId) {
+			self.createToken = function(fileId) {
 				const token = self.generateToken();
 
 				// Check if token exists
@@ -240,33 +240,33 @@ export class Store {
 			 * @param fileId
 			 * @param callback
 			 */
-			self.write = function (rs, fileId, callback) {
+			self.write = function(rs, fileId, callback) {
 				const file = self.getCollection().findOne({ _id: fileId });
 
-				const errorHandler = Meteor.bindEnvironment(function (err) {
+				const errorHandler = Meteor.bindEnvironment(function(err) {
 					self.onWriteError.call(self, err, fileId, file);
 					callback.call(self, err);
 				});
 
-				const finishHandler = Meteor.bindEnvironment(function () {
+				const finishHandler = Meteor.bindEnvironment(function() {
 					let size = 0;
 					const readStream = self.getReadStream(fileId, file);
 
 					readStream.on(
 						'error',
-						Meteor.bindEnvironment(function (error) {
+						Meteor.bindEnvironment(function(error) {
 							callback.call(self, error, null);
 						}),
 					);
 					readStream.on(
 						'data',
-						Meteor.bindEnvironment(function (data) {
+						Meteor.bindEnvironment(function(data) {
 							size += data.length;
 						}),
 					);
 					readStream.on(
 						'end',
-						Meteor.bindEnvironment(function () {
+						Meteor.bindEnvironment(function() {
 							if (file.complete) {
 								return;
 							}
@@ -342,7 +342,7 @@ export class Store {
 			const collection = self.getCollection();
 
 			// Code executed after removing file
-			collection.after.remove(function (userId, file) {
+			collection.after.remove(function(userId, file) {
 				// Remove associated tokens
 				Tokens.remove({ fileId: file._id });
 
@@ -355,21 +355,21 @@ export class Store {
 			});
 
 			// Code executed before inserting file
-			collection.before.insert(function (userId, file) {
+			collection.before.insert(function(userId, file) {
 				if (!self.permissions.checkInsert(userId, file)) {
 					throw new Meteor.Error('forbidden', 'Forbidden');
 				}
 			});
 
 			// Code executed before updating file
-			collection.before.update(function (userId, file, fields, modifiers) {
+			collection.before.update(function(userId, file, fields, modifiers) {
 				if (!self.permissions.checkUpdate(userId, file, fields, modifiers)) {
 					throw new Meteor.Error('forbidden', 'Forbidden');
 				}
 			});
 
 			// Code executed before removing file
-			collection.before.remove(function (userId, file) {
+			collection.before.remove(function(userId, file) {
 				if (!self.permissions.checkRemove(userId, file)) {
 					throw new Meteor.Error('forbidden', 'Forbidden');
 				}
@@ -381,9 +381,9 @@ export class Store {
 
 				// Delete the temp file
 				fs.stat(tmpFile, (err) => {
-					!err &&
-						fs.unlink(tmpFile, (err2) => {
-							err2 && console.error(`ufs: cannot delete temp file at ${tmpFile} (${err2.message})`);
+					!err
+						&& fs.unlink(tmpFile, (err2) => {
+							err2 && console.error(`ufs: cannot delete temp file at ${ tmpFile } (${ err2.message })`);
 						});
 				});
 			});
@@ -430,7 +430,7 @@ export class Store {
 	 */
 	getFileRelativeURL(fileId) {
 		const file = this.getCollection().findOne(fileId, { fields: { name: 1 } });
-		return file ? this.getRelativeURL(`${fileId}/${file.name}`) : null;
+		return file ? this.getRelativeURL(`${ fileId }/${ file.name }`) : null;
 	}
 
 	/**
@@ -440,7 +440,7 @@ export class Store {
 	 */
 	getFileURL(fileId) {
 		const file = this.getCollection().findOne(fileId, { fields: { name: 1 } });
-		return file ? this.getURL(`${fileId}/${file.name}`) : null;
+		return file ? this.getURL(`${ fileId }/${ file.name }`) : null;
 	}
 
 	/**
@@ -479,7 +479,7 @@ export class Store {
 		const rootPath = rootUrl.replace(/^[a-z]+:\/\/[^/]+\/*/gi, '');
 		const storeName = this.getName();
 		path = String(path).replace(/\/$/, '').trim();
-		return encodeURI(`${rootPath}/${UploadFS.config.storesPath}/${storeName}/${path}`);
+		return encodeURI(`${ rootPath }/${ UploadFS.config.storesPath }/${ storeName }/${ path }`);
 	}
 
 	/**
@@ -491,7 +491,7 @@ export class Store {
 		const rootUrl = Meteor.absoluteUrl({ secure: UploadFS.config.https }).replace(/\/+$/, '');
 		const storeName = this.getName();
 		path = String(path).replace(/\/$/, '').trim();
-		return encodeURI(`${rootUrl}/${UploadFS.config.storesPath}/${storeName}/${path}`);
+		return encodeURI(`${ rootUrl }/${ UploadFS.config.storesPath }/${ storeName }/${ path }`);
 	}
 
 	/**
@@ -522,7 +522,7 @@ export class Store {
 	 */
 	// eslint-disable-next-line no-unused-vars
 	onCopyError(err, fileId, file) {
-		console.error(`ufs: cannot copy file "${fileId}" (${err.message})`, err);
+		console.error(`ufs: cannot copy file "${ fileId }" (${ err.message })`, err);
 	}
 
 	/**
@@ -554,7 +554,7 @@ export class Store {
 	 */
 	// eslint-disable-next-line no-unused-vars
 	onReadError(err, fileId, file) {
-		console.error(`ufs: cannot read file "${fileId}" (${err.message})`, err);
+		console.error(`ufs: cannot read file "${ fileId }" (${ err.message })`, err);
 	}
 
 	/**
@@ -573,7 +573,7 @@ export class Store {
 	 */
 	// eslint-disable-next-line no-unused-vars
 	onWriteError(err, fileId, file) {
-		console.error(`ufs: cannot write file "${fileId}" (${err.message})`, err);
+		console.error(`ufs: cannot write file "${ fileId }" (${ err.message })`, err);
 	}
 
 	/**

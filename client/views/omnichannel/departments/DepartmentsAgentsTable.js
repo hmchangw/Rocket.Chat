@@ -1,10 +1,10 @@
 import { useMediaQuery } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useEffect } from 'react';
 
-import GenericTable from '../../../components/GenericTable';
-import { useTranslation } from '../../../contexts/TranslationContext';
 import AddAgent from './AddAgent';
 import AgentRow from './AgentRow';
+import GenericTable from '../../../components/GenericTable';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 function DepartmentsAgentsTable({ agents, setAgentListFinal }) {
 	const t = useTranslation();

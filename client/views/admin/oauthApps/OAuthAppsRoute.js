@@ -1,8 +1,8 @@
 import React from 'react';
 
+import OAuthAppsPage from './OAuthAppsPage';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import { usePermission } from '../../../contexts/AuthorizationContext';
-import OAuthAppsPage from './OAuthAppsPage';
 
 export default function MailerRoute() {
 	const canAccessOAuthApps = usePermission('manage-oauth-apps');

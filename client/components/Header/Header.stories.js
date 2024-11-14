@@ -1,12 +1,12 @@
 import React from 'react';
 
+import Header from './Header';
 import { SettingsContext } from '../../contexts/SettingsContext';
 import { useRoomIcon } from '../../hooks/useRoomIcon';
 import ToolBox from '../../views/room/Header/ToolBox';
 import { addAction } from '../../views/room/lib/Toolbox';
 import ToolboxProvider from '../../views/room/providers/ToolboxProvider';
 import RoomAvatar from '../avatar/RoomAvatar';
-import Header from './Header';
 
 export default {
 	title: 'room/Header',

@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 
-import { useTranslation } from '../../../../contexts/TranslationContext';
-import { useTimeAgo } from '../../../../hooks/useTimeAgo';
-import { clickableItem } from '../../../../lib/clickableItem';
 import DiscussionListMessage from './components/Message';
 import { mapProps } from './mapProps';
 import { normalizeThreadMessage } from './normalizeThreadMessage';
+import { useTranslation } from '../../../../contexts/TranslationContext';
+import { useTimeAgo } from '../../../../hooks/useTimeAgo';
+import { clickableItem } from '../../../../lib/clickableItem';
 
 const Discussion = memo(mapProps(clickableItem(DiscussionListMessage)));
 

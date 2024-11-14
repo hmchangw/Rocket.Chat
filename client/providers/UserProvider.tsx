@@ -1,13 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useMemo, FC } from 'react';
 
+import { createReactiveSubscriptionFactory } from './createReactiveSubscriptionFactory';
 import { Subscriptions, Rooms } from '../../app/models/client';
 import { getUserPreference } from '../../app/utils/client';
 import { IRoom } from '../../definition/IRoom';
 import { ISubscription } from '../../definition/ISubscription';
 import { UserContext } from '../contexts/UserContext';
 import { useReactiveValue } from '../hooks/useReactiveValue';
-import { createReactiveSubscriptionFactory } from './createReactiveSubscriptionFactory';
 
 const getUserId = (): string | null => Meteor.userId();
 

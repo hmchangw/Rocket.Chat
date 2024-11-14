@@ -1,8 +1,8 @@
 import { Session } from 'meteor/session';
 import React, { FC } from 'react';
 
-import { SessionContext } from '../contexts/SessionContext';
 import { createReactiveSubscriptionFactory } from './createReactiveSubscriptionFactory';
+import { SessionContext } from '../contexts/SessionContext';
 
 const contextValue = {
 	query: createReactiveSubscriptionFactory<unknown>((name) => Session.get(name)),

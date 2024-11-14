@@ -1,13 +1,13 @@
 import { useDebouncedValue } from '@rocket.chat/fuselage-hooks';
 import React, { useState, useContext } from 'react';
 
+import { AppsContext } from './AppsContext';
+import MarketplaceRow from './MarketplaceRow';
+import { useFilteredApps } from './hooks/useFilteredApps';
 import FilterByText from '../../../components/FilterByText';
 import GenericTable from '../../../components/GenericTable';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useResizeInlineBreakpoint } from '../../../hooks/useResizeInlineBreakpoint';
-import { AppsContext } from './AppsContext';
-import MarketplaceRow from './MarketplaceRow';
-import { useFilteredApps } from './hooks/useFilteredApps';
 
 const filterFunction = (text) => ({ name, marketplace }) =>
 	marketplace !== false && name.toLowerCase().indexOf(text.toLowerCase()) > -1;

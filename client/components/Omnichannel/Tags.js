@@ -3,12 +3,12 @@ import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useState } from 'react';
 import { useSubscription } from 'use-subscription';
 
+import { FormSkeleton } from './Skeleton';
 import { useToastMessageDispatch } from '../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../hooks/useAsyncState';
 import { useEndpointData } from '../../hooks/useEndpointData';
 import { formsSubscription } from '../../views/omnichannel/additionalForms';
-import { FormSkeleton } from './Skeleton';
 
 const Tags = ({ tags = [], handler = () => {}, error = '', tagRequired = false }) => {
 	const { value: tagsResult = [], phase: stateTags } = useEndpointData('livechat/tags.list');

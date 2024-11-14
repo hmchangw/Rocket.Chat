@@ -1,13 +1,13 @@
 import { Tabs } from '@rocket.chat/fuselage';
 import React, { useEffect, useCallback } from 'react';
 
+import ChannelsTab from './ChannelsTab';
+import TeamsTab from './TeamsTab';
+import UserTab from './UserTab';
 import Page from '../../components/Page';
 import { useCurrentRoute, useRoute, useRouteParameter } from '../../contexts/RouterContext';
 import { useSetting } from '../../contexts/SettingsContext';
 import { useTranslation } from '../../contexts/TranslationContext';
-import ChannelsTab from './ChannelsTab';
-import TeamsTab from './TeamsTab';
-import UserTab from './UserTab';
 
 function DirectoryPage() {
 	const t = useTranslation();

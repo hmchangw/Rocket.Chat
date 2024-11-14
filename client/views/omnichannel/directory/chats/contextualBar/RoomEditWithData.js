@@ -1,11 +1,11 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import VisitorData from './VisitorData';
 import { useTranslation } from '../../../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../../../hooks/useEndpointData';
 import { FormSkeleton } from '../../Skeleton';
-import VisitorData from './VisitorData';
 
 function RoomEditWithData({ id, reload, reloadInfo, close }) {
 	const t = useTranslation();

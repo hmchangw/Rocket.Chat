@@ -1,15 +1,15 @@
 import { Skeleton } from '@rocket.chat/fuselage';
 import React, { useEffect, useCallback } from 'react';
 
+import LeaveTeamModal from './LeaveTeamModal';
+import StepOne from './StepOne';
+import StepTwo from './StepTwo';
 import GenericModal from '../../../../../components/GenericModal';
 import { useEndpoint } from '../../../../../contexts/ServerContext';
 import { useTranslation } from '../../../../../contexts/TranslationContext';
 import { useUserId } from '../../../../../contexts/UserContext';
 import { useAsyncState } from '../../../../../hooks/useAsyncState';
 import { AsyncStatePhase } from '../../../../../lib/asyncState';
-import LeaveTeamModal from './LeaveTeamModal';
-import StepOne from './StepOne';
-import StepTwo from './StepTwo';
 
 const LeaveTeamModalWithRooms = ({ teamId, onCancel, onConfirm }) => {
 	const t = useTranslation();

@@ -1,12 +1,12 @@
 import { Field, TextInput, Box, Icon, Margins, Button, ButtonGroup } from '@rocket.chat/fuselage';
 import React, { useState, useCallback } from 'react';
 
+import { validate, createSoundData } from './lib';
 import VerticalBar from '../../../components/VerticalBar';
 import { useMethod } from '../../../contexts/ServerContext';
 import { useToastMessageDispatch } from '../../../contexts/ToastMessagesContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useFileInput } from '../../../hooks/useFileInput';
-import { validate, createSoundData } from './lib';
 
 function AddCustomSound({ goToNew, close, onChange, ...props }) {
 	const t = useTranslation();

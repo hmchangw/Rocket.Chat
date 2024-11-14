@@ -1,15 +1,15 @@
 import { Box } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import { FormSkeleton } from './Skeleton';
+import Chat from './chats/Chat';
+import ChatInfoDirectory from './chats/contextualBar/ChatInfoDirectory';
+import RoomEditWithData from './chats/contextualBar/RoomEditWithData';
 import VerticalBar from '../../../components/VerticalBar';
 import { useRoute, useRouteParameter } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { AsyncStatePhase } from '../../../hooks/useAsyncState';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import { FormSkeleton } from './Skeleton';
-import Chat from './chats/Chat';
-import ChatInfoDirectory from './chats/contextualBar/ChatInfoDirectory';
-import RoomEditWithData from './chats/contextualBar/RoomEditWithData';
 
 const ChatsContextualBar = ({ chatReload }) => {
 	const directoryRoute = useRoute('omnichannel-directory');

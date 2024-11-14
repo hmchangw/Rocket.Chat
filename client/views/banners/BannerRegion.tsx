@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { useSubscription } from 'use-subscription';
 
-import * as banners from '../../lib/banners';
 import LegacyBanner from './LegacyBanner';
 import UiKitBanner from './UiKitBanner';
+import * as banners from '../../lib/banners';
 
 const BannerRegion: FC = () => {
 	const payload = useSubscription(banners.firstSubscription);

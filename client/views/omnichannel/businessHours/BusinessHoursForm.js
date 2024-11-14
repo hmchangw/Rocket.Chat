@@ -1,8 +1,8 @@
 import { Field, MultiSelect } from '@rocket.chat/fuselage';
 import React, { useMemo } from 'react';
 
-import { useTranslation } from '../../../contexts/TranslationContext';
 import TimeRangeFieldsAssembler from './TimeRangeFieldsAssembler';
+import { useTranslation } from '../../../contexts/TranslationContext';
 
 export const DAYS_OF_WEEK = [
 	'Monday',

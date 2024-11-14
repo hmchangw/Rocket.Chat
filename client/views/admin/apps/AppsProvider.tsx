@@ -1,11 +1,11 @@
 import { AppStatus } from '@rocket.chat/apps-engine/definition/AppStatus';
 import React, { useEffect, useRef, useState, FC } from 'react';
 
-import { AppEvents } from '../../../../app/apps/client/communication';
-import { Apps } from '../../../../app/apps/client/orchestrator';
 import { AppsContext } from './AppsContext';
 import { handleAPIError } from './helpers';
 import { App } from './types';
+import { AppEvents } from '../../../../app/apps/client/communication';
+import { Apps } from '../../../../app/apps/client/orchestrator';
 
 type ListenersMapping = {
 	readonly [P in keyof typeof AppEvents]?: (...args: any[]) => void;

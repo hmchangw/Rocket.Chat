@@ -2,13 +2,13 @@ import { ButtonGroup, Button, Icon, TextInput } from '@rocket.chat/fuselage';
 import { useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { memo, useState } from 'react';
 
-import VerticalBar from '../../../../client/components/VerticalBar';
-import { useTranslation } from '../../../../client/contexts/TranslationContext';
 import CannedResponseAdd from './CannedResponseAdd';
 import CannedResponseDetails from './CannedResponseDetails';
 import CannedResponseEdit from './CannedResponseEdit';
 import CannedResponsesList from './CannedResponsesList';
 import { withData } from './withData';
+import VerticalBar from '../../../../client/components/VerticalBar';
+import { useTranslation } from '../../../../client/contexts/TranslationContext';
 
 const PAGES = {
 	List: 'list',

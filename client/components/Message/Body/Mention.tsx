@@ -1,8 +1,8 @@
 import { UserMention as ASTUserMention } from '@rocket.chat/message-parser';
 import React, { FC, memo } from 'react';
 
-import { useUserId } from '../../../contexts/UserContext';
 import { UserMention } from './definitions/UserMention';
+import { useUserId } from '../../../contexts/UserContext';
 
 const Mention: FC<{ value: ASTUserMention['value']; mentions: UserMention[] }> = ({
 	value: { value: mention },

@@ -1,9 +1,9 @@
 import { Table } from '@rocket.chat/fuselage';
 import React, { memo, useMemo } from 'react';
 
+import RemoveBusinessHourButton from './RemoveBusinessHourButton';
 import { useRoute } from '../../../client/contexts/RouterContext';
 import { useTranslation } from '../../../client/contexts/TranslationContext';
-import RemoveBusinessHourButton from './RemoveBusinessHourButton';
 
 function BusinessHoursRow(props) {
 	const { _id, name, timezone, workHours, active, type, reload } = props;

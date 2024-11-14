@@ -1,13 +1,13 @@
 import { Button, Icon } from '@rocket.chat/fuselage';
 import React from 'react';
 
+import EditOauthAppWithData from './EditOauthAppWithData';
+import OAuthAddApp from './OAuthAddApp';
+import OAuthAppsTable from './OAuthAppsTable';
 import Page from '../../../components/Page';
 // import VerticalBar from '../../components/VerticalBar';
 import { useRouteParameter, useRoute } from '../../../contexts/RouterContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
-import EditOauthAppWithData from './EditOauthAppWithData';
-import OAuthAddApp from './OAuthAddApp';
-import OAuthAppsTable from './OAuthAppsTable';
 
 export function OAuthAppsPage() {
 	const t = useTranslation();

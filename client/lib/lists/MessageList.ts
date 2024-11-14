@@ -1,5 +1,5 @@
-import type { IMessage } from '../../../definition/IMessage';
 import { RecordList } from './RecordList';
+import type { IMessage } from '../../../definition/IMessage';
 
 export class MessageList extends RecordList<IMessage> {
 	protected filter(message: IMessage): boolean {

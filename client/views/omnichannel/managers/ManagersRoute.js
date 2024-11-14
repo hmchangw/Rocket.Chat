@@ -2,14 +2,14 @@ import { Box, Table } from '@rocket.chat/fuselage';
 import { useDebouncedValue, useMediaQuery, useMutableCallback } from '@rocket.chat/fuselage-hooks';
 import React, { useMemo, useCallback, useState } from 'react';
 
+import ManagersPage from './ManagersPage';
+import RemoveManagerButton from './RemoveManagerButton';
 import GenericTable from '../../../components/GenericTable';
 import NotAuthorizedPage from '../../../components/NotAuthorizedPage';
 import UserAvatar from '../../../components/avatar/UserAvatar';
 import { usePermission } from '../../../contexts/AuthorizationContext';
 import { useTranslation } from '../../../contexts/TranslationContext';
 import { useEndpointData } from '../../../hooks/useEndpointData';
-import ManagersPage from './ManagersPage';
-import RemoveManagerButton from './RemoveManagerButton';
 
 const sortDir = (sortDir) => (sortDir === 'asc' ? 1 : -1);
 

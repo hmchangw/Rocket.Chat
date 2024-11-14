@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
-import { useTranslation } from '../../contexts/TranslationContext';
 import Sidebar from './Sidebar';
+import { useTranslation } from '../../contexts/TranslationContext';
 
 const ItemsAssembler = ({ items, currentPath }) => {
 	const t = useTranslation();
