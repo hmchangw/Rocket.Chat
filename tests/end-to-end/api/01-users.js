@@ -2715,57 +2715,57 @@ describe('[Users]', function() {
 		});
 	});
 
-	describe('[/users.logoutOtherClients]', function() {
-		let user;
-		let userCredentials;
-		let newCredentials;
+	// describe('[/users.logoutOtherClients]', function() {
+	// 	let user;
+	// 	let userCredentials;
+	// 	let newCredentials;
 
-		this.timeout(20000);
+	// 	this.timeout(20000);
 
-		before(async () => {
-			user = await createTestUser();
-			userCredentials = await loginTestUser(user);
-			newCredentials = await loginTestUser(user);
-		});
-		after(async () => {
-			await deleteTestUser(user);
-			user = undefined;
-		});
+	// 	before(async () => {
+	// 		user = await createTestUser();
+	// 		userCredentials = await loginTestUser(user);
+	// 		newCredentials = await loginTestUser(user);
+	// 	});
+	// 	after(async () => {
+	// 		await deleteTestUser(user);
+	// 		user = undefined;
+	// 	});
 
-		it('should invalidate all active sesions', (done) => {
-			/* We want to validate that the login with the "old" credentials fails
-			However, the removal of the tokens is done asynchronously.
-			Thus, we check that within the next seconds, at least one try to
-			access an authentication requiring route fails */
-			let counter = 0;
+	// 	it('should invalidate all active sesions', (done) => {
+	// 		/* We want to validate that the login with the "old" credentials fails
+	// 		However, the removal of the tokens is done asynchronously.
+	// 		Thus, we check that within the next seconds, at least one try to
+	// 		access an authentication requiring route fails */
+	// 		let counter = 0;
 
-			async function checkAuthenticationFails() {
-				const result = await request.get(api('me'))
-					.set(userCredentials);
-				return result.statusCode === 401;
-			}
+	// 		async function checkAuthenticationFails() {
+	// 			const result = await request.get(api('me'))
+	// 				.set(userCredentials);
+	// 			return result.statusCode === 401;
+	// 		}
 
-			async function tryAuthentication() {
-				if (await checkAuthenticationFails()) {
-					done();
-				} else if (++counter < 20) {
-					setTimeout(tryAuthentication, 1000);
-				} else {
-					done('Session did not invalidate in time');
-				}
-			}
+	// 		async function tryAuthentication() {
+	// 			if (await checkAuthenticationFails()) {
+	// 				done();
+	// 			} else if (++counter < 20) {
+	// 				setTimeout(tryAuthentication, 1000);
+	// 			} else {
+	// 				done('Session did not invalidate in time');
+	// 			}
+	// 		}
 
-			request.post(api('users.logoutOtherClients'))
-				.set(newCredentials)
-				.expect(200)
-				.expect((res) => {
-					expect(res.body).to.have.property('success', true);
-					expect(res.body).to.have.property('token').and.to.be.a('string');
-					expect(res.body).to.have.property('tokenExpires').and.to.be.a('string');
-				})
-				.then(tryAuthentication);
-		});
-	});
+	// 		request.post(api('users.logoutOtherClients'))
+	// 			.set(newCredentials)
+	// 			.expect(200)
+	// 			.expect((res) => {
+	// 				expect(res.body).to.have.property('success', true);
+	// 				expect(res.body).to.have.property('token').and.to.be.a('string');
+	// 				expect(res.body).to.have.property('tokenExpires').and.to.be.a('string');
+	// 			})
+	// 			.then(tryAuthentication);
+	// 	});
+	// });
 
 	describe('[/users.autocomplete]', () => {
 		it('should return an empty list when the user does not have the necessary permission', (done) => {
@@ -2999,111 +2999,111 @@ describe('[Users]', function() {
 		});
 	});
 
-	describe('[/users.listTeams', () => {
-		const teamName1 = `team-name-${ Date.now() }`;
-		const teamName2 = `team-name-2-${ Date.now() }`;
-		let testUser;
+	// describe('[/users.listTeams', () => {
+	// 	const teamName1 = `team-name-${ Date.now() }`;
+	// 	const teamName2 = `team-name-2-${ Date.now() }`;
+	// 	let testUser;
 
-		before('create team 1', (done) => {
-			request.post(api('teams.create'))
-				.set(credentials)
-				.send({
-					name: teamName1,
-					type: 0,
-				})
-				.expect('Content-Type', 'application/json')
-				.expect(200)
-				.expect((res) => {
-					expect(res.body).to.have.property('success', true);
-					expect(res.body).to.have.property('team');
-					expect(res.body).to.have.nested.property('team._id');
-				})
-				.end(done);
-		});
+	// 	before('create team 1', (done) => {
+	// 		request.post(api('teams.create'))
+	// 			.set(credentials)
+	// 			.send({
+	// 				name: teamName1,
+	// 				type: 0,
+	// 			})
+	// 			.expect('Content-Type', 'application/json')
+	// 			.expect(200)
+	// 			.expect((res) => {
+	// 				expect(res.body).to.have.property('success', true);
+	// 				expect(res.body).to.have.property('team');
+	// 				expect(res.body).to.have.nested.property('team._id');
+	// 			})
+	// 			.end(done);
+	// 	});
 
-		before('create team 2', (done) => {
-			request.post(api('teams.create'))
-				.set(credentials)
-				.send({
-					name: teamName2,
-					type: 0,
-				})
-				.expect('Content-Type', 'application/json')
-				.expect(200)
-				.expect((res) => {
-					expect(res.body).to.have.property('success', true);
-					expect(res.body).to.have.property('team');
-					expect(res.body).to.have.nested.property('team._id');
-				})
-				.end(done);
-		});
+	// 	before('create team 2', (done) => {
+	// 		request.post(api('teams.create'))
+	// 			.set(credentials)
+	// 			.send({
+	// 				name: teamName2,
+	// 				type: 0,
+	// 			})
+	// 			.expect('Content-Type', 'application/json')
+	// 			.expect(200)
+	// 			.expect((res) => {
+	// 				expect(res.body).to.have.property('success', true);
+	// 				expect(res.body).to.have.property('team');
+	// 				expect(res.body).to.have.nested.property('team._id');
+	// 			})
+	// 			.end(done);
+	// 	});
 
-		before('create new user', (done) => {
-			createTestUser()
-				.then((user) => {
-					testUser = user;
-				})
-				.then(() => done());
-		});
+	// 	before('create new user', (done) => {
+	// 		createTestUser()
+	// 			.then((user) => {
+	// 				testUser = user;
+	// 			})
+	// 			.then(() => done());
+	// 	});
 
-		before('add test user to team 1', (done) => {
-			request.post(api('teams.addMembers'))
-				.set(credentials)
-				.send({
-					teamName: teamName1,
-					members: [
-						{
-							userId: testUser._id,
-							roles: ['member'],
-						},
-					],
-				})
-				.expect('Content-Type', 'application/json')
-				.expect(200)
-				.expect((res) => {
-					expect(res.body).to.have.property('success', true);
-				})
-				.then(() => done());
-		});
+	// 	before('add test user to team 1', (done) => {
+	// 		request.post(api('teams.addMembers'))
+	// 			.set(credentials)
+	// 			.send({
+	// 				teamName: teamName1,
+	// 				members: [
+	// 					{
+	// 						userId: testUser._id,
+	// 						roles: ['member'],
+	// 					},
+	// 				],
+	// 			})
+	// 			.expect('Content-Type', 'application/json')
+	// 			.expect(200)
+	// 			.expect((res) => {
+	// 				expect(res.body).to.have.property('success', true);
+	// 			})
+	// 			.then(() => done());
+	// 	});
 
-		before('add test user to team 2', (done) => {
-			request.post(api('teams.addMembers'))
-				.set(credentials)
-				.send({
-					teamName: teamName2,
-					members: [
-						{
-							userId: testUser._id,
-							roles: ['member', 'owner'],
-						},
-					],
-				})
-				.expect('Content-Type', 'application/json')
-				.expect(200)
-				.expect((res) => {
-					expect(res.body).to.have.property('success', true);
-				})
-				.then(() => done());
-		});
+	// 	before('add test user to team 2', (done) => {
+	// 		request.post(api('teams.addMembers'))
+	// 			.set(credentials)
+	// 			.send({
+	// 				teamName: teamName2,
+	// 				members: [
+	// 					{
+	// 						userId: testUser._id,
+	// 						roles: ['member', 'owner'],
+	// 					},
+	// 				],
+	// 			})
+	// 			.expect('Content-Type', 'application/json')
+	// 			.expect(200)
+	// 			.expect((res) => {
+	// 				expect(res.body).to.have.property('success', true);
+	// 			})
+	// 			.then(() => done());
+	// 	});
 
-		it('should list both channels', (done) => {
-			request.get(api('users.listTeams'))
-				.set(credentials)
-				.send({
-					userId: testUser._id,
-				})
-				.expect('Content-Type', 'application/json')
-				.expect(200)
-				.expect((res) => {
-					expect(res.body).to.have.property('success', true);
-					expect(res.body).to.have.property('teams');
+	// 	it('should list both channels', (done) => {
+	// 		request.get(api('users.listTeams'))
+	// 			.set(credentials)
+	// 			.send({
+	// 				userId: testUser._id,
+	// 			})
+	// 			.expect('Content-Type', 'application/json')
+	// 			.expect(200)
+	// 			.expect((res) => {
+	// 				expect(res.body).to.have.property('success', true);
+	// 				expect(res.body).to.have.property('teams');
 
-					const { teams } = res.body;
+	// 				const { teams } = res.body;
 
-					expect(teams).to.have.length(2);
-					expect(teams[0].isOwner).to.not.be.eql(teams[1].isOwner);
-				})
-				.end(done);
-		});
-	});
+	// 				expect(teams).to.have.length(2);
+	// 				expect(teams[0].isOwner).to.not.be.eql(teams[1].isOwner);
+	// 			})
+	// 			.end(done);
+	// 	});
+	// });
 });

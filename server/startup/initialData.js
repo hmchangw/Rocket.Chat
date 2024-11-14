@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import _ from 'underscore';
+import colors from 'colors/safe';
 
 import { RocketChatFile } from '../../app/file';
 import { FileUpload } from '../../app/file-upload';
@@ -64,7 +65,7 @@ Meteor.startup(function() {
 					adminUser.name = process.env.ADMIN_NAME;
 				}
 
-				console.log(`Name: ${ adminUser.name }`.green);
+				console.log(colors.green(`Name: ${ adminUser.name }`));
 
 				if (process.env.ADMIN_EMAIL) {
 					const re = /^[^@].*@[^@]+$/i;
@@ -76,12 +77,12 @@ Meteor.startup(function() {
 								verified: process.env.ADMIN_EMAIL_VERIFIED === 'true',
 							}];
 
-							console.log(`Email: ${ process.env.ADMIN_EMAIL }`.green);
+							console.log(olors.green(`Email: ${ process.env.ADMIN_EMAIL }`));
 						} else {
-							console.log('Email provided already exists; Ignoring environment variables ADMIN_EMAIL'.red);
+							console.log(colors.red('Email provided already exists; Ignoring environment variables ADMIN_EMAIL'));
 						}
 					} else {
-						console.log('Email provided is invalid; Ignoring environment variables ADMIN_EMAIL'.red);
+						console.log(colors.red('Email provided is invalid; Ignoring environment variables ADMIN_EMAIL'));
 					}
 				}
 
@@ -98,14 +99,14 @@ Meteor.startup(function() {
 						if (checkUsernameAvailability(process.env.ADMIN_USERNAME)) {
 							adminUser.username = process.env.ADMIN_USERNAME;
 						} else {
-							console.log('Username provided already exists; Ignoring environment variables ADMIN_USERNAME'.red);
+							console.log(colors.red('Username provided already exists; Ignoring environment variables ADMIN_USERNAME'));
 						}
 					} else {
-						console.log('Username provided is invalid; Ignoring environment variables ADMIN_USERNAME'.red);
+						console.log(colors.red('Username provided is invalid; Ignoring environment variables ADMIN_USERNAME'));
 					}
 				}
 
-				console.log(`Username: ${ adminUser.username }`.green);
+				console.log(colors.green(`Username: ${ adminUser.username }`));
 
 				adminUser.type = 'user';
 
@@ -115,7 +116,7 @@ Meteor.startup(function() {
 
 				addUserRoles(id, 'admin');
 			} else {
-				console.log('Users with admin role already exist; Ignoring environment variables ADMIN_PASS'.red);
+				console.log(colors.red('Users with admin role already exist; Ignoring environment variables ADMIN_PASS'));
 			}
 		}
 
@@ -124,14 +125,14 @@ Meteor.startup(function() {
 				const initialUser = JSON.parse(process.env.INITIAL_USER);
 
 				if (!initialUser._id) {
-					console.log('No _id provided; Ignoring environment variable INITIAL_USER'.red);
+					console.log(colors.red('No _id provided; Ignoring environment variable INITIAL_USER'));
 				} else if (!Users.findOneById(initialUser._id)) {
-					console.log('Inserting initial user:'.green);
-					console.log(JSON.stringify(initialUser, null, 2).green);
+					console.log(colors.green('Inserting initial user:'));
+					console.log(colors.green(JSON.stringify(initialUser, null, 2)));
 					Users.create(initialUser);
 				}
 			} catch (e) {
-				console.log('Error processing environment variable INITIAL_USER'.red, e);
+				console.log(colors.red('Error processing environment variable INITIAL_USER'), e);
 			}
 		}
 
@@ -154,7 +155,7 @@ Meteor.startup(function() {
 		Users.removeById('rocketchat.internal.admin.test');
 
 		if (process.env.TEST_MODE === 'true') {
-			console.log('Inserting admin test user:'.green);
+			console.log(colors.green('Inserting admin test user:'));
 
 			const adminUser = {
 				_id: 'rocketchat.internal.admin.test',
@@ -173,10 +174,10 @@ Meteor.startup(function() {
 				type: 'user',
 			};
 
-			console.log(`Name: ${ adminUser.name }`.green);
-			console.log(`Email: ${ adminUser.emails[0].address }`.green);
-			console.log(`Username: ${ adminUser.username }`.green);
-			console.log(`Password: ${ adminUser._id }`.green);
+			console.log(colors.green(`Name: ${ adminUser.name }`));
+			console.log(colors.green(`Email: ${ adminUser.emails[0].address }`));
+			console.log(colors.green(`Username: ${ adminUser.username }`));
+			console.log(colors.green(`Password: ${ adminUser._id }`));
 
 			if (Users.findOneByEmailAddress(adminUser.emails[0].address)) {
 				throw new Meteor.Error(`Email ${ adminUser.emails[0].address } already exists`, 'Rocket.Chat can\'t run in test mode');

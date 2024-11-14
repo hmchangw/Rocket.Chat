@@ -1,7 +1,6 @@
 import { Accounts } from 'meteor/accounts-base';
 import { UserPresence } from 'meteor/konecty:user-presence';
 import { Meteor } from 'meteor/meteor';
-import { TimeSync } from 'meteor/mizzao:timesync';
 import { Session } from 'meteor/session';
 import { Tracker } from 'meteor/tracker';
 import toastr from 'toastr';
@@ -28,8 +27,6 @@ Meteor.startup(() => {
 	fireGlobalEvent('startup', true);
 
 	Accounts.onLogout(() => Session.set('openedRoom', null));
-
-	TimeSync.loggingEnabled = false;
 
 	Session.setDefault('AvatarRandom', 0);
 

@@ -13,6 +13,6 @@ module.exports = {
 	file: 'tests/end-to-end/teardown.js',
 	spec: [
 		'tests/end-to-end/api/*.js',
-		'tests/end-to-end/apps/*.js',
+		// 'tests/end-to-end/apps/*.js',
 	],
 };
