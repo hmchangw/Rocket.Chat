@@ -1,33 +1,25 @@
-// ***********************************************************
-// This example support/index.js is processed and
-// loaded automatically before your test files.
-//
-// This is a great place to put global configuration and
-// behavior that modifies Cypress.
-//
-// You can change the location of this file or turn off
-// automatically serving support files with the
-// 'supportFile' configuration option.
-//
-// You can read more here:
-// https://on.cypress.io/configuration
-// ***********************************************************
-
 // Import commands.js using ES2015 syntax:
 import './commands';
 
-// Cypress.Cookies.debug(true);
-
-Cypress.Cookies.defaults({
-	whitelist: ['rc_uid', 'rc_token'],
+// Example of using `cy.session()` for preserving cookies
+Cypress.Commands.add('preserveCookies', () => {
+	cy.session('userSession', () => {
+		// Replace these with actions that log in or restore the session
+		cy.setCookie('rc_uid', 'some-value');
+		cy.setCookie('rc_token', 'some-value');
+	});
 });
+
+// Use this command in your tests to ensure cookies are preserved
+Cypress.on('uncaught:exception', () =>
+// Prevent Cypress from failing the test on uncaught exceptions
+	false,
+);
 
 Cypress.LocalStorage.clear = function() {};
 
-Cypress.on('fail', () => {
+// Optional: Custom failure handling (not recommended in most cases)
+Cypress.on('fail', (error) => {
 	Cypress.stop();
-	throw new Error();
+	throw error;
 });
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')

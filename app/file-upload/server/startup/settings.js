@@ -1,4 +1,4 @@
-import { settings } from '../../../settings';
+import { settings } from '../../../settings/server';
 
 settings.addGroup('FileUpload', function() {
 	this.add('FileUpload_Enabled', true, {
@@ -32,6 +32,7 @@ settings.addGroup('FileUpload', function() {
 
 	this.add('FileUpload_RotateImages', true, {
 		type: 'boolean',
+		public: true,
 	});
 
 	this.add('FileUpload_Enable_json_web_token_for_files', true, {
