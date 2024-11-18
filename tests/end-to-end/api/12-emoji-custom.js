@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 
 import { getCredentials, api, request, credentials } from '../../data/api-data.js';
-import { imgURL } from '../../data/interactions';
+// import { imgURL } from '../../data/interactions';
 
-const customEmojiName = `my-custom-emoji-${ Date.now() }`;
-let createdCustomEmoji;
+// const customEmojiName = `my-custom-emoji-${ Date.now() }`;
+// let createdCustomEmoji;
 
 describe('[EmojiCustom]', function() {
 	this.retries(0);

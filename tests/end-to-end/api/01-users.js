@@ -2715,57 +2715,57 @@ describe('[Users]', function() {
 		});
 	});
 
-	// describe('[/users.logoutOtherClients]', function() {
-	// 	let user;
-	// 	let userCredentials;
-	// 	let newCredentials;
+	describe('[/users.logoutOtherClients]', function() {
+		let user;
+		let userCredentials;
+		let newCredentials;
 
-	// 	this.timeout(20000);
+		this.timeout(20000);
 
-	// 	before(async () => {
-	// 		user = await createTestUser();
-	// 		userCredentials = await loginTestUser(user);
-	// 		newCredentials = await loginTestUser(user);
-	// 	});
-	// 	after(async () => {
-	// 		await deleteTestUser(user);
-	// 		user = undefined;
-	// 	});
+		before(async () => {
+			user = await createTestUser();
+			userCredentials = await loginTestUser(user);
+			newCredentials = await loginTestUser(user);
+		});
+		after(async () => {
+			await deleteTestUser(user);
+			user = undefined;
+		});
 
-	// 	it('should invalidate all active sesions', (done) => {
-	// 		/* We want to validate that the login with the "old" credentials fails
-	// 		However, the removal of the tokens is done asynchronously.
-	// 		Thus, we check that within the next seconds, at least one try to
-	// 		access an authentication requiring route fails */
-	// 		let counter = 0;
+		it('should invalidate all active sesions', (done) => {
+			/* We want to validate that the login with the "old" credentials fails
+			However, the removal of the tokens is done asynchronously.
+			Thus, we check that within the next seconds, at least one try to
+			access an authentication requiring route fails */
+			let counter = 0;
 
-	// 		async function checkAuthenticationFails() {
-	// 			const result = await request.get(api('me'))
-	// 				.set(userCredentials);
-	// 			return result.statusCode === 401;
-	// 		}
+			async function checkAuthenticationFails() {
+				const result = await request.get(api('me'))
+					.set(userCredentials);
+				return result.statusCode === 401;
+			}
 
-	// 		async function tryAuthentication() {
-	// 			if (await checkAuthenticationFails()) {
-	// 				done();
-	// 			} else if (++counter < 20) {
-	// 				setTimeout(tryAuthentication, 1000);
-	// 			} else {
-	// 				done('Session did not invalidate in time');
-	// 			}
-	// 		}
+			async function tryAuthentication() {
+				if (await checkAuthenticationFails()) {
+					done();
+				} else if (++counter < 20) {
+					setTimeout(tryAuthentication, 1000);
+				} else {
+					done('Session did not invalidate in time');
+				}
+			}
 
-	// 		request.post(api('users.logoutOtherClients'))
-	// 			.set(newCredentials)
-	// 			.expect(200)
-	// 			.expect((res) => {
-	// 				expect(res.body).to.have.property('success', true);
-	// 				expect(res.body).to.have.property('token').and.to.be.a('string');
-	// 				expect(res.body).to.have.property('tokenExpires').and.to.be.a('string');
-	// 			})
-	// 			.then(tryAuthentication);
-	// 	});
-	// });
+			request.post(api('users.logoutOtherClients'))
+				.set(newCredentials)
+				.expect(200)
+				.expect((res) => {
+					expect(res.body).to.have.property('success', true);
+					expect(res.body).to.have.property('token').and.to.be.a('string');
+					expect(res.body).to.have.property('tokenExpires').and.to.be.a('string');
+				})
+				.then(tryAuthentication);
+		});
+	});
 
 	describe('[/users.autocomplete]', () => {
 		it('should return an empty list when the user does not have the necessary permission', (done) => {

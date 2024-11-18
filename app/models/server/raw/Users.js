@@ -144,7 +144,7 @@ export class UsersRaw extends BaseRaw {
 			roles: roleName,
 		};
 
-		return this.findOne(query, { fields: { roles: 1 } });
+		return this.findOne(query, { projection: { roles: 1 } });
 	}
 
 	getDistinctFederationDomains() {
@@ -632,6 +632,22 @@ export class UsersRaw extends BaseRaw {
 				'services.resume': 1,
 			},
 		});
+	}
+
+	removeNonPATLoginTokensExcept(userId, authToken) {
+		return this.col.updateOne(
+			{
+				_id: userId,
+			},
+			{
+				$pull: {
+					'services.resume.loginTokens': {
+						when: { $exists: true },
+						hashedToken: { $ne: authToken },
+					},
+				},
+			},
+		);
 	}
 
 	removeRoomsByRoomIdsAndUserId(rids, userId) {

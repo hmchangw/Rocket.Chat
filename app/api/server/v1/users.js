@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 import { Match, check } from 'meteor/check';
 import { TAPi18n } from 'meteor/rocketchat:tap-i18n';
 import _ from 'underscore';
@@ -7,7 +8,7 @@ import Busboy from 'busboy';
 import { Users, Subscriptions } from '../../../models/server';
 import { Users as UsersRaw } from '../../../models/server/raw';
 import { hasPermission } from '../../../authorization';
-import { settings } from '../../../settings';
+import { settings } from '../../../settings/server';
 import { getURL } from '../../../utils';
 import {
 	validateCustomFields,
@@ -16,10 +17,10 @@ import {
 	checkUsernameAvailability,
 	setUserAvatar,
 	saveCustomFields,
-} from '../../../lib';
+	setStatusText,
+} from '../../../lib/server';
 import { getFullUserDataByIdOrUsername } from '../../../lib/server/functions/getFullUserData';
 import { API } from '../api';
-import { setStatusText } from '../../../lib/server';
 import { findUsersToAutocomplete, getInclusiveFields, getNonEmptyFields, getNonEmptyQuery } from '../lib/users';
 import { getUserForCheck, emailCheck } from '../../../2fa/server/code';
 import { resetUserE2EEncriptionKey } from '../../../../server/lib/resetUserE2EKey';
@@ -238,6 +239,8 @@ API.v1.addRoute('users.list', { authRequired: true }, {
 
 		const actualSort = sort && sort.name ? { nameInsensitive: sort.name, ...sort } : sort || { username: 1 };
 
+		const limit = count !== 0 ? [{ $limit: count }] : [];
+
 		const result = Promise.await(
 			UsersRaw.col
 				.aggregate([
@@ -256,13 +259,15 @@ API.v1.addRoute('users.list', { authRequired: true }, {
 					},
 					{
 						$facet: {
-							sortedResults: [{
-								$sort: actualSort,
-							}, {
-								$skip: offset,
-							}, {
-								$limit: count,
-							}],
+							sortedResults: [
+								{
+									$sort: actualSort,
+								},
+								{
+									$skip: offset,
+								},
+								...limit,
+							],
 							totalCount: [{ $group: { _id: null, total: { $sum: 1 } } }],
 						},
 					},
@@ -829,11 +834,24 @@ API.v1.addRoute('users.requestDataDownload', { authRequired: true }, {
 });
 
 API.v1.addRoute('users.logoutOtherClients', { authRequired: true }, {
-	post() {
+	async post() {
 		try {
-			const result = Meteor.call('logoutOtherClients');
+			const hashedToken = Accounts._hashLoginToken(this.request.headers['x-auth-token']);
 
-			return API.v1.success(result);
+			if (!await UsersRaw.removeNonPATLoginTokensExcept(this.userId, hashedToken)) {
+				throw new Meteor.Error('error-invalid-user-id', 'Invalid user id');
+			}
+
+			const me = await UsersRaw.findOneById(this.userId, { projection: { 'services.resume.loginTokens': 1 } });
+
+			const token = me.services.resume.loginTokens.find((token) => token.hashedToken === hashedToken);
+
+			const tokenExpires = new Date(token.when.getTime() + settings.get('Accounts_LoginExpiration') * 1000);
+
+			return API.v1.success({
+				token: this.request.headers['x-auth-token'],
+				tokenExpires,
+			});
 		} catch (error) {
 			return API.v1.failure(error);
 		}
@@ -924,7 +942,7 @@ API.v1.addRoute('users.listTeams', { authRequired: true }, {
 		const { userId } = this.bodyParams;
 
 		// If the caller has permission to view all teams, there's no need to filter the teams
-		const adminId = hasPermission(this.userId, 'view-all-teams') ? '' : this.userId;
+		const adminId = hasPermission(this.userId, 'view-all-teams') ? undefined : this.userId;
 
 		const teams = Promise.await(Team.findBySubscribedUserIds(userId, adminId));
 
