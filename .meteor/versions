@@ -95,6 +95,8 @@ ordered-dict@1.1.0
 ostrio:cookies@2.7.0
 promise@0.12.2
 raix:eventemitter@1.0.0
+raix:handlebar-helpers@0.2.5
+raix:ui-dropped-event@0.0.7
 random@1.2.1
 rate-limit@1.1.1
 react-fast-refresh@0.2.8

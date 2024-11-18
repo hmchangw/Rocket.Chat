@@ -58,6 +58,8 @@ mystor:device-detection
 rocketchat:restivus
 nooitaf:colors
 ostrio:cookies
+raix:handlebar-helpers
+raix:ui-dropped-event
 
 rocketchat:tap-i18n
 underscore@1.6.1

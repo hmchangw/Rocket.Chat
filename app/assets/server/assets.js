@@ -12,7 +12,7 @@ import { getURL } from '../../utils/lib/getURL';
 import { mime } from '../../utils/lib/mimeTypes';
 import { hasPermission } from '../../authorization';
 import { RocketChatFile } from '../../file';
-
+import { Settings } from '../../models/server';
 
 const RocketChatAssetsInstance = new RocketChatFile.GridFS({
 	name: 'assets',
@@ -25,8 +25,6 @@ const assets = {
 		constraints: {
 			type: 'image',
 			extensions: ['svg', 'png', 'jpg', 'jpeg'],
-			width: undefined,
-			height: undefined,
 		},
 		wizard: {
 			step: 3,
@@ -35,12 +33,9 @@ const assets = {
 	},
 	background: {
 		label: 'login background (svg, png, jpg)',
-		defaultUrl: undefined,
 		constraints: {
 			type: 'image',
 			extensions: ['svg', 'png', 'jpg', 'jpeg'],
-			width: undefined,
-			height: undefined,
 		},
 	},
 	favicon_ico: {
@@ -49,8 +44,6 @@ const assets = {
 		constraints: {
 			type: 'image',
 			extensions: ['ico'],
-			width: undefined,
-			height: undefined,
 		},
 	},
 	favicon: {
@@ -59,8 +52,6 @@ const assets = {
 		constraints: {
 			type: 'image',
 			extensions: ['svg'],
-			width: undefined,
-			height: undefined,
 		},
 	},
 	favicon_16: {
@@ -179,8 +170,6 @@ const assets = {
 		constraints: {
 			type: 'image',
 			extensions: ['svg'],
-			width: undefined,
-			height: undefined,
 		},
 	},
 };
@@ -234,7 +223,7 @@ export const RocketChatAssets = new class {
 					defaultUrl: assets[asset].defaultUrl,
 				};
 
-				settings.updateById(key, value);
+				Settings.updateValueById(key, value);
 				return RocketChatAssets.processAsset(key, value);
 			}, 200);
 		}));
@@ -255,7 +244,7 @@ export const RocketChatAssets = new class {
 			defaultUrl: assets[asset].defaultUrl,
 		};
 
-		settings.updateById(key, value);
+		Settings.updateValueById(key, value);
 		RocketChatAssets.processAsset(key, value);
 	}
 
@@ -344,7 +333,7 @@ function addAssetToSetting(asset, value) {
 
 	if (typeof currentValue === 'object' && currentValue.defaultUrl !== assets[asset].defaultUrl) {
 		currentValue.defaultUrl = assets[asset].defaultUrl;
-		settings.updateById(key, currentValue);
+		Settings.updateValueById(key, currentValue);
 	}
 }
 
