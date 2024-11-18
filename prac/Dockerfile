@@ -5,7 +5,7 @@ WORKDIR /app
 RUN groupadd -r rocketchat && useradd -r -g rocketchat rocketchat \
     && npm install -g node-gyp-cache && npm config set node_gyp node-gyp-cache \
     && apt-get update && apt-get install -y --no-install-recommends \
-            ca-certificates curl fontconfig git make openssh-server python vim \
+            libssl-dev ca-certificates curl fontconfig git make openssh-server python3 vim \
             ## Cypress dependencies
             libgtk2.0-0 libgtk-3-0 libgbm-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \
         && aptMark="$(apt-mark showmanual)" && apt-get install -y --no-install-recommends \
@@ -15,13 +15,20 @@ RUN groupadd -r rocketchat && useradd -r -g rocketchat rocketchat \
     \
     \
     # clone source code and install dependencies
-    && curl https://install.meteor.com/?release=2.5.6 | sh \
-    && git clone --branch 3.16-on-meteor-2 https://github.com/hmchangw/Rocket.Chat /app/Rocket.Chat \
+    && curl https://install.meteor.com/?release=2.16 | sh \
+    && git clone --branch joe-test https://github.com/hmchangw/Rocket.Chat /app/Rocket.Chat \
     && cd /app/Rocket.Chat && meteor npm install \
     && cd /app/Rocket.Chat/ee/server/services && npm install && cd - \
     \
     \
     \
+    # run precheck and tests
+    ## adopt dummy sound card for e2e test
+    && echo 'pcm.!default {\n type hw\n card 0\n}\n\nctl.!default {\n type hw\n card 0\n}' > /app/.asoundrc \
+    && meteor npm run lint && meteor npm run translation-check && meteor npm run typecheck \
+    && meteor npm run testunit -- --exclude app/models/server/models/Sessions.tests.js \
+    && (TEST_MODE=true meteor run & sleep 7m) && METEOR_PROFILE=500 meteor npm run test && pkill node \
+    \    
     # generate app bundle artifacts
     && METEOR_PROFILE=500 meteor build --server-only --directory /app \
     && cd /app/bundle/programs/server && npm install \
