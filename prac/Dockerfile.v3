@@ -58,7 +58,7 @@ RUN aptMark="$(apt-mark showmanual)" \
 
 # keep the .git folder and compressed node_modules as well as purge source code
 RUN chown -R rocketchat:rocketchat /app/Rocket.Chat && chmod -R ugo+rwX /app/Rocket.Chat \
-    && mkdir -p /app/meta/{bundle,ee,meteor} && \
+    && mkdir -p /app/meta/{bundle,ee,meteor} \
     && tar -zcf /app/meta/node_modules.tar.gz --directory /app/Rocket.Chat node_modules \
     && tar -zcf /app/meta/ee/node_modules.tar.gz --directory /app/Rocket.Chat/ee/server/services node_modules \
     && tar -zcf /app/meta/bundle/node_modules.tar.gz --directory /app/bundle/programs/server node_modules \
