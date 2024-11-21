@@ -1,0 +1,74 @@
+# Step 1: Use Ubuntu 22.04 as the base image
+FROM ubuntu:22.04
+
+# Set environment variables
+ENV RC_VERSION=3.16.2 HOME=/app TERM=xterm METEOR_ALLOW_SUPERUSER=true
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies and Node.js
+RUN groupadd -r rocketchat && useradd -r -g rocketchat rocketchat \
+    && apt-get update && apt-get install -y --no-install-recommends \
+        pigz xz-utils openssl libssl-dev ca-certificates curl fontconfig git make openssh-server python3 vim \
+            ## Cypress dependencies
+            libgtk2.0-0 libgtk-3-0 libgbm-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb \
+        && aptMark="$(apt-mark showmanual)" && apt-get install -y --no-install-recommends \
+            ## for the later purge because the g++ leads the critical vulnerability `CVE-2019-19814`
+            libnotify-dev g++ build-essential \
+        && rm -rf /var/lib/apt/lists/* \
+    && curl -fsSL https://nodejs.org/dist/v14.21.3/node-v14.21.3-linux-x64.tar.xz -o node-v14.21.3-linux-x64.tar.xz \
+    && tar -xJf node-v14.21.3-linux-x64.tar.xz \
+    && mv node-v14.21.3-linux-x64 /usr/local/nodejs \
+    && ln -s /usr/local/nodejs/bin/node /usr/local/bin/node \
+    && ln -s /usr/local/nodejs/bin/npm /usr/local/bin/npm
+
+# Ensure proper permissions
+RUN mkdir -p /app/.cache/node-gyp \
+    && chown -R rocketchat:rocketchat /app \
+    # Install Meteor and Rocket.Chat
+    && curl https://install.meteor.com/?release=2.16 | sh
+
+# Install Meteor and Rocket.Chat
+RUN git clone --branch joe-test https://github.com/hmchangw/Rocket.Chat /app/Rocket.Chat
+    # Uncomment below line to prevent caching for repo clone with/without change & append \ in above line at the end
+    # && echo "build timestamp: $(date)" > /app/Rocket.Chat/.build_timestamp
+
+# Install Node.js dependencies
+RUN cd /app/Rocket.Chat \
+    && meteor npm install \
+    && cd /app/Rocket.Chat/ee/server/services \
+    && meteor npm install && cd - \
+    && echo 'pcm.!default {\n type hw\n card 0\n}\n\nctl.!default {\n type hw\n card 0\n}' > /app/.asoundrc
+
+# Generate app bundle
+RUN cd /app/Rocket.Chat && \
+    METEOR_PROFILE=500 meteor build --server-only --directory /app \
+    && cd /app/bundle/programs/server && npm install
+
+# Cleanup build dependencies
+# RUN aptMark="$(apt-mark showmanual)" \
+#     && apt list --installed 2>/dev/null | awk -F/ '/\/[a-z]+/ {print $1}' | xargs -r apt-mark auto \
+#     && apt-mark manual $aptMark \
+#     && find /usr/local -type f -executable -exec ldd '{}' ';' | awk '/=>/ { print $(NF-1) }' \
+#         | sort -u | xargs -r dpkg-query --search | cut -d: -f1 | sort -u | xargs -r apt-mark manual \
+#     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
+
+# Cleanup build dependencies
+RUN apt-mark auto '.*' > /dev/null && apt-mark manual $aptMark > /dev/null \
+    && find /usr/local -type f -executable -exec ldd '{}' ';' | awk '/=>/ { print $(NF-1) }' | sort -u | xargs -r dpkg-query --search | cut -d: -f1 | sort -u | xargs -r apt-mark manual \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
+
+# Keep .git folder, compress node_modules, and clean up source code
+RUN mkdir -p /app/meta/{bundle,ee,meteor} && \
+    tar -cf - --directory /app/Rocket.Chat node_modules | pigz > /app/meta/node_modules.tar.gz && \
+    tar -cf - --directory /app/Rocket.Chat/ee/server/services node_modules | pigz > /app/meta/ee/node_modules.tar.gz && \
+    tar -cf - --directory /app/bundle/programs/server node_modules | pigz > /app/meta/bundle/node_modules.tar.gz && \
+    tar -cf - --directory /app/Rocket.Chat .meteor/local | pigz > /app/meta/meteor/meteor-local.tar.gz && \
+    mv /app/Rocket.Chat/.git /app/meta/.git && \
+    mv /app/Rocket.Chat/package*.json /app/meta && \
+    mv /app/Rocket.Chat/ee/server/services/package*.json /app/meta/ee && \
+    mv /app/bundle/programs/server/package*.json /app/meta/bundle && \
+    rm -rf /app/Rocket.Chat /app/bundle && \
+    mkdir -p /app/Rocket.Chat && mv /app/meta/.git /app/Rocket.Chat/.git && \
+    chown -R rocketchat:rocketchat /app && chmod -R ugo+rwX /app
