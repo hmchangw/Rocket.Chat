@@ -61,7 +61,7 @@ Template.sideNav.events({
 		return menu.updateUnreadBars();
 	},
 
-	'dropped .sidebar'(e) {
+	'drop .sidebar'(e) {
 		return e.preventDefault();
 	},
 	'mouseenter .sidebar-item__link'(e) {

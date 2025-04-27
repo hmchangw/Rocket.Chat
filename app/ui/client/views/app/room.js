@@ -435,53 +435,60 @@ Template.roomOld.helpers({
 
 export const dropzoneEvents = {
 	'dragenter .dropzone'(e) {
-		const types = e.originalEvent && e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.types;
+		const event = e?.originalEvent || e;
+		event.preventDefault();
+		event.stopPropagation();
 
-		if (types != null && types.length > 0 && _.some(types, (type) => type.indexOf('text/') === -1 || type.indexOf('text/uri-list') !== -1 || type.indexOf('text/plain') !== -1) && userCanDrop(this._id)) {
-			e.currentTarget.classList.add('over');
+		const types = event.dataTransfer?.types;
+		if (types && types.length > 0 && _.some(types, (type) => type.indexOf('text/') === -1 || type.indexOf('text/uri-list') !== -1 || type.indexOf('text/plain') !== -1) && userCanDrop(this._id)) {
+			event.currentTarget.classList.add('over');
 		}
-		e.stopPropagation();
 	},
 
-	'dragleave .dropzone-overlay'(e) {
-		e.currentTarget.parentNode.classList.remove('over');
-		e.stopPropagation();
+	'dragleave .dropzone'(e) {
+		const event = e?.originalEvent || e;
+		event.preventDefault();
+		event.stopPropagation();
+		event.currentTarget.classList.remove('over');
 	},
 
-	'dragover .dropzone-overlay'(e) {
+	'dragover .dropzone'(e) {
+		const event = e?.originalEvent || e;
+		event.preventDefault();
+		event.stopPropagation();
+		
 		document.querySelectorAll('.over.dropzone').forEach((dropzone) => {
-			if (dropzone !== e.currentTarget.parentNode) {
+			if (dropzone !== event.currentTarget) {
 				dropzone.classList.remove('over');
 			}
 		});
-		e = e.originalEvent || e;
-		if (['move', 'linkMove'].includes(e.dataTransfer.effectAllowed)) {
-			e.dataTransfer.dropEffect = 'move';
+		
+		if (['move', 'linkMove'].includes(event.dataTransfer.effectAllowed)) {
+			event.dataTransfer.dropEffect = 'move';
 		} else {
-			e.dataTransfer.dropEffect = 'copy';
+			event.dataTransfer.dropEffect = 'copy';
 		}
-		e.stopPropagation();
 	},
 
-	async 'dropped .dropzone-overlay'(event, instance) {
-		event.currentTarget.parentNode.classList.remove('over');
+	async 'drop .dropzone'(e) {
+		const event = e?.originalEvent || e;
+		event.preventDefault();
+		event.stopPropagation();
 
-		const e = event.originalEvent || event;
-
-		e.stopPropagation();
-		e.preventDefault();
+		event.currentTarget.classList.remove('over');
+		const template = Template.instance();
 
 		if (!userCanDrop(this._id) || !settings.get('FileUpload_Enabled')) {
 			return false;
 		}
 
-		let files = (e.dataTransfer && e.dataTransfer.files) || [];
+		const files = (event.dataTransfer && event.dataTransfer.files) || [];
 
 		if (files.length < 1) {
-			const transferData = e.dataTransfer.getData('text') || e.dataTransfer.getData('url');
+			const transferData = event.dataTransfer.getData('text') || event.dataTransfer.getData('url');
 
-			if (e.dataTransfer.types.includes('text/uri-list')) {
-				const url = e.dataTransfer.getData('text/html').match('\<img.+src\=(?:\"|\')(.+?)(?:\"|\')(?:.+?)\>');
+			if (event.dataTransfer.types.includes('text/uri-list')) {
+				const url = event.dataTransfer.getData('text/html')?.match('\<img.+src\=(?:\"|\')(.+?)(?:\"|\')(?:.+?)\>');
 				const imgURL = url && url[1];
 
 				if (!imgURL) {
@@ -494,7 +501,7 @@ export const dropzoneEvents = {
 				}
 				files = [file];
 			}
-			if (e.dataTransfer.types.includes('text/plain') && !e.dataTransfer.types.includes('text/x-moz-url')) {
+			if (event.dataTransfer.types.includes('text/plain') && !event.dataTransfer.types.includes('text/x-moz-url')) {
 				return addToInput(transferData.trim());
 			}
 		}
@@ -507,9 +514,10 @@ export const dropzoneEvents = {
 			};
 		});
 
-		return instance.onFile && instance.onFile(filesToUpload);
+		return template?.onFile && template.onFile(filesToUpload);
 	},
 };
+
 Meteor.startup(() => {
 	Template.roomOld.events({
 		...getCommonRoomEvents(),

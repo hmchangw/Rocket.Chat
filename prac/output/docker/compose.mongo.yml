@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: bitnami/mongodb:4.4.14-debian-10-r0
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGODB_ADVERTISED_HOSTNAME: mongo
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_REPLICA_SET_NAME: rs0
+      MONGODB_INITIAL_PRIMARY_HOST: mongo
+      ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - mongodb-data:/bitnami/mongodb
+
+volumes:
+  mongodb-data:
+
+networks:
+  default:
+    name: dev
