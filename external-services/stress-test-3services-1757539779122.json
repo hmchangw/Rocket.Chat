@@ -1,0 +1,40 @@
+{
+  "architecture": "3services-stress",
+  "config": {
+    "clients": 25,
+    "messageRate": 50,
+    "duration": 15,
+    "collections": [
+      "messages",
+      "subscriptions",
+      "users",
+      "rooms"
+    ]
+  },
+  "startTime": 1757539758441,
+  "metrics": {
+    "operations": 724,
+    "websocketClients": 25,
+    "eventsReceived": 531,
+    "eventsBroadcast": 2797,
+    "errors": 0,
+    "latencies": []
+  },
+  "performance": {
+    "totalDuration": 20272,
+    "operationsPerSecond": 35.714285714285715,
+    "eventsPerSecond": 22.44475138121547,
+    "broadcastsPerSecond": 137.9735595895817,
+    "connectedClients": 25,
+    "latencyStats": {
+      "count": 0,
+      "min": 0,
+      "max": 0,
+      "avg": 0,
+      "p50": 0,
+      "p95": 0,
+      "p99": 0
+    },
+    "errorRate": 0
+  }
+}

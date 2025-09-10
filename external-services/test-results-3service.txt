@@ -1,0 +1,81 @@
+
+🔥 STARTING 3-SERVICE ARCHITECTURE STRESS TEST
+================================================================================
+📊 Configuration:
+   WebSocket Clients: 50
+   Message Rate: 100 operations/second
+   Duration: 20 seconds
+   Collections: messages, subscriptions, users, rooms
+================================================================================
+
+🔌 Connecting to services...
+   ✅ MongoDB connected
+   ✅ NATS connected
+
+🌐 Setting up 50 WebSocket clients...
+   ✅ WebSocket clients: 50 connected, 0 failed
+
+📡 Setting up event monitoring...
+   ✅ Event monitoring active
+
+🔥 Starting stress workload...
+   📈 Operations: 100, Rate: 95/s, Clients: 50
+   📈 Operations: 200, Rate: 94/s, Clients: 50
+   📈 Operations: 300, Rate: 94/s, Clients: 50
+   📈 Operations: 400, Rate: 93/s, Clients: 50
+   📈 Operations: 500, Rate: 93/s, Clients: 50
+   📈 Operations: 600, Rate: 93/s, Clients: 50
+   📈 Operations: 700, Rate: 93/s, Clients: 50
+   📈 Operations: 800, Rate: 93/s, Clients: 50
+   📈 Operations: 900, Rate: 93/s, Clients: 50
+   📈 Operations: 1000, Rate: 93/s, Clients: 50
+   📈 Operations: 1100, Rate: 93/s, Clients: 50
+   📈 Operations: 1200, Rate: 93/s, Clients: 50
+   📈 Operations: 1300, Rate: 93/s, Clients: 50
+   📈 Operations: 1400, Rate: 93/s, Clients: 50
+   📈 Operations: 1500, Rate: 93/s, Clients: 50
+   📈 Operations: 1600, Rate: 93/s, Clients: 50
+   📈 Operations: 1700, Rate: 93/s, Clients: 50
+   📈 Operations: 1800, Rate: 93/s, Clients: 50
+   ✅ Stress workload completed
+   ⏳ Waiting for event propagation...
+
+📊 Measuring stress test results...
+   📈 Total Operations: 1867
+   📈 Operations/sec: 73
+   📈 Events Received: 1143
+   📈 Events Broadcast: 8256
+   📈 Connected Clients: 50/50
+   📈 Error Rate: 0.00%
+
+📋 3-SERVICE ARCHITECTURE STRESS TEST REPORT
+================================================================================
+
+🔥 STRESS TEST RESULTS:
+   Duration: 25s
+   Operations: 1867 (73/s)
+   Events Processed: 1143 (45/s)
+   WebSocket Broadcasts: 8256 (324/s)
+   Connected Clients: 50/50
+   Error Rate: 0.00%
+
+⚡ LATENCY STATISTICS:
+   Samples: 0
+   Min: 0ms
+   Avg: 0ms
+   P50: 0ms
+   P95: 0ms
+   P99: 0ms
+   Max: 0ms
+
+🎯 PERFORMANCE ASSESSMENT:
+   🟡 Operations/sec: 73/s (Good)
+   🟢 P95 Latency: 0ms (Excellent)
+   🟢 Error Rate: 0% (Excellent)
+   🟢 Client Connectivity: 100% (Excellent)
+
+🏆 OVERALL ASSESSMENT: 🟢 EXCELLENT - 3-Service architecture performing optimally
+
+🧹 Cleaning up stress test...
+   ✅ Cleanup completed
+📄 Detailed results saved to: stress-test-3services-1757540119450.json

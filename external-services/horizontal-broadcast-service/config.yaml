@@ -1,0 +1,39 @@
+server:
+  port: 8085
+  host: "0.0.0.0"
+
+websocket:
+  port: 8086  # Different port from aggregator
+  path: "/ws"
+  read_buffer_size: 1024
+  write_buffer_size: 1024
+  max_clients: 10000
+  ping_interval: 54s
+  ping_timeout: 60s
+
+nats:
+  url: "nats://nats:4222"
+  input_subject: "rocketchat.events.aggregated"  # Listen to aggregated events
+  max_reconnect: 5
+  reconnect_wait: 2s
+
+# Broadcasting configuration
+broadcasting:
+  batch_size: 100
+  flush_interval: 50ms
+  max_queue_size: 1000
+  enable_metrics: true
+  client_timeout: 30s
+
+logging:
+  level: "debug"  # debug, info, warn, error
+  format: "json"
+
+health:
+  enabled: true
+  port: 8087
+
+# Feature flags for backward compatibility
+compatibility:
+  enable_legacy_websocket: false  # If true, also listen to old websocket-aggregator
+  legacy_websocket_port: 8083     # Port of legacy websocket aggregator

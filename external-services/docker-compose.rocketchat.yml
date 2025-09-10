@@ -1,0 +1,141 @@
+version: '3.8'
+
+services:
+  # Valkey (Redis-compatible cache) for external services
+  valkey:
+    image: valkey/valkey:7.2
+    container_name: rocketchat-valkey
+    restart: unless-stopped
+    volumes:
+      - valkey_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - rocketchat-network
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: valkey-server --save 60 1000 --loglevel warning
+
+  # NATS Message Bus
+  nats:
+    image: nats:2.10
+    container_name: rocketchat-nats
+    restart: unless-stopped
+    ports:
+      - "4222:4222"
+      - "8222:8222"  # HTTP monitoring
+      - "6222:6222"  # Clustering
+    networks:
+      - rocketchat-network
+    volumes:
+      - ./nats.conf:/etc/nats/nats-server.conf
+    command: ["-c", "/etc/nats/nats-server.conf"]
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8222/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # DbWatcher Service - Connect to Rocket.Chat's MongoDB
+  dbwatcher:
+    build:
+      context: ../dbwatcher
+      dockerfile: Dockerfile
+    container_name: rocketchat-dbwatcher
+    restart: unless-stopped
+    depends_on:
+      nats:
+        condition: service_healthy
+    ports:
+      - "8081:8081"  # Main service
+      - "8082:8082"  # Health check
+    networks:
+      - rocketchat-network
+    volumes:
+      - ../dbwatcher/config.yaml:/root/config.yaml:ro
+    environment:
+      - CONFIG_FILE=/root/config.yaml
+      - MONGO_URI=mongodb://host.docker.internal:3001/meteor  # Connect to Rocket.Chat's MongoDB
+      - NATS_URL=nats://rocketchat:rocket123@nats:4222
+      - LOG_LEVEL=trace
+      - ENABLE_DEBUG_LOGS=true
+      - ENABLE_TRACE_LOGS=true
+      - LOG_FORMAT=json
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8082/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # WebSocket Aggregator Service
+  websocket-aggregator:
+    build:
+      context: ../websocket-aggregator
+      dockerfile: Dockerfile
+    container_name: rocketchat-websocket-aggregator
+    restart: unless-stopped
+    depends_on:
+      valkey:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+      dbwatcher:
+        condition: service_healthy
+    ports:
+      - "8080:8080"  # Main service
+      - "8083:8083"  # WebSocket
+      - "8084:8084"  # Health check
+    networks:
+      - rocketchat-network
+    volumes:
+      - ../websocket-aggregator/config.yaml:/root/config.yaml:ro
+    environment:
+      - CONFIG_FILE=/root/config.yaml
+      - MONGO_URI=mongodb://host.docker.internal:3001/meteor  # Connect to Rocket.Chat's MongoDB
+      - NATS_URL=nats://rocketchat:rocket123@nats:4222
+      - VALKEY_URL=redis://valkey:6379
+      - LOG_LEVEL=trace
+      - ENABLE_DEBUG_LOGS=true
+      - ENABLE_TRACE_LOGS=true
+      - ENABLE_AGGREGATION_LOGS=true
+      - ENABLE_WEBSOCKET_LOGS=true
+      - LOG_FORMAT=json
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8084/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Monitoring Dashboard (served from external location)
+  monitoring:
+    image: nginx:alpine
+    container_name: rocketchat-monitoring
+    restart: unless-stopped
+    ports:
+      - "8090:80"
+    networks:
+      - rocketchat-network
+    volumes:
+      - /tmp/monitoring:/usr/share/nginx/html:ro
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  valkey_data:
+
+networks:
+  rocketchat-network:
+    name: rocketchat-network
+    driver: bridge

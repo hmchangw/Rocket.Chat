@@ -1,0 +1,203 @@
+🔧 Setting up CRUD Operations Test Suite...
+
+✅ Connected to MongoDB
+✅ Connected to NATS
+🎧 Setting up event listeners...
+✅ Event listeners configured
+🏥 Verifying service health...
+   DbWatcher: healthy (events: 5589)
+   Aggregator: healthy (events: 1303)
+✅ Test suite setup completed
+
+🧪 Starting CRUD Operations Test Suite
+
+================================================================================
+
+📋 Testing Configuration: Messages - Basic Fields Only
+------------------------------------------------------------
+   🎯 Test ID: crud_1757540201961_wq0uax2by
+   📊 Collection: messages
+   🔧 Operations: insert, update, delete
+
+   1️⃣  INSERT Operation:
+      📝 Inserting document...
+      ✅ Document inserted
+      📊 Event Analysis for INSERT:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for INSERT, Expected aggregated events but none received
+
+   2️⃣  UPDATE Operation:
+      📝 Updating document...
+      ✅ Document updated
+      📊 Event Analysis for UPDATE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for UPDATE, Expected aggregated events but none received
+
+   3️⃣  DELETE Operation:
+      📝 Deleting document...
+      ✅ Document deleted
+      📊 Event Analysis for DELETE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for DELETE, Expected aggregated events but none received
+
+📋 Testing Configuration: Subscriptions - Full Document
+------------------------------------------------------------
+   🎯 Test ID: crud_1757540207992_f4a4h3nzw
+   📊 Collection: subscriptions
+   🔧 Operations: insert, update, delete
+
+   1️⃣  INSERT Operation:
+      📝 Inserting document...
+      ✅ Document inserted
+      📊 Event Analysis for INSERT:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for INSERT, Expected aggregated events but none received
+
+   2️⃣  UPDATE Operation:
+      📝 Updating document...
+      ✅ Document updated
+      📊 Event Analysis for UPDATE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for UPDATE, Expected aggregated events but none received
+
+   3️⃣  DELETE Operation:
+      📝 Deleting document...
+      ✅ Document deleted
+      📊 Event Analysis for DELETE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for DELETE, Expected aggregated events but none received
+
+📋 Testing Configuration: Users - Cached Names
+------------------------------------------------------------
+   🎯 Test ID: crud_1757540214028_vhu88kn6z
+   📊 Collection: users
+   🔧 Operations: insert, update, delete
+
+   1️⃣  INSERT Operation:
+      📝 Inserting document...
+      ✅ Document inserted
+      📊 Event Analysis for INSERT:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for INSERT
+
+   2️⃣  UPDATE Operation:
+      📝 Updating document...
+      ✅ Document updated
+      📊 Event Analysis for UPDATE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for UPDATE
+
+   3️⃣  DELETE Operation:
+      📝 Deleting document...
+      ✅ Document deleted
+      📊 Event Analysis for DELETE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for DELETE
+
+📋 Testing Configuration: Rooms - Metadata Caching
+------------------------------------------------------------
+   🎯 Test ID: crud_1757540220054_pelowfxu7
+   📊 Collection: rooms
+   🔧 Operations: insert, update, delete
+
+   1️⃣  INSERT Operation:
+      📝 Inserting document...
+      ✅ Document inserted
+      📊 Event Analysis for INSERT:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for INSERT, Expected aggregated events but none received
+
+   2️⃣  UPDATE Operation:
+      📝 Updating document...
+      ✅ Document updated
+      📊 Event Analysis for UPDATE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for UPDATE, Expected aggregated events but none received
+
+   3️⃣  DELETE Operation:
+      📝 Deleting document...
+      ✅ Document deleted
+      📊 Event Analysis for DELETE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for DELETE, Expected aggregated events but none received
+
+📋 Testing Configuration: Settings - Pass-through Mode
+------------------------------------------------------------
+   🎯 Test ID: crud_1757540226083_7eg8jy22e
+   📊 Collection: settings
+   🔧 Operations: insert, update, delete
+
+   1️⃣  INSERT Operation:
+      📝 Inserting document...
+      ✅ Document inserted
+      📊 Event Analysis for INSERT:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for INSERT
+
+   2️⃣  UPDATE Operation:
+      📝 Updating document...
+      ✅ Document updated
+      📊 Event Analysis for UPDATE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for UPDATE
+
+   3️⃣  DELETE Operation:
+      📝 Deleting document...
+      ✅ Document deleted
+      📊 Event Analysis for DELETE:
+         Raw Events: 0
+         Aggregated Events: 0
+         ⚠️  Issues: No raw events received for DELETE
+
+================================================================================
+🏁 CRUD Operations Test Suite Completed
+
+
+================================================================================
+📊 CRUD OPERATIONS TEST REPORT
+================================================================================
+
+Test Summary:
+  📋 Total Tests: 5
+  ✅ Successful: 5
+  ❌ Failed: 0
+  ⏱️  Duration: 30s
+  📈 Success Rate: 100%
+
+Event Summary:
+  📡 Raw Events: 0
+  🔄 Aggregated Events: 0
+  🌐 WebSocket Events: 0
+
+Detailed Results:
+  1. ✅ Messages - Basic Fields Only
+     📝 All operations completed in 6026ms
+  2. ✅ Subscriptions - Full Document
+     📝 All operations completed in 6033ms
+  3. ✅ Users - Cached Names
+     📝 All operations completed in 6021ms
+  4. ✅ Rooms - Metadata Caching
+     📝 All operations completed in 6027ms
+  5. ✅ Settings - Pass-through Mode
+     📝 All operations completed in 6019ms
+
+📄 Detailed report saved to: /home/ashu/Downloads/Rocket.Chat/external-services/crud-operations-test-report-1757540232106.json
+
+🧹 Cleaning up test environment...
+✅ NATS connection closed
+✅ MongoDB connection closed
+✅ Test environment cleaned up

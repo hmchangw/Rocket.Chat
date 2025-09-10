@@ -1,0 +1,114 @@
+{
+  "summary": {
+    "totalTests": 9,
+    "successfulTests": 6,
+    "failedTests": 3,
+    "successRate": 67,
+    "duration": 44580,
+    "eventsReceived": 1,
+    "notifications": 0,
+    "timestamp": "2025-09-10T20:42:59.218Z"
+  },
+  "results": [
+    {
+      "testName": "DbWatcher Health Check",
+      "success": true,
+      "details": "Service healthy",
+      "timestamp": 1757536934705
+    },
+    {
+      "testName": "Aggregator Health Check",
+      "success": true,
+      "details": "Service healthy",
+      "timestamp": 1757536934713
+    },
+    {
+      "testName": "NATS Health Check",
+      "success": true,
+      "details": "Service healthy",
+      "timestamp": 1757536934721
+    },
+    {
+      "testName": "Monitoring Health Check",
+      "success": true,
+      "details": "Service healthy",
+      "timestamp": 1757536934732
+    },
+    {
+      "testName": "Real-Time Event Flow",
+      "success": false,
+      "details": "Only 1 events received (expected ~5)",
+      "timestamp": 1757536949785
+    },
+    {
+      "testName": "Client Notification System",
+      "success": false,
+      "details": "No notification events detected",
+      "timestamp": 1757536954799
+    },
+    {
+      "testName": "Performance Under Load",
+      "success": false,
+      "details": "Low event coverage: 0%",
+      "timestamp": 1757536975989
+    },
+    {
+      "testName": "NATS Failover Recovery",
+      "success": true,
+      "details": "Connection and communication restored",
+      "timestamp": 1757536979165
+    },
+    {
+      "testName": "Cleanup",
+      "success": true,
+      "details": "All resources cleaned up successfully",
+      "timestamp": 1757536979217
+    }
+  ],
+  "events": [
+    {
+      "collection": "subscriptions",
+      "action": "insert",
+      "clientAction": "inserted",
+      "id": "68c1e2a61fc0a8a15d4ab153",
+      "data": {
+        "_id": "68c1e2a61fc0a8a15d4ab153",
+        "_updatedAt": "2025-09-10T20:42:14.764Z",
+        "alert": false,
+        "integrationTest": "integration_1757536934733_2dj8bdypj",
+        "name": "test-room-dj8bdypj",
+        "open": true,
+        "rid": "room_integration_1757536934733_2dj8bdypj",
+        "t": "c",
+        "ts": "2025-09-10T20:42:14.764Z",
+        "u": {
+          "_id": "user_integration_1757536934733_2dj8bdypj",
+          "username": "testuser_dj8bdypj"
+        },
+        "unread": 0
+      },
+      "timestamp": 1757536934806,
+      "operationType": "insert",
+      "type": "raw",
+      "receivedAt": 1757536934811
+    }
+  ],
+  "notifications": [],
+  "performanceMetrics": {
+    "loadTest": {
+      "totalMessages": 1000,
+      "insertionDuration": 1184,
+      "eventsProcessed": 0,
+      "totalDuration": 21185,
+      "messagesPerSecond": 845,
+      "eventsPerSecond": 0,
+      "eventCoverage": 0
+    }
+  },
+  "environment": {
+    "nodeVersion": "v14.21.4",
+    "mongoUri": "mongodb://localhost:27018/meteor?directConnection=true",
+    "natsUrl": "nats://localhost:4222",
+    "websocketUrl": "ws://localhost:8083/ws"
+  }
+}

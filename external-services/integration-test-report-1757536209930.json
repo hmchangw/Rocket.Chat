@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "totalTests": 6,
+    "successfulTests": 5,
+    "failedTests": 1,
+    "successRate": 83,
+    "duration": 348,
+    "eventsReceived": 0,
+    "notifications": 0,
+    "timestamp": "2025-09-10T20:30:09.930Z"
+  },
+  "results": [
+    {
+      "testName": "DbWatcher Health Check",
+      "success": true,
+      "details": "Service healthy",
+      "timestamp": 1757536209627
+    },
+    {
+      "testName": "Aggregator Health Check",
+      "success": true,
+      "details": "Service healthy",
+      "timestamp": 1757536209630
+    },
+    {
+      "testName": "NATS Health Check",
+      "success": true,
+      "details": "Service healthy",
+      "timestamp": 1757536209634
+    },
+    {
+      "testName": "Monitoring Health Check",
+      "success": true,
+      "details": "Service healthy",
+      "timestamp": 1757536209637
+    },
+    {
+      "testName": "Test Execution",
+      "success": false,
+      "details": "rawEventsSub.next is not a function",
+      "timestamp": 1757536209640
+    },
+    {
+      "testName": "Cleanup",
+      "success": true,
+      "details": "All resources cleaned up successfully",
+      "timestamp": 1757536209929
+    }
+  ],
+  "events": [],
+  "notifications": [],
+  "performanceMetrics": {},
+  "environment": {
+    "nodeVersion": "v14.21.4",
+    "mongoUri": "mongodb://localhost:27018/meteor?directConnection=true",
+    "natsUrl": "nats://localhost:4222",
+    "websocketUrl": "ws://localhost:8083/ws"
+  }
+}

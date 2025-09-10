@@ -1,0 +1,93 @@
+{
+  "testSuite": "CRUD Operations Test Suite",
+  "startTime": 1757540201894,
+  "duration": 30211,
+  "totalTests": 5,
+  "successfulTests": 5,
+  "failedTests": 0,
+  "successRate": 100,
+  "testResults": [
+    {
+      "testName": "Messages - Basic Fields Only",
+      "success": true,
+      "details": "All operations completed in 6026ms",
+      "timestamp": 1757540207988
+    },
+    {
+      "testName": "Subscriptions - Full Document",
+      "success": true,
+      "details": "All operations completed in 6033ms",
+      "timestamp": 1757540214026
+    },
+    {
+      "testName": "Users - Cached Names",
+      "success": true,
+      "details": "All operations completed in 6021ms",
+      "timestamp": 1757540220049
+    },
+    {
+      "testName": "Rooms - Metadata Caching",
+      "success": true,
+      "details": "All operations completed in 6027ms",
+      "timestamp": 1757540226081
+    },
+    {
+      "testName": "Settings - Pass-through Mode",
+      "success": true,
+      "details": "All operations completed in 6019ms",
+      "timestamp": 1757540232102
+    }
+  ],
+  "eventSummary": {
+    "totalRawEvents": 0,
+    "totalAggregatedEvents": 0,
+    "totalWebSocketEvents": 0
+  },
+  "testedConfigurations": [
+    {
+      "name": "Messages - Basic Fields Only",
+      "collection": "messages",
+      "operations": [
+        "insert",
+        "update",
+        "delete"
+      ]
+    },
+    {
+      "name": "Subscriptions - Full Document",
+      "collection": "subscriptions",
+      "operations": [
+        "insert",
+        "update",
+        "delete"
+      ]
+    },
+    {
+      "name": "Users - Cached Names",
+      "collection": "users",
+      "operations": [
+        "insert",
+        "update",
+        "delete"
+      ]
+    },
+    {
+      "name": "Rooms - Metadata Caching",
+      "collection": "rooms",
+      "operations": [
+        "insert",
+        "update",
+        "delete"
+      ]
+    },
+    {
+      "name": "Settings - Pass-through Mode",
+      "collection": "settings",
+      "operations": [
+        "insert",
+        "update",
+        "delete"
+      ]
+    }
+  ]
+}

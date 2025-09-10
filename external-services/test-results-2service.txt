@@ -1,0 +1,247 @@
+
+🔥 STARTING 3-SERVICE ARCHITECTURE STRESS TEST
+================================================================================
+📊 Configuration:
+   WebSocket Clients: 50
+   Message Rate: 100 operations/second
+   Duration: 20 seconds
+   Collections: messages, subscriptions, users, rooms
+================================================================================
+
+🔌 Connecting to services...
+   ✅ MongoDB connected
+   ✅ NATS connected
+
+🌐 Setting up 50 WebSocket clients...
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:433233) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 3)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 4)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 5)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 6)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 7)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 8)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 9)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 10)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 11)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 12)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 13)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 14)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 15)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 16)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 17)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 18)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 19)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 20)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 21)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 22)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 23)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 24)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 25)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 26)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 27)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 28)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 29)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 30)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 31)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 32)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 33)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 34)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 35)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 36)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 37)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 38)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 39)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 40)
+(node:433233) UnhandledPromiseRejectionWarning: Error: connect ECONNREFUSED 127.0.0.1:8083
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1159:16)
+(node:433233) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 41)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 1)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 2)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 3)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 4)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 5)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 6)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 7)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 8)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 9)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 10)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 11)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 12)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 13)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 14)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 15)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 16)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 17)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 18)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 19)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 20)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 21)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 22)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 23)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 24)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 25)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 26)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 27)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 28)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 29)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 30)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 31)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 32)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 33)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 34)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 35)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 36)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 37)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 38)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 39)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 40)
+(node:433233) PromiseRejectionHandledWarning: Promise rejection was handled asynchronously (rejection id: 41)
+   ✅ WebSocket clients: 0 connected, 50 failed
+
+📡 Setting up event monitoring...
+   ✅ Event monitoring active
+
+🔥 Starting stress workload...
+   📈 Operations: 100, Rate: 93/s, Clients: 0
+   📈 Operations: 200, Rate: 94/s, Clients: 0
+   📈 Operations: 300, Rate: 94/s, Clients: 0
+   📈 Operations: 400, Rate: 94/s, Clients: 0
+   📈 Operations: 500, Rate: 93/s, Clients: 0
+   📈 Operations: 600, Rate: 93/s, Clients: 0
+   📈 Operations: 700, Rate: 93/s, Clients: 0
+   📈 Operations: 800, Rate: 93/s, Clients: 0
+   📈 Operations: 900, Rate: 93/s, Clients: 0
+   📈 Operations: 1000, Rate: 93/s, Clients: 0
+   📈 Operations: 1100, Rate: 93/s, Clients: 0
+   📈 Operations: 1200, Rate: 93/s, Clients: 0
+   📈 Operations: 1300, Rate: 93/s, Clients: 0
+   📈 Operations: 1400, Rate: 93/s, Clients: 0
+   📈 Operations: 1500, Rate: 93/s, Clients: 0
+   📈 Operations: 1600, Rate: 93/s, Clients: 0
+   📈 Operations: 1700, Rate: 93/s, Clients: 0
+   📈 Operations: 1800, Rate: 94/s, Clients: 0
+   ✅ Stress workload completed
+   ⏳ Waiting for event propagation...
+
+📊 Measuring stress test results...
+   📈 Total Operations: 1871
+   📈 Operations/sec: 73
+   📈 Events Received: 1203
+   📈 Events Broadcast: 0
+   📈 Connected Clients: 0/50
+   📈 Error Rate: 2.67%
+
+📋 3-SERVICE ARCHITECTURE STRESS TEST REPORT
+================================================================================
+
+🔥 STRESS TEST RESULTS:
+   Duration: 25s
+   Operations: 1871 (73/s)
+   Events Processed: 1203 (47/s)
+   WebSocket Broadcasts: 0 (0/s)
+   Connected Clients: 0/50
+   Error Rate: 2.67%
+
+⚡ LATENCY STATISTICS:
+   Samples: 0
+   Min: 0ms
+   Avg: 0ms
+   P50: 0ms
+   P95: 0ms
+   P99: 0ms
+   Max: 0ms
+
+🎯 PERFORMANCE ASSESSMENT:
+   🟡 Operations/sec: 73/s (Good)
+   🟢 P95 Latency: 0ms (Excellent)
+   🟡 Error Rate: 3% (Good)
+   🔴 Client Connectivity: 0% (Needs Improvement)
+
+🏆 OVERALL ASSESSMENT: 🔴 NEEDS IMPROVEMENT - 3-Service architecture requires optimization
+
+🧹 Cleaning up stress test...
+   ✅ Cleanup completed
+📄 Detailed results saved to: stress-test-3services-1757540186138.json

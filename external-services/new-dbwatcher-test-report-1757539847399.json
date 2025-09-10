@@ -1,0 +1,94 @@
+{
+  "summary": {
+    "totalTests": 12,
+    "successfulTests": 10,
+    "failedTests": 2,
+    "successRate": 83,
+    "duration": 27294,
+    "eventsReceived": 0,
+    "timestamp": "2025-09-10T21:30:47.399Z"
+  },
+  "results": [
+    {
+      "testName": "DbWatcher Health",
+      "success": true,
+      "details": "HTTP 200",
+      "timestamp": 1757539820164
+    },
+    {
+      "testName": "WebSocket Aggregator Health",
+      "success": true,
+      "details": "HTTP 200",
+      "timestamp": 1757539820169
+    },
+    {
+      "testName": "NATS Server Status",
+      "success": true,
+      "details": "HTTP 200",
+      "timestamp": 1757539820174
+    },
+    {
+      "testName": "NATS Connection",
+      "success": true,
+      "details": "Pub/Sub test successful",
+      "timestamp": 1757539820190
+    },
+    {
+      "testName": "WebSocket Connection",
+      "success": false,
+      "details": "connect ECONNREFUSED 127.0.0.1:8083",
+      "timestamp": 1757539820195
+    },
+    {
+      "testName": "External Watcher Configuration",
+      "success": true,
+      "details": "Correctly configured for external watcher",
+      "timestamp": 1757539820196
+    },
+    {
+      "testName": "Event Pipeline",
+      "success": false,
+      "details": "No events received in pipeline",
+      "timestamp": 1757539830210
+    },
+    {
+      "testName": "Load Test",
+      "success": true,
+      "details": "250 messages in 16071ms (16 msg/s), 0 events",
+      "timestamp": 1757539846285
+    },
+    {
+      "testName": "DbWatcher Metrics",
+      "success": true,
+      "details": "Events: 1230, Uptime: 159s",
+      "timestamp": 1757539846321
+    },
+    {
+      "testName": "Aggregator Metrics",
+      "success": true,
+      "details": "Events: 252, Uptime: 48s",
+      "timestamp": 1757539846324
+    },
+    {
+      "testName": "Rocket.Chat Integration",
+      "success": true,
+      "details": "Integration test completed",
+      "timestamp": 1757539847387
+    },
+    {
+      "testName": "Cleanup",
+      "success": true,
+      "details": "All connections closed successfully",
+      "timestamp": 1757539847398
+    }
+  ],
+  "events": [],
+  "environment": {
+    "nodeVersion": "v14.21.4",
+    "mongoUri": "mongodb://localhost:27018/meteor?directConnection=true",
+    "natsUrl": "nats://localhost:4222",
+    "websocketUrl": "ws://localhost:8083/ws",
+    "externalWatcher": true,
+    "internalWatcher": false
+  }
+}
