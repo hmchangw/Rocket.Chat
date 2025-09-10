@@ -1,0 +1,52 @@
+{
+  "name": "rocketchat-external-dbwatcher-tests",
+  "version": "1.0.0",
+  "description": "Test suite for Rocket.Chat external DbWatcher microservices",
+  "main": "test-old-dbwatcher.js",
+  "scripts": {
+    "test": "./run-tests.sh --mode both",
+    "test:old": "node test-old-dbwatcher.js",
+    "test:new": "node test-new-dbwatcher.js",
+    "test:integration": "./run-tests.sh --mode integration",
+    "test:performance": "./run-tests.sh --mode perf",
+    "test:comparison": "./run-tests.sh --mode both",
+    "test:all": "./run-tests.sh --mode both && ./run-tests.sh --mode integration && ./run-tests.sh --mode perf",
+    "services:start": "cd docker && docker-compose up -d --build",
+    "services:stop": "cd docker && docker-compose down -v",
+    "services:logs": "cd docker && docker-compose logs -f",
+    "services:status": "cd docker && docker-compose ps",
+    "services:restart": "npm run services:stop && npm run services:start",
+    "monitoring": "echo 'Visit http://localhost:8090 for monitoring dashboard'",
+    "setup": "npm install && cd docker && docker-compose pull",
+    "validate": "node validate-setup.js",
+    "clean": "cd docker && docker-compose down -v --remove-orphans && docker system prune -f"
+  },
+  "keywords": [
+    "rocketchat",
+    "mongodb",
+    "dbwatcher",
+    "microservices",
+    "nats",
+    "websocket",
+    "golang",
+    "testing"
+  ],
+  "dependencies": {
+    "mongodb": "^4.17.0",
+    "nats": "^2.15.1",
+    "ws": "^8.13.0",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RocketChat/Rocket.Chat.git"
+  },
+  "author": "Rocket.Chat Team",
+  "license": "MIT"
+}

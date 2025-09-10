@@ -1,0 +1,64 @@
+{
+  "summary": {
+    "totalTests": 7,
+    "successfulTests": 5,
+    "failedTests": 2,
+    "successRate": 71,
+    "duration": 72,
+    "eventsReceived": 0,
+    "timestamp": "2025-09-10T20:24:56.227Z"
+  },
+  "results": [
+    {
+      "testName": "DbWatcher Health",
+      "success": true,
+      "details": "HTTP 200",
+      "timestamp": 1757535896202
+    },
+    {
+      "testName": "WebSocket Aggregator Health",
+      "success": true,
+      "details": "HTTP 200",
+      "timestamp": 1757535896205
+    },
+    {
+      "testName": "NATS Server Status",
+      "success": true,
+      "details": "HTTP 200",
+      "timestamp": 1757535896208
+    },
+    {
+      "testName": "NATS Connection",
+      "success": false,
+      "details": "sub.next is not a function",
+      "timestamp": 1757535896218
+    },
+    {
+      "testName": "WebSocket Connection",
+      "success": true,
+      "details": "Connected successfully",
+      "timestamp": 1757535896223
+    },
+    {
+      "testName": "External Watcher Configuration",
+      "success": true,
+      "details": "Correctly configured for external watcher",
+      "timestamp": 1757535896224
+    },
+    {
+      "testName": "Test Execution",
+      "success": false,
+      "details": "aggregatedSub.next is not a function",
+      "timestamp": 1757535896226
+    }
+  ],
+  "events": [],
+  "environment": {
+    "nodeVersion": "v14.21.4",
+    "mongoUri": "mongodb://localhost:27018/meteor?directConnection=true",
+    "natsUrl": "nats://localhost:4222",
+    "websocketUrl": "ws://localhost:8083/ws",
+    "externalWatcher": true,
+    "internalWatcher": false
+  }
+}

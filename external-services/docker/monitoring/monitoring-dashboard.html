@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket.Chat External DbWatcher - Monitoring Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-indicator.healthy { background-color: #27ae60; }
+        .status-indicator.unhealthy { background-color: #e74c3c; }
+        .status-indicator.unknown { background-color: #95a5a6; }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .logs {
+            height: 300px;
+            overflow-y: auto;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .log-entry {
+            margin-bottom: 0.5rem;
+            padding: 0.25rem;
+            border-left: 3px solid #3498db;
+            padding-left: 0.75rem;
+        }
+
+        .log-entry.error {
+            border-left-color: #e74c3c;
+        }
+
+        .log-entry.warning {
+            border-left-color: #f39c12;
+        }
+
+        .log-entry.info {
+            border-left-color: #27ae60;
+        }
+
+        .refresh-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .refresh-btn:hover {
+            background: #2980b9;
+        }
+
+        .auto-refresh {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #3498db;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🚀 Rocket.Chat External DbWatcher</h1>
+            <p>Real-time monitoring dashboard for microservice-based database watcher</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="auto-refresh">
+            <label for="autoRefresh">Auto Refresh:</label>
+            <label class="switch">
+                <input type="checkbox" id="autoRefresh" checked>
+                <span class="slider"></span>
+            </label>
+            <button class="refresh-btn" onclick="refreshAll()">Refresh Now</button>
+        </div>
+
+        <div class="grid">
+            <!-- DbWatcher Status -->
+            <div class="card">
+                <h3>📊 DbWatcher Service</h3>
+                <div id="dbwatcher-status">
+                    <div class="status">
+                        <div class="status-indicator unknown" id="dbwatcher-indicator"></div>
+                        <span id="dbwatcher-status-text">Loading...</span>
+                    </div>
+                    <div id="dbwatcher-metrics"></div>
+                </div>
+            </div>
+
+            <!-- WebSocket Aggregator Status -->
+            <div class="card">
+                <h3>🔄 WebSocket Aggregator</h3>
+                <div id="aggregator-status">
+                    <div class="status">
+                        <div class="status-indicator unknown" id="aggregator-indicator"></div>
+                        <span id="aggregator-status-text">Loading...</span>
+                    </div>
+                    <div id="aggregator-metrics"></div>
+                </div>
+            </div>
+
+            <!-- NATS Status -->
+            <div class="card">
+                <h3>📡 NATS Message Bus</h3>
+                <div id="nats-status">
+                    <div class="status">
+                        <div class="status-indicator unknown" id="nats-indicator"></div>
+                        <span id="nats-status-text">Loading...</span>
+                    </div>
+                    <div id="nats-metrics"></div>
+                </div>
+            </div>
+
+            <!-- System Overview -->
+            <div class="card">
+                <h3>📈 System Overview</h3>
+                <div id="system-metrics">
+                    <div class="metric">
+                        <span class="metric-label">Total Events Processed:</span>
+                        <span class="metric-value" id="total-events">-</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">System Uptime:</span>
+                        <span class="metric-value" id="system-uptime">-</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Active Connections:</span>
+                        <span class="metric-value" id="active-connections">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-time Event Logs -->
+        <div class="card">
+            <h3>📝 Real-time Event Stream</h3>
+            <div class="logs" id="event-logs">
+                <div class="log-entry info">Connecting to WebSocket...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let autoRefreshInterval;
+        let websocket;
+        let dbwatcherData = {};
+        let aggregatorData = {};
+        let natsData = {};
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            setupAutoRefresh();
+            setupWebSocket();
+            refreshAll();
+        });
+
+        function setupAutoRefresh() {
+            const autoRefreshCheckbox = document.getElementById('autoRefresh');
+            autoRefreshCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    autoRefreshInterval = setInterval(refreshAll, 5000);
+                    addLogEntry('Auto-refresh enabled (5s interval)', 'info');
+                } else {
+                    clearInterval(autoRefreshInterval);
+                    addLogEntry('Auto-refresh disabled', 'info');
+                }
+            });
+
+            // Start with auto-refresh enabled
+            if (autoRefreshCheckbox.checked) {
+                autoRefreshInterval = setInterval(refreshAll, 5000);
+            }
+        }
+
+        function setupWebSocket() {
+            try {
+                websocket = new WebSocket(`ws://${window.location.hostname}:8083/ws`);
+                
+                websocket.onopen = function() {
+                    addLogEntry('WebSocket connected - Real-time events enabled', 'info');
+                };
+
+                websocket.onmessage = function(event) {
+                    try {
+                        const data = JSON.parse(event.data);
+                        const timestamp = new Date(data.timestamp).toLocaleTimeString();
+                        addLogEntry(`[${timestamp}] ${data.collection}: ${data.action} (ID: ${data.id})${data.enriched ? ' [ENRICHED]' : ''}`, 'info');
+                    } catch (e) {
+                        addLogEntry('Error parsing WebSocket message', 'error');
+                    }
+                };
+
+                websocket.onclose = function() {
+                    addLogEntry('WebSocket disconnected - Attempting reconnect...', 'warning');
+                    setTimeout(setupWebSocket, 5000);
+                };
+
+                websocket.onerror = function() {
+                    addLogEntry('WebSocket error occurred', 'error');
+                };
+            } catch (e) {
+                addLogEntry('Failed to establish WebSocket connection', 'error');
+            }
+        }
+
+        function refreshAll() {
+            fetchDbWatcherStatus();
+            fetchAggregatorStatus();
+            fetchNATSStatus();
+            updateSystemOverview();
+        }
+
+        async function fetchDbWatcherStatus() {
+            try {
+                const response = await fetch('/api/dbwatcher/health');
+                const data = await response.json();
+                dbwatcherData = data;
+                updateDbWatcherUI(data);
+            } catch (error) {
+                updateDbWatcherUI(null, error.message);
+            }
+        }
+
+        async function fetchAggregatorStatus() {
+            try {
+                const response = await fetch('/api/aggregator/health');
+                const data = await response.json();
+                aggregatorData = data;
+                updateAggregatorUI(data);
+            } catch (error) {
+                updateAggregatorUI(null, error.message);
+            }
+        }
+
+        async function fetchNATSStatus() {
+            try {
+                const response = await fetch('/api/nats/connz');
+                const data = await response.json();
+                natsData = data;
+                updateNATSUI(data);
+            } catch (error) {
+                updateNATSUI(null, error.message);
+            }
+        }
+
+        function updateDbWatcherUI(data, error = null) {
+            const indicator = document.getElementById('dbwatcher-indicator');
+            const statusText = document.getElementById('dbwatcher-status-text');
+            const metrics = document.getElementById('dbwatcher-metrics');
+
+            if (error || !data) {
+                indicator.className = 'status-indicator unhealthy';
+                statusText.textContent = error || 'Service Unavailable';
+                metrics.innerHTML = '<div class="metric"><span class="metric-label">Error:</span><span class="metric-value">Connection Failed</span></div>';
+                return;
+            }
+
+            indicator.className = `status-indicator ${data.status === 'healthy' ? 'healthy' : 'unhealthy'}`;
+            statusText.textContent = `Status: ${data.status}`;
+
+            metrics.innerHTML = `
+                <div class="metric">
+                    <span class="metric-label">Events Published:</span>
+                    <span class="metric-value">${data.events_published || 0}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Collections Watched:</span>
+                    <span class="metric-value">${data.watching_collections || 0}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Uptime:</span>
+                    <span class="metric-value">${formatUptime(data.uptime)}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">MongoDB:</span>
+                    <span class="metric-value">${data.mongodb_connected ? '✓ Connected' : '✗ Disconnected'}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">NATS:</span>
+                    <span class="metric-value">${data.nats_connected ? '✓ Connected' : '✗ Disconnected'}</span>
+                </div>
+            `;
+        }
+
+        function updateAggregatorUI(data, error = null) {
+            const indicator = document.getElementById('aggregator-indicator');
+            const statusText = document.getElementById('aggregator-status-text');
+            const metrics = document.getElementById('aggregator-metrics');
+
+            if (error || !data) {
+                indicator.className = 'status-indicator unhealthy';
+                statusText.textContent = error || 'Service Unavailable';
+                metrics.innerHTML = '<div class="metric"><span class="metric-label">Error:</span><span class="metric-value">Connection Failed</span></div>';
+                return;
+            }
+
+            indicator.className = `status-indicator ${data.status === 'healthy' ? 'healthy' : 'unhealthy'}`;
+            statusText.textContent = `Status: ${data.status}`;
+
+            metrics.innerHTML = `
+                <div class="metric">
+                    <span class="metric-label">Events Processed:</span>
+                    <span class="metric-value">${data.events_processed || 0}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">WebSocket Clients:</span>
+                    <span class="metric-value">${data.websocket_clients || 0}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Uptime:</span>
+                    <span class="metric-value">${formatUptime(data.uptime)}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">MongoDB:</span>
+                    <span class="metric-value">${data.mongodb_connected ? '✓ Connected' : '✗ Disconnected'}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Valkey:</span>
+                    <span class="metric-value">${data.valkey_connected ? '✓ Connected' : '✗ Disconnected'}</span>
+                </div>
+            `;
+        }
+
+        function updateNATSUI(data, error = null) {
+            const indicator = document.getElementById('nats-indicator');
+            const statusText = document.getElementById('nats-status-text');
+            const metrics = document.getElementById('nats-metrics');
+
+            if (error || !data) {
+                indicator.className = 'status-indicator unhealthy';
+                statusText.textContent = error || 'Service Unavailable';
+                metrics.innerHTML = '<div class="metric"><span class="metric-label">Error:</span><span class="metric-value">Connection Failed</span></div>';
+                return;
+            }
+
+            indicator.className = 'status-indicator healthy';
+            statusText.textContent = 'Status: healthy';
+
+            metrics.innerHTML = `
+                <div class="metric">
+                    <span class="metric-label">Connections:</span>
+                    <span class="metric-value">${data.num_connections || 0}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Total Messages:</span>
+                    <span class="metric-value">${data.total || 0}</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Subscriptions:</span>
+                    <span class="metric-value">${data.subscriptions || 0}</span>
+                </div>
+            `;
+        }
+
+        function updateSystemOverview() {
+            const totalEventsEl = document.getElementById('total-events');
+            const systemUptimeEl = document.getElementById('system-uptime');
+            const activeConnectionsEl = document.getElementById('active-connections');
+
+            const totalEvents = (dbwatcherData.events_published || 0) + (aggregatorData.events_processed || 0);
+            const avgUptime = ((dbwatcherData.uptime || 0) + (aggregatorData.uptime || 0)) / 2;
+            const activeConnections = (natsData.num_connections || 0) + (aggregatorData.websocket_clients || 0);
+
+            totalEventsEl.textContent = totalEvents.toLocaleString();
+            systemUptimeEl.textContent = formatUptime(avgUptime);
+            activeConnectionsEl.textContent = activeConnections;
+        }
+
+        function formatUptime(seconds) {
+            if (!seconds) return 'N/A';
+            
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = Math.floor(seconds % 60);
+            
+            if (hours > 0) {
+                return `${hours}h ${minutes}m ${secs}s`;
+            } else if (minutes > 0) {
+                return `${minutes}m ${secs}s`;
+            } else {
+                return `${secs}s`;
+            }
+        }
+
+        function addLogEntry(message, type = 'info') {
+            const logsContainer = document.getElementById('event-logs');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            
+            logsContainer.appendChild(logEntry);
+            
+            // Keep only last 50 entries
+            const entries = logsContainer.getElementsByClassName('log-entry');
+            if (entries.length > 50) {
+                logsContainer.removeChild(entries[0]);
+            }
+            
+            // Auto-scroll to bottom
+            logsContainer.scrollTop = logsContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>

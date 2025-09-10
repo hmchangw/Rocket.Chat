@@ -1,0 +1,99 @@
+server:
+  port: 8081
+  host: "0.0.0.0"
+
+mongodb:
+  uri: "mongodb://mongo:27017"
+  database: "meteor"  # Use meteor database like Rocket.Chat
+  
+nats:
+  url: "nats://nats:4222"
+  subject: "rocketchat.events.changedata"
+  max_reconnect: 5
+  reconnect_wait: 2s
+
+collections:
+  messages:
+    enabled: true
+    full_document: false
+    fields: ["_id", "msg", "ts", "u", "rid", "_updatedAt"]
+  
+  subscriptions:
+    enabled: true
+    full_document: true
+    fields: []  # Empty means all fields when full_document is true
+  
+  users:
+    enabled: true
+    full_document: false
+    fields: ["_id", "username", "name", "status", "statusConnection", "_updatedAt"]
+  
+  settings:
+    enabled: true
+    full_document: true
+    fields: []
+  
+  permissions:
+    enabled: true
+    full_document: true
+    fields: []
+  
+  roles:
+    enabled: true
+    full_document: true
+    fields: []
+  
+  rooms:
+    enabled: true
+    full_document: false
+    fields: ["_id", "name", "t", "u", "msgs", "ts", "_updatedAt"]
+    
+  livechat-inquiry:
+    enabled: true
+    full_document: true
+    fields: []
+    
+  livechat-department-agents:
+    enabled: true
+    full_document: true
+    fields: []
+    
+  users-sessions:
+    enabled: true
+    full_document: true
+    fields: []
+    
+  meteor_accounts_loginServiceConfiguration:
+    enabled: true
+    full_document: true
+    fields: []
+    
+  rocketchat_instance_status:
+    enabled: true
+    full_document: false
+    fields: ["_id", "name", "instanceRecord", "_updatedAt"]
+    
+  rocketchat_integration_history:
+    enabled: true
+    full_document: true
+    fields: []
+    
+  rocketchat_integrations:
+    enabled: true
+    full_document: true
+    fields: []
+    
+  rocketchat_email_inbox:
+    enabled: true
+    full_document: true
+    fields: []
+
+logging:
+  level: "debug"  # debug, info, warn, error - Enable debug logging
+  format: "json"  # json, text
+  enable_trace: true  # Enable detailed tracing
+  log_events: true    # Log all events being processed
+
+health:
+  enabled: true
+  port: 8082

@@ -1,0 +1,138 @@
+server:
+  port: 8080
+  host: "0.0.0.0"
+
+websocket:
+  port: 8083
+  path: "/ws"
+  read_buffer_size: 1024
+  write_buffer_size: 1024
+
+mongodb:
+  uri: "mongodb://mongo:27017"
+  database: "meteor"  # Use meteor database like Rocket.Chat
+
+valkey:
+  host: "valkey"
+  port: 6379
+  password: ""
+  db: 0
+  pool_size: 10
+  ttl: 300s  # 5 minutes default TTL
+
+nats:
+  url: "nats://nats:4222"
+  input_subject: "rocketchat.events.changedata"
+  output_subject: "rocketchat.events.aggregated"
+  max_reconnect: 5
+  reconnect_wait: 2s
+
+# Configuration for each collection's aggregation behavior
+collections:
+  messages:
+    enable_aggregation: true
+    fetch_full_document: false
+    cache_user_names: true
+    cache_ttl: 600s
+    enrich_fields:
+      - "u.name"
+      - "mentions"
+  
+  subscriptions:
+    enable_aggregation: true
+    fetch_full_document: true
+    project_fields:
+      - "_id"
+      - "rid" 
+      - "u"
+      - "name"
+      - "t"
+      - "ts"
+      - "ls"
+      - "unread"
+      - "alert"
+      - "open"
+      - "audioNotifications"
+      - "desktopNotifications"
+      - "emailNotifications"
+      - "mobilePushNotifications"
+      - "webPushNotifications"
+      - "muteGroupMentions"
+      - "hideUnreadStatus"
+      - "blocked"
+      - "archived"
+      - "ignored"
+      - "autoTranslate"
+      - "autoTranslateLanguage"
+      - "disableNotifications"
+      - "E2EKey"
+      - "encrypted"
+      - "tunread"
+      - "tunreadGroup"
+      - "tunreadUser"
+      - "userMentions"
+      - "groupMentions"
+      - "_updatedAt"
+    cache_ttl: 300s
+  
+  users:
+    enable_aggregation: false
+    cache_names: true
+    cache_ttl: 600s
+  
+  settings:
+    enable_aggregation: false
+  
+  permissions:
+    enable_aggregation: false
+    
+  roles:
+    enable_aggregation: false
+    
+  rooms:
+    enable_aggregation: true
+    fetch_full_document: false
+    cache_metadata: true
+    cache_ttl: 300s
+    
+  livechat-inquiry:
+    enable_aggregation: false
+    
+  livechat-department-agents:
+    enable_aggregation: false
+    
+  users-sessions:
+    enable_aggregation: false
+    
+  meteor_accounts_loginServiceConfiguration:
+    enable_aggregation: false
+    
+  rocketchat_instance_status:
+    enable_aggregation: false
+    
+  rocketchat_integration_history:
+    enable_aggregation: false
+    
+  rocketchat_integrations:
+    enable_aggregation: false
+    
+  rocketchat_email_inbox:
+    enable_aggregation: false
+
+batching:
+  enabled: true
+  max_batch_size: 100
+  flush_interval: 100ms
+  max_wait_time: 500ms
+
+logging:
+  level: "debug"  # debug, info, warn, error - Enable debug logging
+  format: "json"
+  enable_trace: true     # Enable detailed tracing
+  log_events: true       # Log all events being processed
+  log_aggregation: true  # Log aggregation operations
+  log_websocket: true    # Log WebSocket operations
+
+health:
+  enabled: true
+  port: 8084

@@ -1,0 +1,189 @@
+version: '3.8'
+
+services:
+  # MongoDB with replica set for oplog - using separate port to avoid conflict with Rocket.Chat
+  mongo:
+    image: bitnami/mongodb:4.4.14-debian-10-r0
+    container_name: external-mongo
+    restart: always
+    ports:
+      - "27018:27017"  # Use different port to avoid conflict with Rocket.Chat MongoDB
+    environment:
+      MONGODB_ADVERTISED_HOSTNAME: mongo
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_REPLICA_SET_NAME: rs0
+      MONGODB_INITIAL_PRIMARY_HOST: mongo
+      ALLOW_EMPTY_PASSWORD: "yes"
+      MONGODB_DATABASE: meteor  # Use meteor database name like Rocket.Chat
+    volumes:
+      - mongodb_data:/bitnami/mongodb
+    networks:
+      - dev
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/meteor --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  # Valkey (Redis-compatible cache)
+  valkey:
+    image: valkey/valkey:8.0.1
+    container_name: rocketchat-valkey
+    restart: unless-stopped
+    volumes:
+      - valkey_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - dev
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: valkey-server --save 60 1000 --loglevel warning
+
+  # NATS Message Bus
+  nats:
+    image: nats:2.10
+    container_name: rocketchat-nats
+    restart: unless-stopped
+    ports:
+      - "4222:4222"
+      - "8222:8222"  # HTTP monitoring
+      - "6222:6222"  # Clustering
+    networks:
+      - dev
+    volumes:
+      - ./nats.conf:/etc/nats/nats-server.conf
+      - nats_jetstream:/data/jetstream
+    command: ["-c", "/etc/nats/nats-server.conf"]
+    # healthcheck:
+    #   test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8222/healthz"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
+    
+  # DbWatcher Service
+  dbwatcher:
+    build:
+      context: ../dbwatcher
+      dockerfile: Dockerfile
+    container_name: rocketchat-dbwatcher
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+      nats:
+        condition: service_started
+    ports:
+      - "8081:8081"  # Main service
+      - "8082:8082"  # Health check
+    networks:
+      - dev
+    volumes:
+      - ../dbwatcher/config.yaml:/root/config.yaml:ro
+    environment:
+      - CONFIG_FILE=/root/config.yaml
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8082/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # WebSocket Aggregator Service
+  websocket-aggregator:
+    build:
+      context: ../websocket-aggregator
+      dockerfile: Dockerfile
+    container_name: rocketchat-websocket-aggregator
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+      nats:
+        condition: service_started
+      dbwatcher:
+        condition: service_healthy
+    ports:
+      - "8080:8080"  # Main service
+      - "8083:8083"  # WebSocket
+      - "8084:8084"  # Health check
+    networks:
+      - dev
+    volumes:
+      - ../websocket-aggregator/config.yaml:/root/config.yaml:ro
+    environment:
+      - CONFIG_FILE=/root/config.yaml
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8084/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Nginx Reverse Proxy for Monitoring
+  nginx:
+    image: nginx:alpine
+    container_name: rocketchat-nginx
+    restart: unless-stopped
+    depends_on:
+      dbwatcher:
+        condition: service_healthy
+      websocket-aggregator:
+        condition: service_healthy
+    ports:
+      - "8090:80"
+    networks:
+      - dev
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./monitoring/monitoring-dashboard.html:/usr/share/nginx/html/index.html:ro
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Test Runner (run manually)
+  test-runner:
+    build:
+      context: ..
+      dockerfile: docker/test-runner.Dockerfile
+    container_name: rocketchat-test-runner
+    depends_on:
+      mongo:
+        condition: service_healthy
+      dbwatcher:
+        condition: service_healthy
+      websocket-aggregator:
+        condition: service_healthy
+      nats:
+        condition: service_started
+    networks:
+      - dev
+    volumes:
+      - ../:/tests
+    working_dir: /tests
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/meteor?directConnection=true
+      - EXTERNAL_WATCHER_NATS_URL=nats://nats:4222
+      - EXTERNAL_WATCHER_WS_URL=ws://websocket-aggregator:8083/ws
+      - USE_EXTERNAL_DBWATCHER=true
+    profiles:
+      - test  # Only start when explicitly requested
+
+
+volumes:
+  mongodb_data:
+  valkey_data:
+  nats_jetstream:
+
+networks:
+  dev:
+    name: dev
+    driver: bridge

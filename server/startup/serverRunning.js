@@ -10,6 +10,7 @@ import { settings } from '../../app/settings/server';
 import { Info, getMongoInfo } from '../../app/utils/server';
 import { Users } from '../../app/models/server';
 import { sendMessagesToAdmins } from '../lib/sendMessagesToAdmins';
+import { ExternalWatcherConfig } from '../modules/watchers/ExternalWatcherConfig';
 
 const exitIfNotBypassed = (ignore, errorCode = 1) => {
 	if (typeof ignore === 'string' && ['yes', 'true'].includes(ignore.toLowerCase())) {
@@ -21,6 +22,7 @@ const exitIfNotBypassed = (ignore, errorCode = 1) => {
 
 Meteor.startup(function() {
 	const { oplogEnabled, mongoVersion, mongoStorageEngine } = getMongoInfo();
+	const externalWatcherConfig = ExternalWatcherConfig.getInstance();
 
 	const desiredNodeVersion = semver.clean(fs.readFileSync(path.join(process.cwd(), '../../.node_version.txt')).toString());
 	const desiredNodeVersionMajor = String(semver.parse(desiredNodeVersion).major);
@@ -47,11 +49,17 @@ Meteor.startup(function() {
 
 		msg = msg.join('\n');
 
-		if (!process.env.DISABLE_DB_WATCH && !oplogEnabled) {
+		// Check oplog requirement - skip if using external watcher
+		if (!externalWatcherConfig.shouldUseExternalWatcher() && !process.env.DISABLE_DB_WATCH && !oplogEnabled) {
 			msg += ['', '', 'OPLOG / REPLICASET IS REQUIRED TO RUN ROCKET.CHAT, MORE INFORMATION AT:', 'https://go.rocket.chat/i/oplog-required'].join('\n');
 			SystemLogger.error_box(msg, 'SERVER ERROR');
 
 			exitIfNotBypassed(process.env.BYPASS_OPLOG_VALIDATION);
+		}
+
+		// Log external watcher status
+		if (externalWatcherConfig.shouldUseExternalWatcher()) {
+			msg += ['', '', 'USING EXTERNAL DBWATCHER MICROSERVICES:', `NATS URL: ${externalWatcherConfig.config.natsUrl}`, `WebSocket URL: ${externalWatcherConfig.config.websocketServiceUrl}`].join('\n');
 		}
 
 		if (!semver.satisfies(process.versions.node, desiredNodeVersionMajor)) {

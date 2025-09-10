@@ -69,6 +69,8 @@ import EmailMessageHistoryModel from '../models/EmailMessageHistory';
 import { EmailMessageHistoryRaw } from './EmailMessageHistory';
 import { api } from '../../../../server/sdk/api';
 import { initWatchers } from '../../../../server/modules/watchers/watchers.module';
+import { ExternalWatcherBootstrap } from '../../../../server/modules/watchers/ExternalWatcherBootstrap';
+import { registerExternalWatcherEndpoints } from '../../../../server/modules/watchers/ExternalWatcherAPI';
 
 const trashCollection = trash.rawCollection();
 
@@ -125,31 +127,61 @@ const map = {
 	[EmailInbox.col.collectionName]: EmailInboxModel,
 };
 
-if (!process.env.DISABLE_DB_WATCH) {
-	const models = {
-		Messages,
-		Users,
-		Subscriptions,
-		Settings,
-		LivechatInquiry,
-		LivechatDepartmentAgents,
-		UsersSessions,
-		Permissions,
-		Roles,
-		Rooms,
-		LoginServiceConfiguration,
-		InstanceStatus,
-		IntegrationHistory,
-		Integrations,
-		EmailInbox,
-	};
+// Initialize watcher bootstrap
+const watcherBootstrap = ExternalWatcherBootstrap.getInstance();
 
-	initWatchers(models, api.broadcastLocal.bind(api), (model, fn) => {
-		const meteorModel = map[model.col.collectionName];
-		if (!meteorModel) {
-			return;
-		}
+// Setup models for watcher initialization
+const models = {
+	Messages,
+	Users,
+	Subscriptions,
+	Settings,
+	LivechatInquiry,
+	LivechatDepartmentAgents,
+	UsersSessions,
+	Permissions,
+	Roles,
+	Rooms,
+	LoginServiceConfiguration,
+	InstanceStatus,
+	IntegrationHistory,
+	Integrations,
+	EmailInbox,
+};
 
-		meteorModel.on('change', fn);
-	});
-}
+const meteorWatchFunction = (model: any, fn: any) => {
+	const meteorModel = map[model.col.collectionName];
+	if (!meteorModel) {
+		return;
+	}
+	meteorModel.on('change', fn);
+};
+
+// Initialize watcher with graceful fallback
+watcherBootstrap.initialize({
+	models,
+	broadcastCallback: api.broadcastLocal.bind(api),
+	meteorWatchFunction: meteorWatchFunction,
+}).catch(error => {
+	console.error('Failed to initialize external watcher, falling back to internal watcher:', error);
+	
+	// Fallback to internal watcher
+	if (!process.env.DISABLE_DB_WATCH) {
+		console.log('Initializing internal watcher as fallback...');
+		initWatchers(models, api.broadcastLocal.bind(api), meteorWatchFunction);
+	}
+});
+
+// Expose bootstrap for debugging/monitoring
+(global as any).watcherBootstrap = watcherBootstrap;
+
+// Store models and functions for potential restart scenarios
+(global as any).watcherModels = models;
+(global as any).watcherBroadcast = api.broadcastLocal.bind(api);
+(global as any).watcherMeteorFunction = meteorWatchFunction;
+
+// Register external watcher API endpoints
+registerExternalWatcherEndpoints();
+
+// Note: Legacy initInternalWatcher function removed as it was unused
+// Internal watcher initialization is now handled through the external watcher integration
