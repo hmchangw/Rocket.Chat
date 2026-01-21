@@ -38,6 +38,45 @@ export class Messages extends Base {
 		return this.update({ _id: messageId }, { $set: { reactions } });
 	}
 
+	addReaction(messageId, reaction, username, user) {
+		return this.update(
+			{ _id: messageId },
+			{
+				$addToSet: {
+					[`reactions.${reaction}.usernames`]: username,
+				},
+				$set: {
+					[`reactions.${reaction}.users.${user._id}`]: user,
+				},
+			},
+		);
+	}
+
+	removeReaction(messageId, reaction, username, userId) {
+		return this.update(
+			{ _id: messageId },
+			{
+				$pull: {
+					[`reactions.${reaction}.usernames`]: username,
+				},
+				$unset: {
+					[`reactions.${reaction}.users.${userId}`]: 1,
+				},
+			},
+		);
+	}
+
+	removeReactionEmoji(messageId, reaction) {
+		return this.update(
+			{ _id: messageId },
+			{
+				$unset: {
+					[`reactions.${reaction}`]: 1,
+				},
+			},
+		);
+	}
+
 	keepHistoryForToken(token) {
 		return this.update({
 			'navigation.token': token,

@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { TAPi18n } from 'meteor/rocketchat:tap-i18n';
-import _ from 'underscore';
 
 import { Messages, EmojiCustom, Rooms } from '../../models';
 import { callbacks } from '../../callbacks';
@@ -9,12 +8,42 @@ import { isTheLastMessage, msgStream } from '../../lib';
 import { hasPermission } from '../../authorization/server/functions/hasPermission';
 import { api } from '../../../server/sdk/api';
 
-const removeUserReaction = (message, reaction, username) => {
-	message.reactions[reaction].usernames.splice(message.reactions[reaction].usernames.indexOf(username), 1);
-	if (message.reactions[reaction].usernames.length === 0) {
-		delete message.reactions[reaction];
+// Helper to get users count (handles both array and object formats)
+const getUsersCount = (message, reaction) => {
+	if (!message.reactions || !message.reactions[reaction]) {
+		return 0;
 	}
-	return message;
+	const users = message.reactions[reaction].users;
+	if (!users) {
+		return 0;
+	}
+	// Handle both array (legacy) and object (new) formats
+	if (Array.isArray(users)) {
+		return users.length;
+	}
+	return Object.keys(users).length;
+};
+
+// Helper to check if reaction emoji has any users left
+const isReactionEmpty = (message, reaction) => {
+	return getUsersCount(message, reaction) === 0;
+};
+
+// Helper to check if user already reacted
+const hasUserReacted = (message, reaction, username) => {
+	if (!message.reactions || !message.reactions[reaction]) {
+		return false;
+	}
+	const usernames = message.reactions[reaction].usernames;
+	return usernames && usernames.indexOf(username) !== -1;
+};
+
+// Helper to check if all reactions are empty
+const areAllReactionsEmpty = (message) => {
+	if (!message.reactions) {
+		return true;
+	}
+	return Object.keys(message.reactions).every((reaction) => isReactionEmpty(message, reaction));
 };
 
 async function setReaction(room, user, message, reaction, shouldReact) {
@@ -37,7 +66,7 @@ async function setReaction(room, user, message, reaction, shouldReact) {
 		});
 	}
 
-	const userAlreadyReacted = Boolean(message.reactions) && Boolean(message.reactions[reaction]) && message.reactions[reaction].usernames.indexOf(user.username) !== -1;
+	const userAlreadyReacted = hasUserReacted(message, reaction, user.username);
 	// When shouldReact was not informed, toggle the reaction.
 	if (shouldReact === undefined) {
 		shouldReact = !userAlreadyReacted;
@@ -46,38 +75,59 @@ async function setReaction(room, user, message, reaction, shouldReact) {
 	if (userAlreadyReacted === shouldReact) {
 		return;
 	}
+
+	// Prepare user object for storing in reactions.users
+	const reactor = {
+		_id: user._id,
+		username: user.username,
+		name: user.name,
+	};
+
 	if (userAlreadyReacted) {
-		removeUserReaction(message, reaction, user.username);
-		if (_.isEmpty(message.reactions)) {
-			delete message.reactions;
-			if (isTheLastMessage(room, message)) {
+		// REMOVE reaction - atomic operation
+		Messages.removeReaction(message._id, reaction, user.username, user._id);
+
+		// Re-fetch message to check if reaction emoji is now empty
+		const updatedMessage = Messages.findOneById(message._id);
+
+		if (isReactionEmpty(updatedMessage, reaction)) {
+			// Remove the entire reaction emoji if no users left
+			Messages.removeReactionEmoji(message._id, reaction);
+		}
+
+		// Re-fetch to check if all reactions are empty
+		const finalMessage = Messages.findOneById(message._id);
+
+		if (areAllReactionsEmpty(finalMessage)) {
+			Messages.unsetReactions(message._id);
+			if (isTheLastMessage(room, finalMessage)) {
 				Rooms.unsetReactionsInLastMessage(room._id);
 			}
-			Messages.unsetReactions(message._id);
-		} else {
-			Messages.setReactions(message._id, message.reactions);
-			if (isTheLastMessage(room, message)) {
-				Rooms.setReactionsInLastMessage(room._id, message);
-			}
+		} else if (isTheLastMessage(room, finalMessage)) {
+			Rooms.setReactionsInLastMessage(room._id, finalMessage);
 		}
+
 		callbacks.run('unsetReaction', message._id, reaction);
-		callbacks.run('afterUnsetReaction', message, { user, reaction, shouldReact });
+		callbacks.run('afterUnsetReaction', finalMessage, { user, reaction, shouldReact });
+
+		// Update message reference for msgStream
+		message = finalMessage;
 	} else {
-		if (!message.reactions) {
-			message.reactions = {};
+		// ADD reaction - atomic operation
+		Messages.addReaction(message._id, reaction, user.username, reactor);
+
+		// Re-fetch message for callbacks and lastMessage update
+		const updatedMessage = Messages.findOneById(message._id);
+
+		if (isTheLastMessage(room, updatedMessage)) {
+			Rooms.setReactionsInLastMessage(room._id, updatedMessage);
 		}
-		if (!message.reactions[reaction]) {
-			message.reactions[reaction] = {
-				usernames: [],
-			};
-		}
-		message.reactions[reaction].usernames.push(user.username);
-		Messages.setReactions(message._id, message.reactions);
-		if (isTheLastMessage(room, message)) {
-			Rooms.setReactionsInLastMessage(room._id, message);
-		}
+
 		callbacks.run('setReaction', message._id, reaction);
-		callbacks.run('afterSetReaction', message, { user, reaction, shouldReact });
+		callbacks.run('afterSetReaction', updatedMessage, { user, reaction, shouldReact });
+
+		// Update message reference for msgStream
+		message = updatedMessage;
 	}
 
 	msgStream.emit(message.rid, message);
